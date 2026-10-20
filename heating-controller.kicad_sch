@@ -1,0 +1,461 @@
+(kicad_sch
+	(version 20250610)
+	(generator "konnect")
+	(generator_version "10.0")
+	(uuid "23b12b18-7422-4c89-b4f7-c26e3f08412d")
+	(paper "A4")
+	(lib_symbols
+	)
+  (sheet
+		(at 30 40)
+		(size 60 60)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "f602d427-af24-4a8b-a8af-8f2deb33ae4a")
+		(property "Sheetname" "Power + MCU"
+			(at 30 39.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power_mcu.kicad_sch"
+			(at 30 100.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "OT_IN" bidirectional
+			(at 90 42.54 0)
+			(uuid "0fe1eb45-fe93-4183-9d9b-b5cd6439a7fe")
+		)
+		(pin "ES1" bidirectional
+			(at 90 45.08 0)
+			(uuid "2b983236-faac-4ac5-9656-36eed603a25f")
+		)
+		(pin "ES2" bidirectional
+			(at 90 47.62 0)
+			(uuid "7163a75a-4500-4365-9a9d-76490d6d3439")
+		)
+		(pin "ES3" bidirectional
+			(at 90 50.16 0)
+			(uuid "3071f6ef-e3a1-47ea-8246-db91babfb40f")
+		)
+		(pin "DEMAND_IN" bidirectional
+			(at 90 52.7 0)
+			(uuid "6b64f0f2-0765-4313-8492-2f9a517339d1")
+		)
+		(pin "MAINS_OK" bidirectional
+			(at 90 55.24 0)
+			(uuid "6abd681b-648e-4f53-a200-25d542b015e8")
+		)
+		(pin "RLY1" bidirectional
+			(at 90 57.78 0)
+			(uuid "72406ce9-ed0e-4026-818e-81c3f423a596")
+		)
+		(pin "RLY2" bidirectional
+			(at 90 60.32 0)
+			(uuid "3f4a878a-6567-4f68-8eb6-eafd0b8e4b31")
+		)
+		(pin "RLY3" bidirectional
+			(at 90 62.86 0)
+			(uuid "bfe50820-e7b3-4430-b962-cd88fe48684c")
+		)
+		(pin "RLY4" bidirectional
+			(at 90 65.4 0)
+			(uuid "0f1632e2-1f07-4138-9378-2767bed2f370")
+		)
+		(pin "OT_OUT" bidirectional
+			(at 90 67.94 0)
+			(uuid "085b238e-eb0f-466d-876e-f5573f46cb8d")
+		)
+		(instances
+			(project "heating-controller"
+				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d"
+					(page "2")
+				)
+			)
+		)
+	)
+  (sheet
+		(at 120 40)
+		(size 60 40)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "62e2f598-1c06-4758-b658-136e2d1a65ad")
+		(property "Sheetname" "OpenTherm"
+			(at 120 39.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "opentherm.kicad_sch"
+			(at 120 80.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "OT_OUT" bidirectional
+			(at 120 42.54 180)
+			(uuid "cbcc84d1-24cf-40ad-a25d-f2a49636ac09")
+		)
+		(pin "OT_IN" bidirectional
+			(at 120 45.08 180)
+			(uuid "7b193262-b5d8-47fd-987e-a34a83215d82")
+		)
+		(instances
+			(project "heating-controller"
+				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d"
+					(page "3")
+				)
+			)
+		)
+	)
+  (sheet
+		(at 210 40)
+		(size 60 80)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "efa54b06-fc9b-40d5-b21d-9d04e628ed3d")
+		(property "Sheetname" "Mains IO"
+			(at 210 39.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mains_io.kicad_sch"
+			(at 210 120.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "RLY1" bidirectional
+			(at 210 42.54 180)
+			(uuid "e77af7d8-b326-49cb-bfcb-f89984d8fdf8")
+		)
+		(pin "RLY2" bidirectional
+			(at 210 45.08 180)
+			(uuid "adf1b996-2f84-4486-907e-39965970b04c")
+		)
+		(pin "RLY3" bidirectional
+			(at 210 47.62 180)
+			(uuid "b5e5cc7a-2b52-46bc-82b6-6026b01267d4")
+		)
+		(pin "RLY4" bidirectional
+			(at 210 50.16 180)
+			(uuid "07504c37-a112-4990-b949-21f70eb7346a")
+		)
+		(pin "ES1" bidirectional
+			(at 210 52.7 180)
+			(uuid "894834bc-75c4-4666-a710-0de4404e882f")
+		)
+		(pin "ES2" bidirectional
+			(at 210 55.24 180)
+			(uuid "72244b86-b113-46fd-af8b-e1d6158518c0")
+		)
+		(pin "ES3" bidirectional
+			(at 210 57.78 180)
+			(uuid "06ea8c03-30bb-4b13-8740-a3c8d9e396a2")
+		)
+		(pin "DEMAND_IN" bidirectional
+			(at 210 60.32 180)
+			(uuid "fda83b01-496f-44c4-85d0-08f2d92d8c77")
+		)
+		(pin "MAINS_OK" bidirectional
+			(at 210 62.86 180)
+			(uuid "f16bd8b6-4a02-4588-9360-10baa7670106")
+		)
+		(instances
+			(project "heating-controller"
+				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d"
+					(page "4")
+				)
+			)
+		)
+	)
+  (sheet_instances
+    (path "/"
+      (page "1")
+    )
+  )
+  (embedded_fonts no)
+	(label "OT_IN"
+		(at 90.00 42.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9850f641-9297-4ed0-9f9d-3267cbdd362f")
+	)
+	(label "ES1"
+		(at 90.00 45.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "690ac48b-d608-4069-987f-5dfe9944d835")
+	)
+	(label "ES2"
+		(at 90.00 47.62 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ea0d33c0-97df-48df-81f3-0977c68d1349")
+	)
+	(label "ES3"
+		(at 90.00 50.16 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2d5d60ed-1104-473e-ac34-a13a42196b13")
+	)
+	(label "DEMAND_IN"
+		(at 90.00 52.70 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d9a3da89-21eb-4b93-9571-43c494a1573b")
+	)
+	(label "MAINS_OK"
+		(at 90.00 55.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bd349c14-4ff8-4ae0-9eaf-db1654758504")
+	)
+	(label "RLY1"
+		(at 90.00 57.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c17b84dc-944b-4794-87c7-df93f803a741")
+	)
+	(label "RLY2"
+		(at 90.00 60.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7bf93f7e-1225-4ca4-b147-0bd33099aa96")
+	)
+	(label "RLY3"
+		(at 90.00 62.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6d4283ce-b33b-4b06-acff-4c8bef077a8c")
+	)
+	(label "RLY4"
+		(at 90.00 65.40 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ee606de7-26f0-48ee-ad31-04c7ae7af6d6")
+	)
+	(label "OT_OUT"
+		(at 90.00 67.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c9708e5a-c3bd-41a6-b888-ad068054fae9")
+	)
+	(label "OT_OUT"
+		(at 120.00 42.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8f0407cc-2153-423e-9a37-818a274e85c7")
+	)
+	(label "OT_IN"
+		(at 120.00 45.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "098a5e2f-9154-47ab-afb9-67c6174b9a79")
+	)
+	(label "RLY1"
+		(at 210.00 42.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e7c186b5-f6cc-47e7-ab87-0b4169ecc5cc")
+	)
+	(label "RLY2"
+		(at 210.00 45.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f6900d8f-005b-474b-8c1c-aa64a2e25b1f")
+	)
+	(label "RLY3"
+		(at 210.00 47.62 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "20e75b78-c5dd-42f4-a355-bfdaa79ca176")
+	)
+	(label "RLY4"
+		(at 210.00 50.16 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9c7841da-4cec-4ed2-a97d-e804f8791ca0")
+	)
+	(label "ES1"
+		(at 210.00 52.70 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "18bd856f-35ea-428b-8fef-0ff2a6797db7")
+	)
+	(label "ES2"
+		(at 210.00 55.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc3a18a2-549f-4b9e-aaa4-dcc0022b8417")
+	)
+	(label "ES3"
+		(at 210.00 57.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ff924590-fe18-4731-8e39-991d4708f60c")
+	)
+	(label "DEMAND_IN"
+		(at 210.00 60.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e1dc6897-ded8-46d8-8f1d-09ec20e71275")
+	)
+	(label "MAINS_OK"
+		(at 210.00 62.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fd0caaa2-4040-41a8-9c22-72514b4f297c")
+	)
+)
