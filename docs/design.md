@@ -37,11 +37,11 @@ for this board therefore means:
 | Relay LEDs ★ | 5 V → 1 kΩ → LED → MOSFET drain | Shows real coil state, costs no GPIO |
 | Relay commons | Each relay has a 3-way terminal L / COM / NO (J111–J114). Installer links L–COM with a wire loop for switched-live, or leaves it open for volt-free | A solder jumper at 1.3 mm pitch cannot hold 230 V functional isolation when open, so the link lives in the terminal block |
 | Contact protection | **None across contacts, no MOV anywhere.** No snubber footprints (26 mA motor load) | MOV across contacts fails short → valve permanently energised, defeats the interlock. V4043 motor is ~26 mA; 10 A AgSnO2 contacts need nothing |
-| AC inputs | 5 × LTV-817S opto with anti-parallel 1N4148WS across the LED (half-wave; Basic parts): ES1–3 (valve end switches, J115, return = MAINS_N), DEMAND (J116: separate 230 V and 24 V input pins — the 24 V pin enters the chain after five of the six resistors — plus its own RET pin), MAINS_OK (senses board L, no terminal). Chain: 6 × 22 kΩ 1206 (≈132 kΩ, 1.7 mA, 0.07 W and ~420 V impulse per part); 47 kΩ pull-up + 1 µF on the output. Outputs are active-low (`inverted: true`) | Impulse rating: 2.5 kV Cat II across 4 parts = 625 V each, above a generic 1206's ~400 V; six parts fixes it. RC ≥ 20 ms rides through 100 Hz zero crossings |
+| AC inputs | 5 × LTV-817S opto with anti-parallel 1N4148WS across the LED (half-wave; Basic parts): ES1–3 (valve end switches, J115, return = MAINS_N), DEMAND (J116: separate 230 V and 24 V input pins — the 24 V pin enters the chain after five of the six resistors — plus its own RET pin), MAINS_OK (senses board L, no terminal). Chain: 6 × 22 kΩ 1206 split 3 + 3 around the opto LED (input → 3 R → LED → 3 R → return; DEMAND: 5 + 1 with the 24 V tap before the last input-side resistor) so both LED pins sit ≥ 66 kΩ from mains and the N return runs along the top corridor; ≈132 kΩ, 1.7 mA, 0.07 W and ~420 V impulse per part; 47 kΩ pull-up + 1 µF on the output. Outputs are active-low (`inverted: true`) | Impulse rating: 2.5 kV Cat II across 4 parts = 625 V each, above a generic 1206's ~400 V; six parts fixes it. RC ≥ 20 ms rides through 100 Hz zero crossings |
 | OpenTherm | Ihor Melnyk master adapter: 2 × LTV-817S, S8550 PNP, 1N4148WS bridge, zeners 4V7/15 V/4V3; series LED resistor anti-surge 0.5 W; terminals 3.5 mm on the SELV edge, silk "OT — 24 V max" | Bus is boiler-powered SELV (~5–8 V / 15–18 V, 5–9 / 17–23 mA). Fusible resistor so 230 V miswiring chars one part instead of starting a fire |
 | USB-C ★ | 16-pin receptacle, 5.1 kΩ Rd on CC1 and CC2, USBLC6-2SC6 on D±, SMF5.0A on VBUS, shield via 1 MΩ ∥ 1 nF | CC resistors are mandatory for C-to-C cables; ESD lands on the C6's USB pins otherwise |
 | Bulk | 470 µF/16 V 105 °C SMD electrolytic (RVT1C471M0810, C3341) on 5 V, 22 µF at module, 10 µF each side of LDO. Firmware staggers relay pull-in by 100 ms | 3 coils + WiFi burst ≈ 525 mA; prevents brownout reboot loops |
-| Display | 4-pin header, SSD1306/SH1106 I2C @0x3C; solder-jumper pair to swap pins 1–2; VCC 3V3/5V select; 4.7 kΩ I2C pull-ups on board (DNP-able) | Modules ship GND-VCC-SCL-SDA *and* VCC-GND-SCL-SDA |
+| Display | 4-pin header, SSD1306/SH1106 I2C @0x3C. Pin 1/2 order and VCC are chosen with 0 Ω resistors: R16 (pin1→GND, fitted) / R17 (pin1→VCC, DNP), R18 (pin2→VCC, fitted) / R19 (pin2→GND, DNP), R20 (VCC=3V3, fitted) / R21 (VCC=5V, DNP). 4.7 kΩ I2C pull-ups on board | Modules ship GND-VCC-SCL-SDA *and* VCC-GND-SCL-SDA. Solder-jumper footprints with a copper bridge trip KiCad 10's shorting check and JLC cannot bridge them; 0 Ω pairs are explicit and assembled |
 | Sensors ★ | 1-Wire bus (4.7 kΩ pull-up, 100 Ω series, 5 V TVS): 3-pin terminal "FLOW" + 3-pin terminal "OUTDOOR" | Waterproof stainless DS18B20 probes; outdoor temp is needed for weather compensation unless the Viessmann reports OT ID 27 |
 | Expansion ★ | Qwiic/STEMMA-QT JST-SH 4-pin; 4-pin spare header: GPIO16, GPIO17, 3V3, GND | Expander, BME280 or second display later without a board spin |
 | Buttons ★ | BTN1 (GPIO4) and BTN2 (GPIO5), general purpose, assigned in ESPHome later (e.g. boost CH 1 h / boost HW 30 min); plus BOOT and RESET | Optionality; household needs heat when HA or WiFi is down |
@@ -247,3 +247,68 @@ from JLC/EasyEDA data (easyeda2kicad) for the ESP32-C6-WROOM-1, HF32FA relay,
 LTV-817S, TS-1187A, WJ128V and KF350 parts. Designators: sheet 2 = 1–99,
 sheet 4 = 100-series, sheet 3 = 200-series. Style: net labels at every pin
 (no wires) — electrically complete, dense. PDF: `docs/schematic.pdf`.
+
+## Layout and routing (2026-10-20)
+
+Board 150 × 95 mm, 2-layer, square outline, origin top-left. Mains along the
+top edge (J110 mains in, J111–J114 relay outputs, relays K101–K104 at y 33),
+AC sense chains and their optos to the right (x 97–133), the two sense
+terminals J115/J116 on the right edge (x 143.5), SELV everything else below.
+Isolation is enforced by geometry, not by hope:
+
+- **Isolation band** rule area (no tracks, vias or pour on either layer):
+  y 30–39 for x < 88 (between relay contact pins at y 25.4 and coil pins at
+  y 40.6), stepping to y 48.5–55.5 for x > 93.5 (between opto LED pads at y 47
+  and transistor pads at y 57). Only the relays and optos bridge it, as parts.
+- **GND pours** (F + B) cover the SELV polygon only: (0,39)–(88.5,39)–(88.5,55.5)
+  –(150,55.5)–(150,95)–(0,95). No pour anywhere in the 230 V region. Antenna
+  keep-out (3–29, 87.2–95) under the ESP module end.
+- **Slots** 1.0 mm wide (JLC minimum 0.65) on Edge.Cuts under the opto row
+  (x 93–137, y 51.5–52.5) and between each relay's coil and contact pins
+  (x ±8 around each relay, y 32.5–33.5). Silkscreen crossing a slot is clipped;
+  that is the only remaining DRC warning class besides reference text over pads.
+- Custom DRC (`heating-controller.kicad_dru`): MAINS+MAINS_SENSE ↔ everything
+  else 6.4 mm; MAINS ↔ MAINS 1.4 mm; MAINS_SENSE ↔ MAINS 1.3 mm; MAINS tracks
+  ≥ 2.0 mm; mains copper ≥ 2.0 mm from the edge.
+- Net classes (in `.kicad_pro`): MAINS (L, N, COM1–4, NO1–4, DEMAND_RET)
+  2.5 mm track / 2.0 mm clearance / 1.6 × 0.8 via; MAINS_SENSE (chain nodes,
+  ES/DEMAND inputs, LEDA/LEDK) 0.5 / 0.5 / 1.0 × 0.5; Power (+5V, +3V3, GND)
+  0.6 mm; Default 0.3 / 0.2 / 0.8 × 0.4. Board minimums: 0.15 mm track,
+  0.3 mm copper-to-edge, 0.25 mm hole clearance.
+- JLC assembly compliance: all courtyards inside the outline (J115/J116 moved
+  in from x 146 to 143.5 for this), buttons ≥ 9 mm from the edge, 3 fiducials
+  (FID1–3) in the SELV region, 4 × M3 holes at the corners ≥ 6.4 mm from mains
+  copper, K104/D208 DNP.
+
+### Routing pipeline (`tools/route/run_pipeline.sh <project_dir> [passes]`)
+
+Freerouting 2.5 headless does the routing; the scripts only lay the few
+things an autorouter cannot be trusted with and then restore the board. Close
+the KiCad PCB editor before running: the board and project files are rewritten
+on disk. Reproducible from the placed, unrouted board in about two minutes.
+
+1. `prep_board.py` — writes the net classes and board minimums into
+   `.kicad_pro`, insets the outline 0.15 mm (so the router's own edge clearance
+   lands on the real edge), adds the isolation band, antenna keep-out, two
+   temporary **bus corridors** (F.Cu y 10.5–21.5 and B.Cu y 10.5–26.5, x ≤ 138)
+   and 2.2 mm **edge guards** around the 230 V region, then lays the fixed
+   wiring as locked tracks: the L bus (F.Cu, y 12.5) and N bus (F.Cu, y 17)
+   with their drops to the relay/sense terminals, the relay COM/NO links on
+   B.Cu, the DEMAND_RET return (B.Cu y 28 → stub at x 126), the USB-C D+/D−
+   pad bridges and the VBUS escape (vias at y 89.5, B.Cu link to D1), plus
+   GND stitching vias on a 10 mm grid across the SELV region (31 on this
+   revision; they keep the bottom pour in one piece where long B.Cu tracks run
+   along the isolation band). Exports the Specctra DSN.
+2. Freerouting: `-mp 40` passes; ends with "12 unrouted" internally, which are
+   the locked nets and GND (left to the pours) — KiCad reports 0 unconnected.
+3. `route_board.py` — restores the full outline and cuts the slots, imports
+   the SES, strips every MAINS segment/via the round trip produced (text pass)
+   and re-adds the buses deterministically, removes the corridors and guards,
+   pours GND on both layers over the SELV polygon, fills, saves.
+4. `kicad-cli pcb drc` (errors) → `fix_gaps.py` closes any sub-millimetre
+   same-net gap the SES import leaves → DRC again. Result on this revision:
+   **0 violations, 0 unconnected** (`fab/route/drc.json`, renders in
+   `fab/route/board_top.png` / `board_bottom.png`).
+
+Manual adjustments after routing should be limited to individual DRC fixes
+or silkscreen tidying; anything structural goes into the scripts and is rerun.

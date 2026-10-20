@@ -24,3 +24,5 @@ fab/
 *.ses
 # scratch
 *.png
+# editor local history
+.history/

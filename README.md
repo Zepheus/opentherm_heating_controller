@@ -10,6 +10,8 @@ probes. Target: JLCPCB economic assembly.
 - `docs/schematic-plan.md` — sheet structure and net names
 - `heating-controller.kicad_pro` — KiCad 10 project; `lib/` holds project symbols/footprints/3D
 - `.konnect/project.json` — design rules enforced by Konnect during layout
+- `heating-controller.kicad_dru` — custom DRC rules (6.4 mm mains isolation, mains track width, edge clearance)
+- `tools/route/` — reproducible Freerouting pipeline (`run_pipeline.sh <project_dir>`); outputs land in `fab/route/` (ignored)
 
 Open questions that must be answered before the board is ordered are at the
 end of `docs/design.md` (boiler model code is the big one).
