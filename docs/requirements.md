@@ -17,8 +17,11 @@ not *why*.
   from the ESP, on 3.5 mm cage-clamp terminals on the low-voltage edge.
 - R2.2 Must support the ESPHome `opentherm` component: CH enable, CH setpoint,
   DHW enable, DHW setpoint, modulation, flow/return/outdoor temps, fault bits.
-- R2.3 Miswiring 230 V to the OT terminals must not start a fire (fusible
-  series resistor; silk "OT — 24 V max").
+- R2.3 Miswiring 230 V to the OT terminals must not start a fire: a series
+  250 V-rated fuse and a TVS across the bridge output form a calculable
+  crowbar (the TVS clamps, the fuse clears in under a millisecond); the
+  adapter may be damaged, nothing is relied on to fail open; silk
+  "OT 24V MAX".
 - R2.4 Target boiler: Viessmann Vitodens (model code TBC; must be a 100-W/050-W
   class that speaks OpenTherm).
 
@@ -28,7 +31,10 @@ not *why*.
 - R3.2 Each channel: separate COM terminal with a solder-link to board L, so a
   channel can be switched-live or volt-free.
 - R3.3 Every output is OFF through power-up, reset, bootloader, brownout and
-  firmware crash, by hardware (gate pull-downs), not firmware.
+  firmware crash (watchdog reset), by hardware (gate pull-downs), not firmware.
+  A firmware-logic fault, shorted driver or welded contact is not covered by
+  hardware: it leaves one zone on, contained by the boiler's own limits and
+  detected per R10.5.
 - R3.4 A relay's indicator LED shows the real coil state (wired to the drive
   node, not a GPIO).
 - R3.5 No MOV or snubber across contacts. Optional DNP load snubber per channel.
@@ -75,17 +81,21 @@ not *why*.
 ## R10 Safety
 - R10.1 Isolation mains↔SELV: design floor 6.4 mm clearance and creepage
   (reinforced per IEC 62368-1 is 3.0/5.0 mm). Slots under optos and between
-  relay coil/contact pins. No pour on the mains side; mains copper top only.
+  relay coil/contact pins. No pour in the mains region on either layer; mains copper may use both layers.
 - R10.2 Boiler interlock is in the wiring, not the firmware: valve end switches
   feed the boiler's 230 V demand input as in a standard S-plan; the board only
   senses that node (ES1) and gates OT CH-enable on it. The boiler's switched
   live is never linked out.
-- R10.3 Mains tracks ≥2.5 mm; all mains terminals on one edge; cable anchors;
+- R10.3 Mains buses 2.5 mm, no mains track under 2.0 mm; all mains terminals on one edge; cable anchors;
   a loose strand from a mains terminal cannot reach SELV copper.
 - R10.4 Enclosure: printed in a UL94 V-0 rated filament (ABS-FR/PC-FR), ≥2.5 mm
-  walls, screwed lid, no vents above live parts, warning label.
+  walls, screwed lid, no vents above live parts, warning label. A filament's
+  V-0 rating is for the raw material; the printed wall is not certified.
 - R10.5 Firmware: `restore_mode: ALWAYS_OFF`; `api.reboot_timeout: 0s`; HA
-  heartbeat with fallback; stuck-output alarm (ES live while relay off).
+  heartbeat: after 30 min without it every relay and OT CH-enable go off;
+  task/interrupt watchdogs left at their ESP-IDF defaults (reset on hang);
+  stuck-output alarm (ES live while relay off). A firmware fault that holds a
+  relay on is not detectable by the alarm and is accepted as residual.
 
 ## R11 Manufacturing and cost
 - R11.1 JLCPCB economic assembly, 2-layer. All SMD placed by JLC; THT by JLC.

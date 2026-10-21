@@ -5290,7 +5290,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Lite-On-LTV-817S-TA1-C_C109227.pdf"
 			(at 62.23 224.79 0)
 			(hide yes)
 			(effects
@@ -5342,7 +5342,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "220k"
 			(at 82.55 204.47 90)
 			(effects
 				(font
@@ -5386,7 +5386,7 @@
 			)
 		)
 	
-		(property "LCSC" "C25819"
+		(property "LCSC" "C22961"
 			(at 82.55 204.47 0)
 			(hide yes)
 			(effects
@@ -5984,7 +5984,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Lite-On-LTV-817S-TA1-C_C109227.pdf"
 			(at 137.16 224.79 0)
 			(hide yes)
 			(effects
@@ -6036,7 +6036,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "220k"
 			(at 157.48 204.47 90)
 			(effects
 				(font
@@ -6080,7 +6080,7 @@
 			)
 		)
 	
-		(property "LCSC" "C25819"
+		(property "LCSC" "C22961"
 			(at 157.48 204.47 0)
 			(hide yes)
 			(effects
@@ -6678,7 +6678,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Lite-On-LTV-817S-TA1-C_C109227.pdf"
 			(at 212.09 224.79 0)
 			(hide yes)
 			(effects
@@ -6730,7 +6730,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "220k"
 			(at 232.41 204.47 90)
 			(effects
 				(font
@@ -6774,7 +6774,7 @@
 			)
 		)
 	
-		(property "LCSC" "C25819"
+		(property "LCSC" "C22961"
 			(at 232.41 204.47 0)
 			(hide yes)
 			(effects
@@ -7372,7 +7372,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Lite-On-LTV-817S-TA1-C_C109227.pdf"
 			(at 287.02 224.79 0)
 			(hide yes)
 			(effects
@@ -7424,7 +7424,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "220k"
 			(at 307.34 204.47 90)
 			(effects
 				(font
@@ -7468,7 +7468,7 @@
 			)
 		)
 	
-		(property "LCSC" "C25819"
+		(property "LCSC" "C22961"
 			(at 307.34 204.47 0)
 			(hide yes)
 			(effects
@@ -8066,7 +8066,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Lite-On-LTV-817S-TA1-C_C109227.pdf"
 			(at 361.95 224.79 0)
 			(hide yes)
 			(effects
@@ -8118,7 +8118,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "220k"
 			(at 382.27 204.47 90)
 			(effects
 				(font
@@ -8162,7 +8162,7 @@
 			)
 		)
 	
-		(property "LCSC" "C25819"
+		(property "LCSC" "C22961"
 			(at 382.27 204.47 0)
 			(hide yes)
 			(effects
@@ -9806,7 +9806,7 @@
 		)
 		(uuid "bc4c7d25-da7b-42dd-9a4f-96170faef35a")
 	)
-	(label "ES1_IN"
+	(label "ES3_IN"
 		(at 114.30 247.65 180)
 		(effects
 			(font
@@ -9826,7 +9826,7 @@
 		)
 		(uuid "d2c62461-ffc6-4e23-98f3-4e4630410bc0")
 	)
-	(label "ES3_IN"
+	(label "ES1_IN"
 		(at 114.30 252.73 180)
 		(effects
 			(font
@@ -10429,7 +10429,7 @@
 		)
 		(uuid "0244395d-ca91-49d1-9c57-8ee27b73e1ea")
 	)
-	(label "S4_3"
+	(label "DEMAND_24"
 		(at 255.27 184.15 270)
 		(effects
 			(font
@@ -10599,7 +10599,7 @@
 		)
 		(uuid "d2471aa1-2aae-40fd-b8c4-5cc99b23c27e")
 	)
-	(label "S4_3"
+	(label "LEDK4"
 		(at 255.27 186.69 90)
 		(effects
 			(font
@@ -10609,7 +10609,7 @@
 		)
 		(uuid "7d72f7dd-b89a-41be-82c2-ac42900b9b6d")
 	)
-	(label "DEMAND_24"
+	(label "S4_3"
 		(at 255.27 194.31 270)
 		(effects
 			(font
@@ -10659,7 +10659,7 @@
 		)
 		(uuid "5608c8f6-63b9-4283-b094-0d49ff9eddd6")
 	)
-	(label "LEDK4"
+	(label "S4_3"
 		(at 255.27 195.58 90)
 		(effects
 			(font

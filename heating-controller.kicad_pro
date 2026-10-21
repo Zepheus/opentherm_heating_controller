@@ -313,6 +313,25 @@
       },
       {
         "bus_width": 12,
+        "clearance": 2.0,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MAINS_IN",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.5,
+        "tuning_profile": "",
+        "via_diameter": 1.0,
+        "via_drill": 0.5,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
         "clearance": 0.5,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
@@ -322,7 +341,7 @@
         "microvia_drill": 0.1,
         "name": "MAINS_SENSE",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.5,
         "tuning_profile": "",
@@ -341,7 +360,7 @@
         "microvia_drill": 0.1,
         "name": "Power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
+        "priority": 3,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.6,
         "tuning_profile": "",
@@ -401,24 +420,24 @@
         "pattern": "/Mains IO/NO4"
       },
       {
-        "netclass": "MAINS_SENSE",
+        "netclass": "MAINS_IN",
         "pattern": "/Mains IO/DEMAND_230"
+      },
+      {
+        "netclass": "MAINS_IN",
+        "pattern": "/Mains IO/ES1_IN"
+      },
+      {
+        "netclass": "MAINS_IN",
+        "pattern": "/Mains IO/ES2_IN"
+      },
+      {
+        "netclass": "MAINS_IN",
+        "pattern": "/Mains IO/ES3_IN"
       },
       {
         "netclass": "MAINS_SENSE",
         "pattern": "/Mains IO/DEMAND_24"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/ES1_IN"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/ES2_IN"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/ES3_IN"
       },
       {
         "netclass": "MAINS_SENSE",

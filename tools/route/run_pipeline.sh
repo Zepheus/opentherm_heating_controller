@@ -27,6 +27,7 @@ echo "== import + pours"; (cd "$P" && "$PY" -I "$S/route_board.py" "$P" 2>&1 | g
 cp "$P/fab/route/project.kicad_pro.bak" "$P/heating-controller.kicad_pro"; find "${P:?}" -maxdepth 1 -name "*.lck" -delete
 echo "== drc"; "$CLI" pcb drc --severity-error --format json -o "$P/fab/route/drc.json" "$P/heating-controller.kicad_pcb" 2>&1 | tail -1
 python3 -I "$S/fix_gaps.py" "$P/heating-controller.kicad_pcb" "$P/fab/route/drc.json"
+echo "== silkscreen"; (cd "$P" && "$PY" -I "$S/silk.py" "$P" 2>&1 | grep -v -E "$FILT"); find "${P:?}" -maxdepth 1 -name "*.lck" -delete
 "$CLI" pcb drc --severity-error --format json -o "$P/fab/route/drc.json" "$P/heating-controller.kicad_pcb" 2>&1 | tail -1
 python3 -I -c "
 import json; d=json.load(open('$P/fab/route/drc.json'))
