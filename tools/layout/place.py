@@ -10,7 +10,7 @@ The board hangs on a wall with every field cable coming from below or from the l
   bottom-left   OpenTherm field side (fuse, TVS, bridge) next to its terminal; transistor stage and optos in a row
                 above the drivers
   right of module  controls: I2C pull-ups, LEDs, buttons and their RC filters
-  top-right     the OLED module, stacked on its header over an empty area (visible through a window in the cover)
+  top-right     the OLED's Qwiic socket over an empty area; the module sits in the cover window on a short cable
 usage: <kicad python> -I tools/layout/place.py <board>
 """
 import sys, os, importlib.util, pcbnew
@@ -43,7 +43,6 @@ p("U1", UX, UY, 0)
 # C6/C7 at the 3V3 pin are placed below once the pin position is known
 p("R4", 13.0, 13.5, 0); p("C8", 13.0, 16.0, 0)    # EN RC beside the EN pin
 p("J7", 40.0, 10.0, 0)                            # spare GPIO header, vertical, along the right pin column
-p("J8", 47.0, 22.0, 0)                            # boot jumper beside the BOOT pin, clear of the spare-header labels
 p("R5", 34.0, 28.2, 0)                            # BOOT pull-up, under the BOOT pin
 
 # ---- left edge: Qwiic, USB-C, FLOW, OUTDOOR (all but J1 snapped to the edge below)
@@ -70,7 +69,7 @@ p("R203", 36.3, 42.0, 90); p("D207", 39.3, 42.0, 90)
 p("U201", 48.5, 42.0, 0); p("R204", 53.0, 39.0, 90); p("U202", 57.5, 42.0, 0); p("R205", 62.5, 42.0, 90)
 
 # ---- controls, right of the module
-p("J5", *G.OLED_PIN1, 90)                         # OLED header, horizontal row; the module hangs below it (geometry.OLED_BOX)
+p("J5", *G.OLED_CONN, 0)                          # OLED Qwiic socket, opening facing down into the OLED area
 p("R12", 63.0, 10.0, 0); p("R13", 63.0, 12.5, 0)  # I2C pull-ups
 p("LED1", 69.0, 9.0, 0); p("R8", 69.0, 11.5, 0); p("R9", 73.5, 9.0, 0)     # STATUS LED
 p("LED2", 69.0, 14.5, 0); p("R10", 69.0, 17.0, 0); p("R11", 73.5, 14.5, 0)   # OT activity LED

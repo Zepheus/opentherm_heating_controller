@@ -16,7 +16,7 @@ will be written and published once the first boards are in hand.
 | MCU | ESP32-C6-WROOM-1 (WiFi 6, BLE), USB-C power and programming |
 | Boiler | OpenTherm master (opto-isolated, fused against a 230 V miswire) |
 | Outputs | 4 × volt-free changeover relays (CH1–CH4), NC / COM / NO terminals, 250 VAC 3 A, each channel isolated from the others |
-| Sensors | 2 × 1-Wire probe terminals (flow, outdoor), Qwiic I²C, OLED header, 8-pin spare GPIO header |
+| Sensors | 2 × 1-Wire probe terminals (flow, outdoor), 2 × Qwiic I²C (one for the OLED, on a cable), 8-pin spare GPIO header |
 | Board | 160 × 95 mm, 2 layers, wall-hanging with all cables from below or the left, 6.4 mm isolation around every relay channel, JLCPCB assembly |
 
 > **Mains voltage.** The relay contacts can switch 230 V. Do not build or
@@ -39,7 +39,7 @@ same body) and the USB-C receptacle (GCT USB4105, same footprint).
 The full BOM with LCSC part numbers and cost estimates is in
 [`docs/BOM.md`](docs/BOM.md); the JLCPCB upload file is
 [`docs/bom/andiron-bom-jlc.csv`](docs/bom/andiron-bom-jlc.csv). At LCSC prices
-from October 2026, components came to roughly $16 per board, or about $25 per
+from October 2026, components came to roughly $16 per board, or about $24 per
 board for a run of five once Extended-part loading fees are included. The four
 relays are $7.60 of that. PCB,
 assembly and shipping come on top, from the JLCPCB quote.

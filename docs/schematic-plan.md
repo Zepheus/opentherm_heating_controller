@@ -7,7 +7,7 @@ Hierarchical, four sheets, net labels at every pin (no wires).
 | # | File | Contents |
 |---|---|---|
 | 1 | `heating-controller.kicad_sch` (root) | Title block and the three sheet blocks |
-| 2 | `power_mcu.kicad_sch` | USB-C + protection, 5 V bulk, LDL1117 3.3 V regulator, ESP32-C6-WROOM-1 and decoupling, EN/RESET, BOOT button + jumper, BTN1/BTN2, STATUS/OT LEDs, OLED header and I2C pull-ups, Qwiic, 8-pin spare header, 1-Wire bus + FLOW/OUTDOOR terminals |
+| 2 | `power_mcu.kicad_sch` | USB-C + protection, 5 V bulk, LDL1117 3.3 V regulator, ESP32-C6-WROOM-1 and decoupling, EN/RESET, BOOT button  BTN1/BTN2, STATUS/OT LEDs, OLED header and I2C pull-ups, Qwiic, 8-pin spare header, 1-Wire bus + FLOW/OUTDOOR terminals |
 | 3 | `opentherm.kicad_sch` | Melnyk master adapter: fuse, bridge, TVS, zeners, 2 × LTV-817S, S8550, OT terminal |
 | 4 | `relays.kicad_sch` | Four channels: RT1 (RT314005) changeover relay, AO3400A driver, gate resistors, flyback diode, coil LED, NC/COM/NO terminal |
 
@@ -32,7 +32,7 @@ SPARE16/SPARE17; IO20 not connected.
 ## Reference designators
 
 Sheet 2: 1–99 (U1 module, U2 regulator, U3 USB ESD, J1 USB-C, J3 FLOW, J4
-OUTDOOR, J5 OLED, J6 Qwiic, J7 spare, J8 BOOT jumper, SW1 RESET, SW2 BOOT, SW3
+OUTDOOR, J5 OLED, J6 Qwiic, J7 spare, SW1 RESET, SW2 BOOT, SW3
 BTN1, SW4 BTN2, LED1 STATUS, LED2 OT). Sheet 3: 200-series (J201 OpenTherm,
 F201 fuse, U201/U202 optos). Sheet 4: 100-series, one block per channel n
 (K10n relay, Q10n driver, R1n1 gate, R1n2 pull-down, R1n3 LED resistor, D10n

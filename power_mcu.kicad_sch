@@ -5390,16 +5390,6 @@
 		)
 		(uuid "964c257b-83a9-4546-8984-13cd6fb642f8")
 	)
-	(label "BOOT"
-		(at 373.38 85.09 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "624fb3ef-36c1-45d3-bcab-1216383a4c33")
-	)
 	(label "BTN1"
 		(at 320.04 114.3 270)
 		(effects
@@ -5580,7 +5570,7 @@
 		)
 		(uuid "0a7a8765-93ef-4ffc-9b47-a50592dd5f04")
 	)
-	(label "SCL"
+	(label "SDA"
 		(at 90.17 167.64 180)
 		(effects
 			(font
@@ -5590,7 +5580,7 @@
 		)
 		(uuid "e8b3abd9-b836-4ce1-aa08-38fccacfeefb")
 	)
-	(label "SDA"
+	(label "SCL"
 		(at 90.17 170.18 180)
 		(effects
 			(font
@@ -6269,17 +6259,6 @@
 			(justify left)
 		)
 		(uuid "fb9c61de-b0c6-47f7-a66a-5febb7151e64")
-	)
-	(global_label "GND"
-		(shape passive)
-		(at 373.38 87.63 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "7baf73e8-8eb9-4043-83e1-f1d6c7fd9a9a")
 	)
 	(global_label "+3V3"
 		(shape passive)
@@ -8044,75 +8023,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
-		(at 378.46 85.09 0)
-		(unit 1)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "df42846a-0dd5-4be2-80de-ec7fc6513ffd")
-		(property "Reference" "J8"
-			(at 378.46 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BOOT_JP"
-			(at 378.46 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 378.46 85.09 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 378.46 85.09 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 378.46 85.09 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C492401"
-			(at 378.46 85.09 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "heating-controller"
-				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "J8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 320.04 110.49 0)
 		(unit 1)
@@ -9098,7 +9008,7 @@
 				)
 			)
 		)
-		(property "Value" "OLED GND/3V3/SCL/SDA"
+		(property "Value" "OLED (Qwiic) GND/3V3/SDA/SCL"
 			(at 95.25 172.72 0)
 			(effects
 				(font
@@ -9106,7 +9016,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
 			(at 95.25 165.1 0)
 			(hide yes)
 			(effects
@@ -9133,7 +9043,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2691448"
+		(property "LCSC" "C160404"
 			(at 95.25 165.1 0)
 			(hide yes)
 			(effects

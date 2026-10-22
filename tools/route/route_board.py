@@ -79,7 +79,10 @@ def island_has_pad(z, layer, pt):
             return any(o.PointInside(pp) for pp,ls in pads if ls.Contains(layer))
     return True   # not in any island: leave the via alone
 zF=[z for z in board.Zones() if z.GetZoneName()=="GND_F.Cu"][0]; zB=[z for z in board.Zones() if z.GetZoneName()=="GND_B.Cu"][0]
-drop=[t for t in board.GetTracks() if t.GetClass()=="PCB_VIA" and t.GetNetCode()==gnd and not island_has_pad(zF,pcbnew.F_Cu,t.GetPosition()) and not island_has_pad(zB,pcbnew.B_Cu,t.GetPosition())]
+# ...unless a track ends on it: Freerouting uses stitching vias as layer changes, and dropping one cuts that route
+track_ends={(pt.x,pt.y) for t in board.GetTracks() if t.GetClass()=="PCB_TRACK" and t.GetNetCode()==gnd for pt in (t.GetStart(),t.GetEnd())}
+drop=[t for t in board.GetTracks() if t.GetClass()=="PCB_VIA" and t.GetNetCode()==gnd and (t.GetPosition().x,t.GetPosition().y) not in track_ends
+      and not island_has_pad(zF,pcbnew.F_Cu,t.GetPosition()) and not island_has_pad(zB,pcbnew.B_Cu,t.GetPosition())]
 for v in drop: board.Remove(v)
 if drop: pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 print("floating stitching vias removed:", len(drop))

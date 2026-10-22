@@ -39,10 +39,11 @@ RAIL_Y = 50.0                       # +5V rail above the driver row (F.Cu), feed
 RAIL_X = (17.8, RX[-1] + COIL_DX + 5.0)   # starts at the B.Cu feed from the USB receptacle
 RAIL_W = 1.0
 COIL_DROP_DX = 3.5                  # B.Cu drop from the rail to coil pin 1 (+5V), right of the coil column
-# ---- OLED: a 1.3" SH1106 (35.4 x 33.5 mm) or 0.96" SSD1306 module stacks on J5 in the free top-right area, landscape,
-#      header along its top edge, glass hanging below it; nothing else may sit in OLED_BOX (sanity check)
-OLED_PIN1 = (114.9, 12.0)           # J5 pin 1 (GND); pins run right: GND, 3V3, SCL, SDA at 2.54 mm
-OLED_BOX = (101.0, 10.3, 136.4, 43.8)       # module edge 1.7 mm above the pin row
+# ---- OLED: a 1.3" SH1106 (35.4 x 33.5 mm) or 0.96" SSD1306 module sits in the cover window on a short cable from J5,
+#      a Qwiic (JST-SH 4-pin) socket at the top of OLED_BOX with its opening facing down into the box; the box stays
+#      empty so the module's back and cable have room under the cover (sanity check)
+OLED_CONN = (118.7, 11.5)           # J5 centre; courtyard 8.2 mm from the top edge; pin 1 (GND) on the left
+OLED_BOX = (101.0, 10.3, 136.4, 43.8)       # reserved, kept clear of parts (J5 excepted)
 SELV_BOTTOM = CONTACT_TOP - 6.6     # GND pours stay above this line (60.1)
 ANTENNA = [(14.0, 0.0), (40.0, 0.0), (40.0, 7.0), (14.0, 7.0)]   # module antenna end at the top edge, plus margin, stopping short of its pads (7.6)
 
@@ -56,4 +57,4 @@ EDGE_CONNECTORS = {
 NO_CABLE_EDGES = ("top", "right")   # no connector may face these edges
 EDGE_MAX_GAP = 3.0                  # courtyard to its edge, mm
 # internal headers (cables stay inside the enclosure): far enough from every edge to plug a housing in from any side
-INTERNAL_HEADERS = {"J5": 8.0, "J7": 8.0, "J8": 8.0}   # OLED, spare GPIO, boot jumper: minimum distance to any edge, mm
+INTERNAL_HEADERS = {"J5": 8.0, "J7": 8.0}   # OLED, spare GPIO: minimum distance to any edge, mm

@@ -59,7 +59,7 @@ not *why*.
   needs ≤0.5 V headroom at 400 mA, is stable with ceramic capacitors and
   tolerates ≥15 V on its input. No exposed-pad or heatsink-copper parts.
 - R4.5 ≥470 µF bulk on 5 V. Worst-case board draw ≤ 800 mA at 5 V.
-- R4.6 BOOT button, 2-pin BOOT jumper and RESET button.
+- R4.6 BOOT button and RESET button.
 
 ## R5 MCU
 - R5.1 ESP32-C6-WROOM-1-N8 (PCB antenna). The antenna end sits at the board
@@ -69,11 +69,11 @@ not *why*.
   non-strapping pins; strapping pins carry only pulled-up buttons/LEDs.
 
 ## R6 User interface
-- R6.1 4-pin I2C OLED header, GND / 3V3 / SCL / SDA (standard SSD1306/SH1106
-  modules, 0x3C), on-board 4.7 kΩ pull-ups. The module (1.3" or 0.96")
-  stacks on the header in landscape, header along its top edge, over a
-  reserved empty area of the board seen through a window in the cover.
-  Nothing else is placed in that area (checked).
+- R6.1 I2C OLED connector: Qwiic socket (JST-SH 4-pin, GND / 3V3 / SDA /
+  SCL) for standard SSD1306/SH1106 modules (0x3C), on-board 4.7 kΩ pull-ups.
+  The module (1.3" or 0.96", landscape) sits in a window in the cover on a
+  short cable, above a reserved empty area of the board that leaves room
+  for its back and cable. Nothing but J5 is placed in that area (checked).
 - R6.2 Two general-purpose buttons BTN1/BTN2 (function set in firmware).
 - R6.3 Status LED and OT-activity LED.
 
@@ -125,8 +125,8 @@ not *why*.
   the top or right edge.
 - R11.2 Every external connector sits at its board edge (courtyard ≤3 mm from
   the edge) with its cable entry facing out, so enclosure cutouts reach it.
-- R11.3 Internal headers (spare GPIO, boot jumper) sit next to the module for
-  short traces; all internal headers, the OLED's included, are ≥8 mm from
+- R11.3 Internal headers (spare GPIO) sit next to the module for
+  short traces; all internal headers and the OLED socket are ≥8 mm from
   every edge, so a cable housing fits.
 - R11.4 Buttons and LEDs sit near the module; buttons ≥5 mm from the edge.
 - R11.5 Four M3 mounting holes for self-tapping screws into the enclosure.

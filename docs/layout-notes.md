@@ -255,3 +255,7 @@ dead ends so the next revision does not repeat them.
   view; re-uploading the placement file resets any accidental move.
 - Economic assembly takes the through-hole relays and terminals (hand-soldering fee). Board cleaning stays "No":
   the RT1 relays are only flux-proof.
+- Freerouting uses GND stitching vias as layer changes. The pipeline's "floating
+  stitching via" cleanup judged vias by the pours only and removed two that GND
+  tracks ended on, leaving one unconnected item. `route_board.py` now keeps any
+  via a track ends on.

@@ -20,7 +20,7 @@ for f in board.Footprints():
     for p in f.Pads():
         if p.GetNumber(): PAD[(f.GetReference(), p.GetNumber())] = (mm(p.GetPosition().x), mm(p.GetPosition().y))
 # reference designators (edited first: footprint proxies go stale once the board changes): hidden where a plain-language label names the part; moved where a label needs the space
-LABELLED = ["J1", "J3", "J4", "J5", "J6", "J7", "J8", "J201", "J111", "J112", "J113", "J114", "SW1", "SW2", "SW3", "SW4"]
+LABELLED = ["J1", "J3", "J4", "J5", "J6", "J7", "J201", "J111", "J112", "J113", "J114", "SW1", "SW2", "SW3", "SW4"]
 FP = {f.GetReference(): f for f in board.Footprints()}
 def ref_at(ref, x, y, rot):
     r = FP[ref].Reference(); r.SetPosition(VECTOR2I(FromMM(x), FromMM(y))); r.SetTextAngleDegrees(rot)
@@ -73,13 +73,13 @@ x0, y0, x1, y1 = BOX["J1"]; text("USB-C 5V >=1A", x1 + 0.55, (y0 + y1) / 2, 0.8,
 x0, y0, x1, y1 = BOX["J6"]; text("QWIIC", x1 + 0.9, (y0 + y1) / 2, 0.8, rot=90)
 
 # ---- internal headers and controls
-pin_labels("J5", ["GND", "3V3", "SCL", "SDA"], dy=-3.0)   # above the header: the module covers everything below it
+x, y = PAD[("J5", "1")]; text("GND", x - 0.9, y, 0.8, h="r")   # pin 1 of the OLED Qwiic socket (GND, 3V3, SDA, SCL)
+x0, y0, x1, y1 = BOX["J5"]; text("OLED QWIIC", x1 + 0.6, (y0 + y1) / 2, 0.8, h="l")
 x0, y0, x1, y1 = G.OLED_BOX
 ol = pcbnew.PCB_SHAPE(board); ol.SetShape(pcbnew.SHAPE_T_RECT); ol.SetLayer(pcbnew.F_SilkS); ol.SetWidth(FromMM(0.15))
 ol.SetStart(VECTOR2I(FromMM(x0), FromMM(y0))); ol.SetEnd(VECTOR2I(FromMM(x1), FromMM(y1))); board.Add(ol)
 text("OLED MODULE", (x0 + x1) / 2, (y0 + y1) / 2 + 3, 1.0)
 pin_labels("J7", ["16", "17", "10", "11", "18", "19", "3V3", "GND"], dy=0, dx=2.0, h="l"); x0, y0, x1, y1 = BOX["J7"]; text("SPARE GPIO", (x0 + x1) / 2 + 1.5, y0 - 0.9)
-x0, y0, x1, y1 = BOX["J8"]; text("BOOT JP", (x0 + x1) / 2, y1 + 0.9, 0.8)
 for ref, s_ in [("SW1", "RESET"), ("SW2", "BOOT"), ("SW3", "BTN1"), ("SW4", "BTN2")]:
     x0, y0, x1, y1 = BOX[ref]; text(s_, (x0 + x1) / 2, y1 + 1.6, 0.8)
 x0, y0, x1, y1 = BOX["R9"]; text("STATUS", x1 + 0.5, (y0 + y1) / 2, 0.8, h="l")
