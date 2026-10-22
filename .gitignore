@@ -26,3 +26,5 @@ fab/
 *.png
 # editor local history
 .history/
+# README renders are deliverables
+!docs/images/*.png
