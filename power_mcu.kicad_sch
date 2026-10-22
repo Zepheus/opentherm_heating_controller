@@ -4,6 +4,12 @@
 	(generator_version "10.0")
 	(uuid "a3e2bf69-d4e8-434f-95d6-6cdfb1af8cf4")
 	(paper "A3")
+	(title_block
+		(title "Andiron")
+		(date "2026-10-22")
+		(rev "v1.0")
+		(company "Cedric Van Goethem")
+	)
 	(lib_symbols
 		(symbol "Connector:USB_C_Receptacle_USB2.0_16P"
 			(pin_names

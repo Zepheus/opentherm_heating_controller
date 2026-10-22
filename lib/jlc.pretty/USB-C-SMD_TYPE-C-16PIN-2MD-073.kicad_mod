@@ -40,7 +40,7 @@
 	(fp_line (start -4.45 -2.35) (end 4.45 -2.35) (layer F.CrtYd) (width 0.05))
 	(fp_line (start 4.45 -2.35) (end 4.45 5.00) (layer F.CrtYd) (width 0.05))
 	(fp_line (start 4.45 5.00) (end -4.45 5.00) (layer F.CrtYd) (width 0.05))
-	(model "/Users/cedricvg/projects/pcb/heating/heating-controller/lib/jlc.3dshapes/USB-C-SMD_TYPE-C-6PIN-2MD-073.wrl"
+	(model "${KIPRJMOD}/lib/jlc.3dshapes/USB-C-SMD_TYPE-C-6PIN-2MD-073.wrl"
 		(offset (xyz 0.000 0.000 0.000))
 		(scale (xyz 1 1 1))
 		(rotate (xyz 0 0 0))

@@ -4,6 +4,12 @@
 	(generator_version "10.0")
 	(uuid "23b12b18-7422-4c89-b4f7-c26e3f08412d")
 	(paper "A4")
+	(title_block
+		(title "Andiron")
+		(date "2026-10-22")
+		(rev "v1.0")
+		(company "Cedric Van Goethem")
+	)
 	(lib_symbols
 	)
   (sheet

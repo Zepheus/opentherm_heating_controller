@@ -21,6 +21,7 @@ blk=s[a:b]; n=blk.count('(pad "" thru_hole')
 blk=re.sub(r'\(pad "" thru_hole circle\n(\t+)\(at ([^)]*)\)', lambda mm: '(pad "29" thru_hole circle\n'+mm.group(1)+'(at '+mm.group(2)+')\n'+mm.group(1)+'(net "GND")', blk)
 s=s[:a]+blk+s[b:]; open(p,"w").write(s); print("ESP thermal vias tied to GND:", n)
 PYEOF
+echo "== 3D models"; (cd "$P" && "$PY" -I "$S/../sync_models.py" "$P" 2>&1 | grep -v -E "$FILT")
 echo "== prep"; (cd "$P" && "$PY" -I "$S/prep_board.py" "$P" 2>&1 | grep -v -E "$FILT"; st=${pipestatus[1]}; echo "prep status $st"; exit $st) || { echo "prep failed"; exit 1; }
 echo "== freerouting"; (cd "$P/fab/route" && rm -f heating-controller.ses && "$JAVA" -jar "$FRJAR" -de heating-controller.dsn -do heating-controller.ses -mp "$MP" -l en 2>&1 | grep -E "stage completed|Optimization was completed|Saved" | tail -4)
 echo "== import + pours"; (cd "$P" && "$PY" -I "$S/route_board.py" "$P" 2>&1 | grep -v -E "$FILT"; exit ${pipestatus[1]}) || { echo "route failed"; exit 1; }

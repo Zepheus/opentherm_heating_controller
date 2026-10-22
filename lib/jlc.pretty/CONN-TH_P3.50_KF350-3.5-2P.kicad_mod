@@ -40,7 +40,7 @@
 	(fp_line (start 3.50 -3.50) (end 3.50 3.40) (layer F.CrtYd) (width 0.05))
 	(fp_line (start 3.50 3.40) (end -3.50 3.40) (layer F.CrtYd) (width 0.05))
 	(fp_line (start -3.50 3.40) (end -3.50 -3.50) (layer F.CrtYd) (width 0.05))
-	(model "/Users/cedricvg/projects/pcb/heating/heating-controller/lib/jlc.3dshapes/CONN-TH_P3.50_KF350-3.5-2P.wrl"
+	(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_P3.50_KF350-3.5-2P.wrl"
 		(offset (xyz 0.000 0.000 0.000))
 		(scale (xyz 1 1 1))
 		(rotate (xyz 0 0 0))

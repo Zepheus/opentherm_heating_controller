@@ -1,14 +1,16 @@
-# Requirements — heating controller
+# Requirements — Andiron heating controller
 
 Numbered so the schematic, layout and firmware can be checked against them.
 Design rationale and part choices live in `design.md`; this file is *what*,
 not *why*.
 
 ## R1 Purpose and system role
-- R1.1 Replace a Drayton Wiser Heat Hub R at a UK domestic wiring centre.
+- R1.1 Control a UK domestic heating system from its wiring centre: zone valves,
+  boiler demand and an OpenTherm boiler link.
 - R1.2 The board is an I/O device controlled by Home Assistant over WiFi; it
   holds no schedule of its own. Firmware is ESPHome.
-- R1.3 Wiser TRVs are out of scope (they stay on HA's Zigbee coordinator).
+- R1.3 Radiator valves and room sensors are out of scope; Home Assistant
+  integrates them separately.
 - R1.4 Must serve the current system boiler + hot-water cylinder, and a future
   combi boiler with up to three heating zones, with no board change.
 

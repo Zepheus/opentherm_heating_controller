@@ -1,8 +1,9 @@
-# Heating controller — design brief (rev 6, 2026-10-20 — schematic drawn)
+# Andiron — design brief (rev 6, 2026-10-20 — schematic drawn)
 
-Replaces a Drayton Wiser Heat Hub R. Dumb, isolated I/O board on WiFi running
-ESPHome; scheduling, thermostat and weather-compensation logic live in Home
-Assistant. Wiser TRVs stay on HA's existing Zigbee coordinator.
+Dumb, isolated I/O board for a UK wiring centre, on WiFi, designed for an
+ESPHome firmware; scheduling, thermostat and weather-compensation logic live in
+Home Assistant. Radiator valves and room sensors are integrated in Home
+Assistant separately.
 
 Target: KiCad 10, JLCPCB economic assembly, enclosure later (see §Enclosure).
 

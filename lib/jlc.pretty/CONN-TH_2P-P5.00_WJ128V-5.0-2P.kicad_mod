@@ -47,7 +47,7 @@
 	(fp_poly (pts (xy -2.699995 5.399989) (xy -2.699995 3.799992) (xy -2.199996 3.799992) (xy -2.199996 5.399989) (xy -2.699995 5.399989)) (stroke (width 0) (type solid)) (fill solid) (layer "F.SilkS"))
 	(fp_poly (pts (xy 2.308885 5.399989) (xy 2.308885 3.799992) (xy 2.808884 3.799992) (xy 2.808884 5.399989) (xy 2.308885 5.399989)) (stroke (width 0) (type solid)) (fill solid) (layer "F.SilkS"))
 	(fp_poly (pts (xy 1.958873 3.799992) (xy 3.158871 3.799992) (xy 2.558872 3.199994) (xy 1.958873 3.799992)) (stroke (width 0) (type solid)) (fill solid) (layer "F.SilkS"))
-	(model "/Users/cedricvg/projects/pcb/heating/heating-controller/lib/jlc.3dshapes/CONN-TH_2P-L10.0-W10.3-H14.1-P5.0.wrl"
+	(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_2P-L10.0-W10.3-H14.1-P5.0.wrl"
 		(offset (xyz 0.000 0.000 0.000))
 		(scale (xyz 1 1 1))
 		(rotate (xyz 0 0 0))

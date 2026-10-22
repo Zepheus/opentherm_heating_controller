@@ -7,6 +7,12 @@
 		(legacy_teardrops no)
 	)
 	(paper "A4")
+	(title_block
+		(title "Andiron")
+		(date "2026-10-22")
+		(rev "v1.0")
+		(company "Cedric Van Goethem")
+	)
 	(layers
 		(0 "F.Cu" signal)
 		(2 "B.Cu" signal)
@@ -316,6 +322,17 @@
 			(uuid "52c75aa0-5f98-422a-bb28-b67ee17e01b2")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "LED_SMD:LED_0603_1608Metric"
 		(layer "F.Cu")
@@ -502,6 +519,17 @@
 			(uuid "d0c9a645-eb7d-44b9-b28b-1cc6f9444892")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -639,6 +667,17 @@
 			(uuid "8e2022b4-b846-4029-afc1-a46779f12adc")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -776,6 +815,17 @@
 			(uuid "87a35f1f-8eef-46ff-b60c-b8ba96be70e3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -913,6 +963,17 @@
 			(uuid "20cab165-f545-4b7e-a0ac-d43b45db0d5c")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -1050,6 +1111,17 @@
 			(uuid "d4065832-08b9-4a11-85af-e78a9313446c")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:CP_Elec_8x10"
 		(layer "F.Cu")
@@ -1476,6 +1548,17 @@
 			(uuid "38222e77-06c0-43dc-ae82-e3210f5e181d")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/CP_Elec_8x10.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -1741,6 +1824,17 @@
 			(uuid "9afe23c0-460d-4c5c-b1ca-2c76d218a3b3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -1878,6 +1972,17 @@
 			(uuid "87d6cfce-59cf-4ad5-a7f1-71c534ba25e4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -2015,6 +2120,17 @@
 			(uuid "9759e7cb-e679-44fd-879d-ae7477a62e63")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-123"
 		(layer "F.Cu")
@@ -2290,6 +2406,17 @@
 			(uuid "4769cd1a-0c9e-444f-9c2a-07669013233d")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:OPTO-SMD-4_L4.6-W6.5-P2.54-LS10.3-BL"
 		(layer "F.Cu")
@@ -2510,6 +2637,17 @@
 			(uuid "ebc725c1-1fb8-41e2-8c34-322297826810")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/OPTO-SMD-4_L4.6-W6.5-H3.6-LS10.2-P2.54.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 270)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -2647,6 +2785,17 @@
 			(uuid "28a8a97d-8f9e-4a81-90f0-5a54e28655b3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Fiducial:Fiducial_1mm_Mask3mm"
 		(layer "F.Cu")
@@ -2878,6 +3027,17 @@
 			(uuid "27a882a9-460c-4266-bd0d-dabba1e2cd85")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -3015,6 +3175,17 @@
 			(uuid "891c9d32-ab9b-4456-9cf7-9f1f5a2a13c2")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
 		(layer "F.Cu")
@@ -3384,6 +3555,17 @@
 			(uuid "8e41ada8-7b7b-4845-8122-ea034c937641")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -3522,6 +3704,17 @@
 			(uuid "6e844588-faf0-4172-b2b8-69bcd7ea2efd")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_SMD:SOT-23-6"
 		(layer "F.Cu")
@@ -3853,6 +4046,17 @@
 			(uuid "2a9d1eb0-b875-40d1-96c8-696362537945")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23-6.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:RELAY-TH_HF32FA-XX-HXX1X"
 		(layer "F.Cu")
@@ -4104,6 +4308,17 @@
 			(uuid "3018f7ea-1927-4835-b1c6-68b15a81986c")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/RELAY-TH_L17.6-W10.1-H12.3-4P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -4241,6 +4456,17 @@
 			(uuid "b1c43e83-8751-4ee0-8f09-fc37e8143842")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -4378,6 +4604,17 @@
 			(uuid "a9e5809d-e883-4c65-8e0a-3a3f78bcc5fd")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:RELAY-TH_HF32FA-XX-HXX1X"
 		(layer "F.Cu")
@@ -4628,6 +4865,17 @@
 			(uuid "ea6a2cd8-0751-489a-bf1a-85271f14eded")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/RELAY-TH_L17.6-W10.1-H12.3-4P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -4765,6 +5013,17 @@
 			(uuid "e3f3869b-d611-4333-90c0-eec86a933865")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -4902,6 +5161,17 @@
 			(uuid "db5b3c40-7882-46d8-ae16-e43c2d042ad1")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:RELAY-TH_HF32FA-XX-HXX1X"
 		(layer "F.Cu")
@@ -5152,6 +5422,17 @@
 			(uuid "9170b217-f9f8-49d7-8a30-ccb19355ac34")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/RELAY-TH_L17.6-W10.1-H12.3-4P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -5289,6 +5570,17 @@
 			(uuid "58d3e6be-fa1c-45ea-8a5e-ee8f818f21c7")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -5426,6 +5718,17 @@
 			(uuid "644964c5-9d1a-4f71-864b-45d6488b2980")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P5.00_WJ128V-5.0-3P"
 		(layer "F.Cu")
@@ -6006,6 +6309,17 @@
 			(uuid "565058e4-2ba8-4fde-b8ab-7fe50d981771")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P5.00_WJ128V-5.0-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 180)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -6143,6 +6457,17 @@
 			(uuid "80b2fd4d-37f1-40c7-9017-de092c617dd3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -6280,6 +6605,17 @@
 			(uuid "afda9605-2980-4e18-b8a6-0bd4fcac8657")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -6417,6 +6753,17 @@
 			(uuid "e7fa023b-324a-4f1e-a2da-bb569d6c4c61")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -6554,6 +6901,17 @@
 			(uuid "a6f4c130-9609-4ba5-9fc0-c2b35074059a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Fuse:Fuse_Littelfuse-NANO2-451_453"
 		(layer "F.Cu")
@@ -6899,6 +7257,17 @@
 			(uuid "58219b8a-8397-4d04-8541-4bb9e617266b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -7036,6 +7405,17 @@
 			(uuid "9419b41b-e4c1-4a96-872e-453d8296e60e")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -7173,6 +7553,17 @@
 			(uuid "45799e4e-8573-4da2-9b0e-7c914bf659a1")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -7310,6 +7701,17 @@
 			(uuid "695125de-81e5-4c4c-85a0-76058fd5a9a3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_P3.50_KF350-3.5-2P"
 		(layer "F.Cu")
@@ -7690,6 +8092,17 @@
 			(uuid "4573928a-b19c-4d90-aa8a-f529e41bd558")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_P3.50_KF350-3.5-2P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P5.00_WJ128V-5.0-3P"
 		(layer "F.Cu")
@@ -8270,6 +8683,17 @@
 			(uuid "db99106f-03a4-41af-90f0-2deec4dc46c6")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P5.00_WJ128V-5.0-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 180)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -8407,6 +8831,17 @@
 			(uuid "7196bf83-ec93-4cc4-91d0-4fb74620b67a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -8544,6 +8979,17 @@
 			(uuid "ba5c09e4-bcd5-4249-bb9e-f12c2368918d")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -8762,6 +9208,17 @@
 			(uuid "fc56d78b-93b9-472e-9b93-812bda859510")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -8899,6 +9356,17 @@
 			(uuid "6c7b56aa-c70f-4414-a3e5-d52fd2af3425")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:OPTO-SMD-4_L4.6-W6.5-P2.54-LS10.3-BL"
 		(layer "F.Cu")
@@ -9119,6 +9587,17 @@
 			(uuid "d5d642f0-24b2-4acc-a47b-2cd1fdb4c6de")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/OPTO-SMD-4_L4.6-W6.5-H3.6-LS10.2-P2.54.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 270)
+			)
+		)
 	)
 	(footprint "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 		(layer "F.Cu")
@@ -9506,6 +9985,17 @@
 			(uuid "24aef03e-f431-4f3a-bb56-f28a6ccffdf3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Connector_USB.3dshapes/USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -9643,6 +10133,17 @@
 			(uuid "f6c1a4c3-b24e-4626-b58c-986e02fef150")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -9780,6 +10281,17 @@
 			(uuid "61cf2194-c686-4dd7-bf43-dabc8a2f7c35")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -10016,6 +10528,17 @@
 			(uuid "eb04420c-faf4-4bda-8b9e-560d8b9beaa0")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -10153,6 +10676,17 @@
 			(uuid "71bb7c7a-30f5-4179-b1c5-3e38bee949dc")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -10290,6 +10824,17 @@
 			(uuid "868e2d68-77ca-4137-afde-8af3fb40c55f")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3"
 		(layer "F.Cu")
@@ -10522,6 +11067,17 @@
 			(uuid "9a652106-4431-42b7-955d-1ad3556914a6")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -10659,6 +11215,17 @@
 			(uuid "d4fedca5-25c3-4483-95aa-e16551b5e88b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -10796,6 +11363,17 @@
 			(uuid "5b089686-411b-41ad-89d3-0ecd07860dc1")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -10933,6 +11511,17 @@
 			(uuid "9eace906-a926-4827-847b-e719f014f4a4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
 		(layer "F.Cu")
@@ -11302,6 +11891,17 @@
 			(uuid "d2ff9377-1ae3-4644-9123-c9c872fe281d")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -11439,6 +12039,17 @@
 			(uuid "0546bc05-90ec-4888-b03e-1a02b7834048")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
 		(layer "F.Cu")
@@ -11808,6 +12419,17 @@
 			(uuid "9b6b9e87-3c9e-419f-8a26-f1f622d01eaf")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3"
 		(layer "F.Cu")
@@ -12349,6 +12971,17 @@
 			(uuid "d4c47c58-8730-4dbe-a728-4a0afccbc378")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_2P-L10.0-W10.3-H14.1-P5.0.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -12486,6 +13119,17 @@
 			(uuid "bf6c620d-9102-4ceb-9d5b-8a303b464a55")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
@@ -12623,6 +13267,17 @@
 			(uuid "0a162650-386a-42d7-8eff-24566988c460")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -12760,6 +13415,17 @@
 			(uuid "8be830ff-886c-4301-bce1-0c8a1d201955")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -12897,6 +13563,17 @@
 			(uuid "e9afa9c3-8c4a-45b1-8d4e-0a5ef8f735b8")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -13034,6 +13711,17 @@
 			(uuid "5fa0d6db-28b7-459d-b5a8-2ce766f038d8")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:OPTO-SMD-4_L4.6-W6.5-P2.54-LS10.3-BL"
 		(layer "F.Cu")
@@ -13254,6 +13942,17 @@
 			(uuid "6b1a9178-2aaa-4358-984f-86b2745d870e")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/OPTO-SMD-4_L4.6-W6.5-H3.6-LS10.2-P2.54.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 270)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -13391,6 +14090,17 @@
 			(uuid "646285b1-3ce4-4b61-ba65-16f61517a90b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SMA"
 		(layer "F.Cu")
@@ -13656,6 +14366,17 @@
 			(uuid "e27ca230-2873-467f-857b-813e206dbcb3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SMA.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -13793,6 +14514,17 @@
 			(uuid "6443c1a0-7553-4692-851b-49d0aabf92a5")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -14058,6 +14790,17 @@
 			(uuid "36ca8901-8d5d-4d09-8d9e-824462355135")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -14195,6 +14938,17 @@
 			(uuid "c744dd34-6bb3-4ccb-b9ff-deb3875ef866")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:OPTO-SMD-4_L4.6-W6.5-P2.54-LS10.3-BL"
 		(layer "F.Cu")
@@ -14415,6 +15169,17 @@
 			(uuid "3aa0ef7c-e42b-446c-98cc-0714990aef7f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/OPTO-SMD-4_L4.6-W6.5-H3.6-LS10.2-P2.54.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 270)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P3.50_KF350-3.5-3P"
 		(layer "F.Cu")
@@ -14725,6 +15490,17 @@
 			(uuid "ab5f6dfe-362f-4040-b908-375a03faabf6")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P3.50_KF350-3.5-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "LED_SMD:LED_0603_1608Metric"
 		(layer "F.Cu")
@@ -14911,6 +15687,17 @@
 			(uuid "2e1d20c8-7883-4b30-bf1f-8613e4206c85")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-123"
 		(layer "F.Cu")
@@ -15186,6 +15973,17 @@
 			(uuid "e946141e-d812-45ce-99d9-5e9feb3f5013")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -15323,6 +16121,17 @@
 			(uuid "bae11f10-0a71-4127-b254-0c9dd7f53be6")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -15460,6 +16269,17 @@
 			(uuid "56862d38-fef8-4306-9c47-87cd47033a89")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -15597,6 +16417,17 @@
 			(uuid "cf5022b1-f95a-4bb5-9e6e-4beba8ad5a20")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -15734,6 +16565,17 @@
 			(uuid "5409904a-69f7-4d6c-bf39-e2c69644f31f")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P5.00_WJ128V-5.0-3P"
 		(layer "F.Cu")
@@ -16314,6 +17156,17 @@
 			(uuid "940b6a63-3061-4645-b673-498762168e3b")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P5.00_WJ128V-5.0-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 180)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -16451,6 +17304,17 @@
 			(uuid "926fae6f-6a0d-42b9-bde6-509167c8d8d8")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "LED_SMD:LED_0603_1608Metric"
 		(layer "F.Cu")
@@ -16637,6 +17501,17 @@
 			(uuid "83286bd9-ea30-4b09-a2d9-f1000c4b0ec6")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -16774,6 +17649,17 @@
 			(uuid "5c5c293b-be92-40f8-81e6-238113cf7953")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -16912,6 +17798,17 @@
 			(uuid "4e30eb35-5e0e-44f6-a7da-6c6b35c3e3b0")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -17177,6 +18074,17 @@
 			(uuid "ec59c3bd-7842-49b3-ae9a-f54cbfc8af45")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
@@ -17534,6 +18442,17 @@
 			(uuid "c71af2ed-5eea-4def-9384-9a0b35779c02")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3"
 		(layer "F.Cu")
@@ -17766,6 +18685,17 @@
 			(uuid "ca5091c7-11b5-4166-bdf1-5a87448322a4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -18031,6 +18961,17 @@
 			(uuid "d45288e9-fc51-4437-b80e-32679a6eea1c")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-123F"
 		(layer "F.Cu")
@@ -18306,6 +19247,17 @@
 			(uuid "2a046c61-495f-44a1-af16-83936a71d831")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
@@ -18663,6 +19615,17 @@
 			(uuid "7b736e46-e9e9-4b7a-a18e-e7e97a94edb0")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -18928,6 +19891,17 @@
 			(uuid "193a59e9-71c5-414a-90f9-02d60ad51be7")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -19066,6 +20040,17 @@
 			(uuid "2ffd5e4f-d0a3-4b32-8b74-2f743c4a9ab3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
@@ -19423,6 +20408,17 @@
 			(uuid "d10d2358-de1d-4e20-8aad-d39dba506ecd")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -19560,6 +20556,17 @@
 			(uuid "f1ee1558-7d1d-4a63-ba9e-30d7def57452")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -19825,6 +20832,17 @@
 			(uuid "e0b81981-3f92-491f-a1a3-1b522ffc876e")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:RELAY-TH_HF32FA-XX-HXX1X"
 		(layer "F.Cu")
@@ -20075,6 +21093,17 @@
 			(uuid "2f91bd8e-9f2e-41f9-aad2-e99e8f886f89")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/RELAY-TH_L17.6-W10.1-H12.3-4P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
@@ -20432,6 +21461,17 @@
 			(uuid "e89d846d-f4c8-423b-a0e7-b7050150326e")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -20569,6 +21609,17 @@
 			(uuid "0626bc65-120e-48bb-8707-9b4f5459e83a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
@@ -20706,6 +21757,17 @@
 			(uuid "ee03f7c8-be29-4a9e-bb93-d97ebe494474")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -20843,6 +21905,17 @@
 			(uuid "b46fcc77-a95c-4aa4-8f1b-d8e36bf0fb90")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -20980,6 +22053,17 @@
 			(uuid "a6632451-6b46-4781-b872-b2cb9d90b856")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -21117,6 +22201,17 @@
 			(uuid "d8715dd3-bad9-4c4a-b9df-d204e7a41ea5")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -21254,6 +22349,17 @@
 			(uuid "0c92f71b-49a4-442a-a0e5-e2e44f690706")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -21391,6 +22497,17 @@
 			(uuid "6eaacd3d-9214-4c9a-b8b7-0ba1907bfc2b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-123F"
 		(layer "F.Cu")
@@ -21666,6 +22783,17 @@
 			(uuid "697fda0d-0641-4df9-9aca-e89b24eb7d2f")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123F.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -21931,6 +23059,17 @@
 			(uuid "2744eb33-0538-4af2-9d42-b3807a4f9b16")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -22068,6 +23207,17 @@
 			(uuid "0e483ace-ee2e-4406-91f6-40aebf1ef7ab")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -22205,6 +23355,17 @@
 			(uuid "7391cf76-e21f-466e-a1d6-5de5a1023cb7")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -22342,6 +23503,17 @@
 			(uuid "79fbd22d-9ed4-4209-ae91-339efacb22ad")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -22479,6 +23651,17 @@
 			(uuid "22cea39c-e03b-4b99-ab18-3f6a4954e1cf")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -22616,6 +23799,17 @@
 			(uuid "b059f551-5bf5-42d3-bab8-58b0d642a1a2")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
@@ -22973,6 +24167,17 @@
 			(uuid "f75ee44e-7a09-4208-a54c-3711c170d096")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -23238,6 +24443,17 @@
 			(uuid "79b59706-adda-4db3-b165-5ee0ed64e214")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -23503,6 +24719,17 @@
 			(uuid "f6a585ba-19dd-4917-a80f-29492dff3860")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "LED_SMD:LED_0603_1608Metric"
 		(layer "F.Cu")
@@ -23689,6 +24916,17 @@
 			(uuid "b9fb1373-54e9-4e7d-8827-293a2186ac20")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -23826,6 +25064,17 @@
 			(uuid "725f454f-57e3-4569-9a9c-1b8beca0c5d1")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -24091,6 +25340,17 @@
 			(uuid "8bb02c5f-873e-46a7-9225-9485d36a8ea8")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -24356,6 +25616,17 @@
 			(uuid "4999c6c5-f9cf-4670-9721-369a491b6744")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -24493,6 +25764,17 @@
 			(uuid "9fe426c7-673f-4dc6-98b8-ced493c40e51")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "LED_SMD:LED_0603_1608Metric"
 		(layer "F.Cu")
@@ -24679,6 +25961,17 @@
 			(uuid "3ca14017-189d-4622-aad4-638620755102")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P3.50_KF350-3.5-3P"
 		(layer "F.Cu")
@@ -24989,6 +26282,17 @@
 			(uuid "84980288-7610-4f83-909b-d742c3b41d2d")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P3.50_KF350-3.5-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
@@ -25126,6 +26430,17 @@
 			(uuid "47ffd1ad-9187-47af-a661-2e157b341c8c")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -25263,6 +26578,17 @@
 			(uuid "4d75b7e2-ea5f-46d8-ace8-1f98ca320160")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P5.00_WJ128V-5.0-3P"
 		(layer "F.Cu")
@@ -25843,6 +27169,17 @@
 			(uuid "7cd53ebc-8ec5-40a7-a7ef-b5c11b77dc85")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P5.00_WJ128V-5.0-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 180)
+			)
+		)
 	)
 	(footprint "jlc:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
 		(layer "F.Cu")
@@ -26212,6 +27549,17 @@
 			(uuid "46046f20-032a-44d6-9fcc-65bc084997f8")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
 		(layer "F.Cu")
@@ -26617,6 +27965,17 @@
 			(uuid "1f6c6e6f-53bf-4720-abee-052efb69bf13")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -26754,6 +28113,17 @@
 			(uuid "59795b72-552d-4011-9652-bb6a7750e433")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -26891,6 +28261,17 @@
 			(uuid "00f71bc8-d6ff-4ead-b51a-4696f8aea9af")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "LED_SMD:LED_0603_1608Metric"
 		(layer "F.Cu")
@@ -27077,6 +28458,17 @@
 			(uuid "d5856486-bef4-4487-a775-cc37fa46390e")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -27214,6 +28606,17 @@
 			(uuid "e54f827e-d49e-44bc-8282-e73e7c4d8656")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:OPTO-SMD-4_L4.6-W6.5-P2.54-LS10.3-BL"
 		(layer "F.Cu")
@@ -27434,6 +28837,17 @@
 			(uuid "b9aba227-e78e-47ab-8ab2-409c02114c58")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/OPTO-SMD-4_L4.6-W6.5-H3.6-LS10.2-P2.54.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 270)
+			)
+		)
 	)
 	(footprint "jlc:OPTO-SMD-4_L4.6-W6.5-P2.54-LS10.3-BL"
 		(layer "F.Cu")
@@ -27654,6 +29068,17 @@
 			(uuid "b401031f-a44b-489c-ae07-69542b50aec2")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/OPTO-SMD-4_L4.6-W6.5-H3.6-LS10.2-P2.54.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 270)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -27791,6 +29216,17 @@
 			(uuid "1ae2ec45-2f24-40d5-b8ed-28ad2d633290")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -27928,6 +29364,17 @@
 			(uuid "e3bd8fa9-7a7e-4a4b-b309-f565ad2af12a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -28065,6 +29512,17 @@
 			(uuid "d62b146f-d3af-42bc-a482-a2e2f099c1a6")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -28330,6 +29788,17 @@
 			(uuid "f9153cdc-cb62-48ab-ae5a-5fec283de36c")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-123"
 		(layer "F.Cu")
@@ -28605,6 +30074,17 @@
 			(uuid "73102b6f-10ec-407a-b188-f4ba9d1a8ba1")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Fiducial:Fiducial_1mm_Mask3mm"
 		(layer "F.Cu")
@@ -28836,6 +30316,17 @@
 			(uuid "763626fb-a149-448a-9bbd-db452e1214e9")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
@@ -29101,6 +30592,17 @@
 			(uuid "603cd8f2-3b2b-46b3-b620-48dd7eaad537")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -29238,6 +30740,17 @@
 			(uuid "8726a2d8-f274-4b6e-ad44-2d1cbcf77d77")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:WIRELM-SMD_ESP32-C6-WROOM-1"
 		(layer "F.Cu")
@@ -29938,6 +31451,17 @@
 			(uuid "04b209a3-db8c-4bfc-8cb5-eae42c982ebe")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/RF_Module.3dshapes/ESP32-S3-WROOM-1.step"
+			(offset
+				(xyz 0 2.99 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P5.00_WJ128V-5.0-3P"
 		(layer "F.Cu")
@@ -30518,6 +32042,17 @@
 			(uuid "b4d06ba1-98ba-4496-b1d0-bd6a67cdf17a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P5.00_WJ128V-5.0-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 180)
+			)
+		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3"
 		(layer "F.Cu")
@@ -30750,6 +32285,17 @@
 			(uuid "60071921-1792-4ce0-a81b-b610fc4a3c59")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -30887,6 +32433,17 @@
 			(uuid "847e7e41-330a-469d-bffe-44d7132180f3")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:OPTO-SMD-4_L4.6-W6.5-P2.54-LS10.3-BL"
 		(layer "F.Cu")
@@ -31107,6 +32664,17 @@
 			(uuid "d8a44a2d-384b-4e91-83f7-231ae582cee2")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/OPTO-SMD-4_L4.6-W6.5-H3.6-LS10.2-P2.54.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 270)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -31244,6 +32812,17 @@
 			(uuid "56ccf3ee-86d2-4f87-91ff-7c963fc0d3a4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -31381,6 +32960,17 @@
 			(uuid "6be1dd81-804e-40a3-a14c-fdcc18d42b1a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -31518,6 +33108,17 @@
 			(uuid "cd325405-34c6-4bff-97de-61d07eec8c0d")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
 		(layer "F.Cu")
@@ -31655,6 +33256,17 @@
 			(uuid "08463e77-bd23-4055-9271-cfc835b75c19")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -31792,6 +33404,17 @@
 			(uuid "9da01f1e-7778-429e-a2a6-2c7374ad8676")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -31929,6 +33552,17 @@
 			(uuid "f340410b-de6f-41a0-965c-8729acc9b7ef")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "jlc:CONN-TH_3P-P5.00_WJ128V-5.0-3P"
 		(layer "F.Cu")
@@ -32509,6 +34143,17 @@
 			(uuid "cb4163bb-db4a-4553-a903-3ce2f3e8453f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/jlc.3dshapes/CONN-TH_3P-P5.00_WJ128V-5.0-3P.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 180)
+			)
+		)
 	)
 	(footprint "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
 		(layer "F.Cu")
@@ -32762,6 +34407,17 @@
 			(uuid "84b22782-c0cb-40d4-82e0-cf57a7629930")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-223.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_1206_3216Metric"
 		(layer "F.Cu")
@@ -32899,6 +34555,17 @@
 			(uuid "bb567296-f469-45b5-8bf2-e977e1243f6c")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Fiducial:Fiducial_1mm_Mask3mm"
 		(layer "F.Cu")
@@ -33063,7 +34730,7 @@
 	(gr_text "N (sense)"
 		(at 19.5 14.8 0)
 		(layer "F.SilkS")
-		(uuid "10881ecc-8c50-478a-bc1e-8f23178ea564")
+		(uuid "d8c9e806-0006-42f0-b75f-c726c8ec99c0")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33075,7 +34742,7 @@
 	(gr_text "L"
 		(at 14.5 14.8 0)
 		(layer "F.SilkS")
-		(uuid "1b8cdf20-c308-41d9-80d7-5ae095dab074")
+		(uuid "523d4bbf-6e40-4733-afe2-2fc15c93a795")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33086,7 +34753,7 @@
 	(gr_text "L"
 		(at 27 14.8 0)
 		(layer "F.SilkS")
-		(uuid "aef4188c-71a6-464d-ae88-7c9188806631")
+		(uuid "cc16f3b6-11c7-4016-b511-d4eb2c9c2d25")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33097,7 +34764,7 @@
 	(gr_text "COM"
 		(at 32 14.8 0)
 		(layer "F.SilkS")
-		(uuid "61a5a5ba-0636-4704-ba98-97ffe864fa84")
+		(uuid "dfba5e56-cb41-443f-8b82-c729a38304a1")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33108,7 +34775,7 @@
 	(gr_text "NO"
 		(at 37 14.8 0)
 		(layer "F.SilkS")
-		(uuid "1aebbbd4-ecf8-48f1-a4cc-6b7b9034f37a")
+		(uuid "5f7649f4-a0c4-4bf2-b003-f5aed6687213")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33119,7 +34786,7 @@
 	(gr_text "USB-C 5V 1A"
 		(at 40 83.3 0)
 		(layer "F.SilkS")
-		(uuid "b83d984c-54c0-45f1-b78c-27fefd3615b2")
+		(uuid "44060a05-fb44-4628-bb13-6626a521d33b")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33130,7 +34797,7 @@
 	(gr_text "L"
 		(at 44 14.8 0)
 		(layer "F.SilkS")
-		(uuid "3b92c2b3-5f8f-47b4-ae75-8442bd80f4ac")
+		(uuid "0119e7e4-d831-4469-81db-faa55b1334cf")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33141,7 +34808,7 @@
 	(gr_text "COM"
 		(at 49 14.8 0)
 		(layer "F.SilkS")
-		(uuid "dc634536-f910-4435-a0a4-25e6c88aa69f")
+		(uuid "01bebed3-bd17-4c36-ab9d-67723c07f926")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33152,7 +34819,7 @@
 	(gr_text "NO"
 		(at 54 14.8 0)
 		(layer "F.SilkS")
-		(uuid "cd489a12-6fd0-45ab-84d5-461c24dbdeff")
+		(uuid "eb97547d-30d5-47fb-b39c-3e24e2d4409b")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33163,7 +34830,7 @@
 	(gr_text "OT 24V MAX"
 		(at 58 84.3 0)
 		(layer "F.SilkS")
-		(uuid "4f1c3de5-6b95-4ab6-b29b-bdc2186552ac")
+		(uuid "f1861679-16d1-4ebb-ba91-8c075038624b")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33174,7 +34841,7 @@
 	(gr_text "L"
 		(at 61 14.8 0)
 		(layer "F.SilkS")
-		(uuid "8d98f70d-8fb0-420d-abc8-a9b332fdf739")
+		(uuid "99ba6878-fbd8-4b02-9f34-c7432efbb75c")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33185,7 +34852,7 @@
 	(gr_text "COM"
 		(at 66 14.8 0)
 		(layer "F.SilkS")
-		(uuid "1ba130ba-6021-4660-b432-ad28d3c1043c")
+		(uuid "958a6c6d-6a56-422f-89c7-3a374e58a0ad")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33196,7 +34863,7 @@
 	(gr_text "GND"
 		(at 66.5 84.4 0)
 		(layer "F.SilkS")
-		(uuid "41249eeb-f9e6-4fe7-b6d0-4ffef2bac0a5")
+		(uuid "1c75d517-2323-4827-8e37-58c510da316c")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33207,7 +34874,7 @@
 	(gr_text "FLOW"
 		(at 70 83 0)
 		(layer "F.SilkS")
-		(uuid "f642d34b-044d-4fea-84e6-9271b9a909ab")
+		(uuid "75195c3e-3214-48c1-957a-ac5c1e61cb6f")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33218,7 +34885,7 @@
 	(gr_text "DAT"
 		(at 70 84.4 0)
 		(layer "F.SilkS")
-		(uuid "3991c1af-568a-4401-9b7f-ccb4a49a2ec3")
+		(uuid "b644bf0e-528c-4181-9daf-4bf1fdf6ffcc")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33229,7 +34896,7 @@
 	(gr_text "NO"
 		(at 71 14.8 0)
 		(layer "F.SilkS")
-		(uuid "d9900665-12f8-45b3-8a8f-587b0041c1e1")
+		(uuid "77668ea3-a417-4b66-9f1a-23155a7e14b2")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33240,7 +34907,7 @@
 	(gr_text "3V3"
 		(at 73.5 84.4 0)
 		(layer "F.SilkS")
-		(uuid "e1679023-b330-42bf-bf12-fb486ee5716e")
+		(uuid "e9fdcd63-86b2-4d25-9bb7-e282cec44f7f")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33251,7 +34918,7 @@
 	(gr_text "L"
 		(at 78 14.8 0)
 		(layer "F.SilkS")
-		(uuid "5339b1e6-b217-4bc9-87c9-e3176a70fc18")
+		(uuid "170c361a-62b1-4a5f-a0e5-b418597c8a8f")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33262,7 +34929,7 @@
 	(gr_text "GND"
 		(at 78.5 84.4 0)
 		(layer "F.SilkS")
-		(uuid "7ab7c394-2a55-4c72-ac1a-e4af091799e0")
+		(uuid "919242af-b983-4d25-878c-f2db140ce2b3")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33273,7 +34940,7 @@
 	(gr_text "OUTDOOR"
 		(at 82 83 0)
 		(layer "F.SilkS")
-		(uuid "81f9b0b6-d089-46d2-8690-6fa62457aeba")
+		(uuid "dbb77638-4295-4ae4-93bd-ab9d2a23693e")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33284,7 +34951,7 @@
 	(gr_text "DAT"
 		(at 82 84.4 0)
 		(layer "F.SilkS")
-		(uuid "eb75256a-0ac6-4be8-8b09-893a8d53b14f")
+		(uuid "e027affd-65d8-4e00-babd-94535b211fc5")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33295,7 +34962,7 @@
 	(gr_text "COM"
 		(at 83 14.8 0)
 		(layer "F.SilkS")
-		(uuid "732ea524-f94d-47a8-9761-af00266ef554")
+		(uuid "08d55296-2eb3-4ec0-8cc2-f03ad5e47c2e")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33306,7 +34973,7 @@
 	(gr_text "3V3"
 		(at 85.5 84.4 0)
 		(layer "F.SilkS")
-		(uuid "06eff3aa-8874-478a-8127-0a617d76a13c")
+		(uuid "3a0abed3-da2c-4ccf-834d-441162f4b9a5")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33317,7 +34984,7 @@
 	(gr_text "NO"
 		(at 88 14.8 0)
 		(layer "F.SilkS")
-		(uuid "35210eed-057d-41c8-a8a9-86907a6c5470")
+		(uuid "7ac39ea8-936d-4de7-9864-5dde5351460c")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33328,7 +34995,7 @@
 	(gr_text "SPARE"
 		(at 95.8 77 0)
 		(layer "F.SilkS")
-		(uuid "cf13d2b8-accf-4f3c-a859-d9b46f5fccbc")
+		(uuid "bc01b82f-9405-4a76-8083-b917c9396eaa")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33339,7 +35006,7 @@
 	(gr_text "16 17 3V3 GND"
 		(at 95.8 78.3 0)
 		(layer "F.SilkS")
-		(uuid "61ce33e9-4ce7-431a-9010-e6ef4d595134")
+		(uuid "1d9dcbf4-1745-45f7-a1aa-30b8a32967c1")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33350,7 +35017,7 @@
 	(gr_text "QWIIC"
 		(at 98 87.6 0)
 		(layer "F.SilkS")
-		(uuid "e5b52583-ebd1-4937-92b9-87fc7ef1da86")
+		(uuid "504d6b06-77ad-41fc-a8e3-6a48e98db5e3")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33361,7 +35028,7 @@
 	(gr_text "OLED: P1/P2 SET BY R16-R21"
 		(at 108.2 85 0)
 		(layer "F.SilkS")
-		(uuid "a46aea61-a3d8-48af-8220-1d1ed87b120d")
+		(uuid "3c23701f-7aa8-4f56-9425-db353a5b7081")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33372,7 +35039,7 @@
 	(gr_text "P1 P2 SCL SDA"
 		(at 108.2 86.3 0)
 		(layer "F.SilkS")
-		(uuid "955a23c4-b8b8-4922-96fd-bd2953e81fce")
+		(uuid "af0a2184-044e-44b4-a356-0a6cac8b4617")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33383,7 +35050,7 @@
 	(gr_text "RST"
 		(at 120 86.2 0)
 		(layer "F.SilkS")
-		(uuid "0b8a8f8c-86e6-428e-a47f-f9c9075ed8d1")
+		(uuid "33b32b90-fa2e-42d5-be7c-d34fc1c529d1")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33394,7 +35061,7 @@
 	(gr_text "BOOT JP"
 		(at 121.3 68.8 0)
 		(layer "F.SilkS")
-		(uuid "639abbe6-4906-4584-b9a2-0bfb1bfde2c9")
+		(uuid "105e0680-8535-4872-8443-eb111bdf0c07")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33405,7 +35072,7 @@
 	(gr_text "BOOT"
 		(at 129 86.2 0)
 		(layer "F.SilkS")
-		(uuid "dfaa68eb-6874-4d91-965c-1ff643232765")
+		(uuid "b303411e-e3eb-4355-a106-5194f9fc727a")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33416,7 +35083,7 @@
 	(gr_text "BTN2"
 		(at 138 76.2 0)
 		(layer "F.SilkS")
-		(uuid "9aac47fd-c41c-4dfc-9fd8-13c4c44a4ab7")
+		(uuid "f812479e-9b86-4db3-93a7-c970f9f68631")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33427,7 +35094,7 @@
 	(gr_text "BTN1"
 		(at 138 86.2 0)
 		(layer "F.SilkS")
-		(uuid "7e8bc4fb-4de1-4c3b-ba39-7ba204931685")
+		(uuid "595bd6e7-268e-4c52-8cae-0ca2ce472bf2")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33438,7 +35105,7 @@
 	(gr_text "END SW"
 		(at 142.5 46 0)
 		(layer "F.SilkS")
-		(uuid "f93b2c72-7e4f-46aa-b96c-ea600652217c")
+		(uuid "1a6ea8bc-d2f9-492a-8ffd-98791f68429e")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33446,21 +35113,46 @@
 			)
 		)
 	)
-	(gr_text "24V PIN IS LIVE IN 230V MODE"
-		(at 143.2 10.8 0)
+	(gr_text "DEMAND: 230V OR 24V"
+		(at 148.5 8.6 0)
 		(layer "F.SilkS")
-		(uuid "f83d95f5-9ec4-4c81-9f15-d0237ffc822f")
+		(uuid "081aac59-6f00-4659-a64f-a283046f2f71")
 		(effects
 			(font
 				(size 0.8 0.8)
 				(thickness 0.12)
 			)
+			(justify right)
 		)
 	)
-	(gr_text "230V OR 24V, NEVER BOTH"
-		(at 143.2 28.5 0)
+	(gr_text "NEVER BOTH. 24V PIN"
+		(at 148.5 9.7 0)
 		(layer "F.SilkS")
-		(uuid "beab229f-624d-477e-8ac9-368b38b6e0ee")
+		(uuid "4179b90d-75af-41d8-aa6d-62ee83e0f8cc")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+			(justify right)
+		)
+	)
+	(gr_text "IS LIVE IN 230V MODE"
+		(at 148.5 10.8 0)
+		(layer "F.SilkS")
+		(uuid "68514948-0191-4e6b-a199-bfe184047a1b")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+			(justify right)
+		)
+	)
+	(gr_text "Cedric Van Goethem 2026"
+		(at 4 64 90)
+		(layer "F.SilkS")
+		(uuid "b861683b-ddac-4eb0-b538-c83dae6e2971")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33471,7 +35163,7 @@
 	(gr_text "230V"
 		(at 137.6 15 90)
 		(layer "F.SilkS")
-		(uuid "b30f230b-edfe-4da2-8904-311901e85a8a")
+		(uuid "51954bad-3e7b-49f2-9a06-a384c55ba4ef")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33482,7 +35174,7 @@
 	(gr_text "24V"
 		(at 137.6 20 90)
 		(layer "F.SilkS")
-		(uuid "e7e3bc52-e2c5-446d-99d0-9554cad43948")
+		(uuid "5497cf49-a20a-4c32-a572-11bc0ca1bfbc")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33493,7 +35185,7 @@
 	(gr_text "RET"
 		(at 137.6 25 90)
 		(layer "F.SilkS")
-		(uuid "46041573-5364-4446-b1ac-14b197a579ca")
+		(uuid "9e053297-a910-436f-9728-d1a3eead6670")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33504,7 +35196,7 @@
 	(gr_text "ES3"
 		(at 137.6 32 90)
 		(layer "F.SilkS")
-		(uuid "442599e7-e8f9-47b3-9ab1-ace7d3225705")
+		(uuid "d30bb05f-bc19-460e-9bc9-a62452da4779")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33515,7 +35207,7 @@
 	(gr_text "ES2"
 		(at 137.6 37 90)
 		(layer "F.SilkS")
-		(uuid "5f36b180-a444-4903-861b-453a1a22be78")
+		(uuid "31f5f58d-aa10-42b3-b203-582a094f6d21")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33526,7 +35218,7 @@
 	(gr_text "ES1"
 		(at 137.6 42 90)
 		(layer "F.SilkS")
-		(uuid "43c791e7-0a61-4fde-9e6b-0bb6a214680e")
+		(uuid "e60ffba4-fd49-4e7d-bfab-5dd82d26afde")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -33534,21 +35226,10 @@
 			)
 		)
 	)
-	(gr_text "HEATING-CONTROLLER r1 2026-10 github.com/Zepheus/opentherm_heating_controller"
-		(at 4 66 90)
-		(layer "F.SilkS")
-		(uuid "a3de2b77-eecb-4cb6-ae08-989a5f3ee643")
-		(effects
-			(font
-				(size 0.9 0.9)
-				(thickness 0.14)
-			)
-		)
-	)
 	(gr_text "MAINS IN"
 		(at 17 16.6 0)
 		(layer "F.SilkS")
-		(uuid "d6458b95-4a90-4e7d-b7de-5180d30d700d")
+		(uuid "1bb97cee-e81c-44d1-9c60-10a5f7a79488")
 		(effects
 			(font
 				(size 1 1)
@@ -33559,7 +35240,7 @@
 	(gr_text "K1"
 		(at 32 16.6 0)
 		(layer "F.SilkS")
-		(uuid "17410031-0727-4ec0-b2d5-328a6539234b")
+		(uuid "d53c3ce2-100e-4145-bd55-c4db2cbf3509")
 		(effects
 			(font
 				(size 1 1)
@@ -33570,7 +35251,7 @@
 	(gr_text "K2"
 		(at 49 16.6 0)
 		(layer "F.SilkS")
-		(uuid "e1f0ed1f-30a1-44d6-a33a-1bab68149a56")
+		(uuid "e51738b6-8810-4a2f-8fab-e74611c67b68")
 		(effects
 			(font
 				(size 1 1)
@@ -33581,7 +35262,7 @@
 	(gr_text "K3"
 		(at 66 16.6 0)
 		(layer "F.SilkS")
-		(uuid "01264e7b-db25-4b7f-a3a0-1eec6b285d47")
+		(uuid "ebf779c7-c912-408b-96d0-cf95a71aea66")
 		(effects
 			(font
 				(size 1 1)
@@ -33592,7 +35273,7 @@
 	(gr_text "K4"
 		(at 83 16.6 0)
 		(layer "F.SilkS")
-		(uuid "f38d9995-623c-4eaf-b4f8-3b32686db513")
+		(uuid "1c7d4cbf-4184-45c6-80c4-8098a6bfe443")
 		(effects
 			(font
 				(size 1 1)
@@ -33603,12 +35284,35 @@
 	(gr_text "DANGER 230V - ISOLATE SUPPLY BEFORE OPENING"
 		(at 114 5 0)
 		(layer "F.SilkS")
-		(uuid "b530bf34-608d-4550-b021-270e8ce25b7d")
+		(uuid "6bf8b4e0-e357-47b2-b3be-f2ea8916bb41")
 		(effects
 			(font
 				(size 1 1)
 				(thickness 0.15)
 			)
+		)
+	)
+	(gr_text "ANDIRON v1.0"
+		(at 2.6 64 90)
+		(layer "F.SilkS")
+		(uuid "145287b7-9ffb-441c-a4eb-09542ea6753f")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.22)
+			)
+		)
+	)
+	(gr_text "github.com/Zepheus/opentherm_heating_controller"
+		(at 115 92 0)
+		(layer "B.SilkS")
+		(uuid "54b42209-a3be-4f0f-8e7b-d659e8827056")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
 		)
 	)
 	(segment

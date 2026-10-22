@@ -32,8 +32,9 @@ text("DANGER 230V - ISOLATE SUPPLY BEFORE OPENING", 114, 5.0, size=1.0)
 # right edge: J116 (DEMAND) and J115 (END SW), words run vertically beside the block, one per pin
 for s, y in [("230V", 15), ("24V", 20), ("RET", 25), ("ES3", 32), ("ES2", 37), ("ES1", 42)]:
     text(s, 137.6, y, size=0.8, rot=90)
-text("230V OR 24V, NEVER BOTH", 143.2, 28.5, size=0.8)
-text("24V PIN IS LIVE IN 230V MODE", 143.2, 10.8, size=0.8)
+# J116 warning: three right-aligned lines between hole H2 (ends y 7.5) and the J116 body (starts y 12.45), inside the edge
+for line, y in [("DEMAND: 230V OR 24V", 8.6), ("NEVER BOTH. 24V PIN", 9.7), ("IS LIVE IN 230V MODE", 10.8)]:
+    text(line, 148.5, y, size=0.8, h="r")
 text("END SW", 142.5, 46.0, size=0.8)
 
 # --- SELV edge
@@ -48,8 +49,11 @@ text("BOOT JP", 121.3, 68.8, size=0.8)
 for s, x, y in [("RST", 120, 86.2), ("BOOT", 129, 86.2), ("BTN1", 138, 86.2), ("BTN2", 138, 76.2)]:
     text(s, x, y, size=0.8)
 text("USB-C 5V 1A", 40, 83.3, size=0.8)
-# revision string along the left edge of the SELV region
-text("HEATING-CONTROLLER r1 2026-10 github.com/Zepheus/opentherm_heating_controller", 4.0, 66, size=0.9, rot=90)
+# identity block along the left edge of the SELV region (x 2.6/4.0 clears the tracks at x >= 4.7 and FID1 at x >= 6.2)
+text("ANDIRON v1.0", 2.6, 64, size=1.5, rot=90)
+text("Cedric Van Goethem 2026", 4.0, 64, size=0.8, rot=90)
+# repository on the back, where there is room
+text("github.com/Zepheus/opentherm_heating_controller", 115, 92, size=1.0, layer=pcbnew.B_SilkS).SetMirrored(True)
 
 pcbnew.SaveBoard(B, board)
-print("silkscreen texts:", sum(1 for d in board.GetDrawings() if d.GetClass() == "PCB_TEXT"))
+print("silkscreen stage done")  # counting via GetDrawings() breaks after SaveBoard in KiCad 10.0.7 SWIG
