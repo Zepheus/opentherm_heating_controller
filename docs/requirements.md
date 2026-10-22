@@ -17,7 +17,7 @@ not *why*.
 
 ## R2 Boiler interface — OpenTherm master
 - R2.1 One OpenTherm master port, polarity independent, galvanically isolated
-  from the ESP, on 3.5 mm cage-clamp terminals on the low-voltage edge.
+  from the ESP, on 3.5 mm cage-clamp terminals on the bottom edge.
 - R2.2 Must support the ESPHome `opentherm` component: CH enable, CH setpoint,
   DHW enable, DHW setpoint, modulation, flow/return/outdoor temps, fault bits.
 - R2.3 Miswiring 230 V to the OT terminals must not start a fire: a series
@@ -34,7 +34,7 @@ not *why*.
   valve needs.
 - R3.2 Contacts ≥250 VAC; the board is rated 3 A per channel (wiring-centre
   spur fuse). Relays with reinforced coil-to-contact insulation (≥4 kV),
-  sealed, 5 V coils from the USB rail.
+  at least flux-proof (RTII), 5 V coils from the USB rail.
 - R3.3 No mains supply input and no mains link on the board: when a channel
   must switch live, the wiring centre feeds its own fused live into COM.
 - R3.4 Each channel is isolated from every other channel and from all
@@ -70,7 +70,10 @@ not *why*.
 
 ## R6 User interface
 - R6.1 4-pin I2C OLED header, GND / 3V3 / SCL / SDA (standard SSD1306/SH1106
-  modules, 0x3C), on-board 4.7 kΩ pull-ups.
+  modules, 0x3C), on-board 4.7 kΩ pull-ups. The module (1.3" or 0.96")
+  stacks on the header in landscape, header along its top edge, over a
+  reserved empty area of the board seen through a window in the cover.
+  Nothing else is placed in that area (checked).
 - R6.2 Two general-purpose buttons BTN1/BTN2 (function set in firmware).
 - R6.3 Status LED and OT-activity LED.
 
@@ -114,3 +117,22 @@ not *why*.
   sensor fitted?
 - S-plan vs Y-plan at the current install.
 - Mounting location and measured temperature.
+
+## R11 Mechanical and connectors
+- R11.1 The board hangs on a wall. Field cables enter from below and from the
+  left only: relay and OpenTherm terminals on the bottom edge; USB-C, the FLOW
+  and OUTDOOR probe terminals and Qwiic on the left edge. No connector faces
+  the top or right edge.
+- R11.2 Every external connector sits at its board edge (courtyard ≤3 mm from
+  the edge) with its cable entry facing out, so enclosure cutouts reach it.
+- R11.3 Internal headers (spare GPIO, boot jumper) sit next to the module for
+  short traces; all internal headers, the OLED's included, are ≥8 mm from
+  every edge, so a cable housing fits.
+- R11.4 Buttons and LEDs sit near the module; buttons ≥5 mm from the edge.
+- R11.5 Four M3 mounting holes for self-tapping screws into the enclosure.
+  The screw heads are accessible metal: head edge ≥6.4 mm from relay contact
+  copper.
+- R11.6 `tools/check/sanity.py` checks R6.1's OLED area, R11.1–R11.3 and
+  R11.5 on every run:
+  each connector is classified as edge or internal in
+  `tools/layout/geometry.py`, and an unclassified connector fails.

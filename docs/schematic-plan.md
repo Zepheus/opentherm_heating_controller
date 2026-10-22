@@ -9,7 +9,7 @@ Hierarchical, four sheets, net labels at every pin (no wires).
 | 1 | `heating-controller.kicad_sch` (root) | Title block and the three sheet blocks |
 | 2 | `power_mcu.kicad_sch` | USB-C + protection, 5 V bulk, LDL1117 3.3 V regulator, ESP32-C6-WROOM-1 and decoupling, EN/RESET, BOOT button + jumper, BTN1/BTN2, STATUS/OT LEDs, OLED header and I2C pull-ups, Qwiic, 8-pin spare header, 1-Wire bus + FLOW/OUTDOOR terminals |
 | 3 | `opentherm.kicad_sch` | Melnyk master adapter: fuse, bridge, TVS, zeners, 2 × LTV-817S, S8550, OT terminal |
-| 4 | `relays.kicad_sch` | Four channels: HF115F changeover relay, AO3400A driver, gate resistors, flyback diode, coil LED, NC/COM/NO terminal |
+| 4 | `relays.kicad_sch` | Four channels: RT1 (RT314005) changeover relay, AO3400A driver, gate resistors, flyback diode, coil LED, NC/COM/NO terminal |
 
 ## Nets
 

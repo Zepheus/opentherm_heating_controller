@@ -3680,7 +3680,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2401290932_BOURNS-SF-2410FPA100W-2_C1236062.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2009081106_AEM-MF2410F1-000TM_C83798.pdf"
 			(at 26.67 88.9 0)
 			(hide yes)
 			(effects
@@ -3698,7 +3698,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1236062"
+		(property "LCSC" "C83798"
 			(at 26.67 88.9 0)
 			(hide yes)
 			(effects

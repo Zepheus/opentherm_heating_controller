@@ -1,7 +1,7 @@
 """Stage 1 of the routing pipeline: net classes, inset outline, rule areas, locked pre-routes, GND stitching, DSN export.
 
 Everything Freerouting must not decide lives here as locked copper:
-  - each relay contact (NC, COM, NO) to its terminal pin: straight 2.5 mm links, plus a link joining the contact's two pins;
+  - each relay contact (NC, COM, NO) to its terminal pin below: straight 2.5 mm links, plus a link joining the contact's two pins;
   - the USB-C D+/D- pad bridges and the VBUS escape past the receptacle's locating holes;
   - a GND stitching-via grid over the low-voltage area so the bottom pour stays in one piece.
 Temporary routing keep-outs cover each channel's contact area (removed after the SES import); the isolation band under
@@ -61,7 +61,10 @@ for n, xr in enumerate(G.RX, start=1):
     rule_area("ISOLATION_BAND", G.isolation_band(xr))
     rule_area(f"CH{n}_ZONE", G.channel_zone(xr))         # temporary: routing keep-out over the contact copper
 rule_area("ANTENNA_KEEPOUT", G.ANTENNA)
-rule_area("EDGE_GUARD_T", [(0, 0), (G.W, 0), (G.W, 2.2), (0, 2.2)])   # temporary: mains-to-edge 2 mm
+for xr in G.RX:   # temporary: the isolation slots are only cut after routing, so keep the router off them
+    for i, (x1, y1, x2, y2) in enumerate(G.slots(xr)):
+        rule_area(f"SLOT{int(xr)}_{i}_ZONE", [(x1 - 0.6, y1 - 0.6), (x2 + 0.6, y1 - 0.6), (x2 + 0.6, y2 + 0.6), (x1 - 0.6, y2 + 0.6)])
+rule_area("EDGE_GUARD_B", [(0, G.H - 2.2), (G.W, G.H - 2.2), (G.W, G.H), (0, G.H)])   # temporary: no router copper along the cable edge
 
 def track(net, layer, x1, y1, x2, y2, w=G.LINK_W):
     t = pcbnew.PCB_TRACK(board); t.SetStart(VECTOR2I(FromMM(x1), FromMM(y1))); t.SetEnd(VECTOR2I(FromMM(x2), FromMM(y2)))
@@ -75,22 +78,60 @@ def contact_links(track):
         for c, dx in G.COL_DX.items():
             net = G.contact_net(n, c); x = xr + dx
             track(net, pcbnew.F_Cu, x, G.RY + G.PIN_DY, x, G.RY - G.PIN_DY)              # join the contact's two pins
-            track(net, pcbnew.F_Cu, x, G.RY - G.PIN_DY, xr + G.TERM_DX[c], G.TERM_Y)    # straight up to its terminal pin
+            track(net, pcbnew.F_Cu, x, G.RY + G.PIN_DY, xr + G.TERM_DX[c], G.TERM_Y)    # straight down to its terminal pin
 contact_links(track)
 
-# ---- USB-C: interleaved D+/D- pads bridged on either side of the pad row, VBUS escaped past the locating holes
-J1x, J1y = [(x, y) for (r, n), (x, y) in PADS.items() if r == "J1" and n == "A1"][0]
-cx, py = J1x + 3.25, J1y                         # receptacle centre x; pad row y
+# ---- +5V rail above the drivers, with a B.Cu drop to each coil's +5V pin (pin 1, on the row nearest the terminals)
+track("+5V", pcbnew.F_Cu, G.RAIL_X[0], G.RAIL_Y, G.RAIL_X[1], G.RAIL_Y, G.RAIL_W)
+for xr in G.RX:
+    x0 = xr + G.COIL_DX; xd = x0 + G.COIL_DROP_DX
+    via("+5V", xd, G.RAIL_Y, 1.0, 0.5)
+    track("+5V", pcbnew.B_Cu, xd, G.RAIL_Y, xd, G.RY + G.PIN_DY, G.RAIL_W); track("+5V", pcbnew.B_Cu, xd, G.RY + G.PIN_DY, x0, G.RY + G.PIN_DY, G.RAIL_W)
+    n_ = G.RX.index(xr) + 1
+    rl = PADS[(f"R1{n_}3", "1")]; track("+5V", pcbnew.F_Cu, rl[0], G.RAIL_Y, rl[0], rl[1], 0.6)          # LED resistor
+    qs = PADS[(f"Q10{n_}", "2")]; via("GND", qs[0] - 1.6, qs[1]); track("GND", pcbnew.F_Cu, qs[0] - 1.6, qs[1], qs[0], qs[1], 0.5)   # coil current return
+    dd = PADS[(f"D10{n_}", "1")]; via("+5V", xd, dd[1] + 1.45); track("+5V", pcbnew.F_Cu, xd, dd[1] + 1.45, dd[0], dd[1], 0.5)   # flyback cathode
+
+# ---- +5V feed: USB VBUS via -> B.Cu trunk at x FX down to the rail; via at the TVS / bulk capacitor; B.Cu branch to the
+#      regulator input. The router only adds the receptacle-to-ESD link and the drivers' short stubs.
+FX = G.RAIL_X[0]
+def pad(ref, n): return PADS[(ref, n)]
+d1, c2, c3, u2 = pad("D1", "1"), pad("C2", "1"), pad("C3", "1"), pad("U2", "3")
+track("+5V", pcbnew.B_Cu, FX, 30.0, FX, G.RAIL_Y, 0.8); via("+5V", FX, G.RAIL_Y, 1.0, 0.5)
+via("+5V", FX, d1[1] - 0.4); track("+5V", pcbnew.F_Cu, FX, d1[1] - 0.4, c2[0], c2[1], 0.8); track("+5V", pcbnew.F_Cu, FX, d1[1] - 0.4, d1[0], d1[1], 0.6)
+RY_ = c3[1] + 2.55
+track("+5V", pcbnew.B_Cu, FX, RY_, c3[0], RY_, 0.6); via("+5V", c3[0], RY_)
+track("+5V", pcbnew.F_Cu, c3[0], RY_, c3[0], c3[1], 0.6); track("+5V", pcbnew.F_Cu, c3[0], RY_, u2[0], u2[1], 0.6)
+
+# ---- USB-C: interleaved D+/D- pads bridged on either side of the pad row, VBUS escaped past the locating holes.
+# Drawn in the receptacle's own frame (u along the pad row A1 -> A12, v towards the plug opening), then mapped to the
+# board, so any rotation of J1 works.
+A1 = PADS[("J1", "A1")]; A12 = PADS[("J1", "A12")]
+L = ((A12[0] - A1[0]) ** 2 + (A12[1] - A1[1]) ** 2) ** 0.5
+U = ((A12[0] - A1[0]) / L, (A12[1] - A1[1]) / L); V = (-U[1], U[0])
+C0 = ((A1[0] + A12[0]) / 2, (A1[1] + A12[1]) / 2)   # receptacle centre on the pad row
+def at(du, dv): return (C0[0] + du * U[0] + dv * V[0], C0[1] + du * U[1] + dv * V[1])
+def tr(net, layer, a, b, w):
+    (x1, y1), (x2, y2) = at(*a), at(*b); track(net, layer, x1, y1, x2, y2, w)
 DN = "/Power + MCU/USB_DN_C"; DP = "/Power + MCU/USB_DP_C"; V5 = "+5V"
-track(DN, pcbnew.F_Cu, cx - .75, py, cx - .75, py - 1.105, 0.2); track(DN, pcbnew.F_Cu, cx - .75, py - 1.105, cx + .25, py - 1.105, 0.2); track(DN, pcbnew.F_Cu, cx + .25, py - 1.105, cx + .25, py, 0.2)
-track(DP, pcbnew.F_Cu, cx - .25, py, cx - .25, py + 1.145, 0.2); track(DP, pcbnew.F_Cu, cx - .25, py + 1.145, cx + .75, py + 1.145, 0.2); track(DP, pcbnew.F_Cu, cx + .75, py + 1.145, cx + .75, py, 0.2)
-for s in (-1, 1):
-    x0 = cx + s * 2.45
-    track(V5, pcbnew.F_Cu, x0, py, x0, py + .645, 0.3); track(V5, pcbnew.F_Cu, x0, py + .645, x0 - s * .4, py + 1.145, 0.3)
-    track(V5, pcbnew.F_Cu, x0 - s * .4, py + 1.145, x0 - s * .4, py + 3.045, 0.3); via(V5, x0 - s * .4, py + 3.045)
-track(V5, pcbnew.B_Cu, cx - 2.05, py + 3.045, cx + 2.05, py + 3.045, 0.6)
-track(V5, pcbnew.B_Cu, cx + 2.05, py + 3.045, cx + 5.5, py + 3.045, 0.6); via(V5, cx + 5.5, py + 3.045)   # +5V picked up here by the router
-USB_BOX = (cx - 6, py - 2, cx + 6.5, py + 4.5)
+for a, b in [((-.75, 0), (-.75, -1.105)), ((-.75, -1.105), (.25, -1.105)), ((.25, -1.105), (.25, 0))]: tr(DN, pcbnew.F_Cu, a, b, 0.2)
+for a, b in [((-.25, 0), (-.25, 1.145)), ((-.25, 1.145), (.75, 1.145)), ((.75, 1.145), (.75, 0))]: tr(DP, pcbnew.F_Cu, a, b, 0.2)
+for s_ in (-1, 1):
+    u0 = s_ * 2.45
+    tr(V5, pcbnew.F_Cu, (u0, 0), (u0, .645), 0.3); tr(V5, pcbnew.F_Cu, (u0, .645), (u0 - s_ * .4, 1.145), 0.3)
+    tr(V5, pcbnew.F_Cu, (u0 - s_ * .4, 1.145), (u0 - s_ * .4, 3.045), 0.3); via(V5, *at(u0 - s_ * .4, 3.045))
+tr(V5, pcbnew.B_Cu, (-2.05, 3.045), (2.05, 3.045), 0.6)
+tr(V5, pcbnew.B_Cu, (2.05, 3.045), (5.5, 3.045), 0.6)
+_vx, _vy = at(5.5, 3.045); track(V5, pcbnew.B_Cu, _vx, _vy, FX, _vy, 0.8)   # on to the +5V trunk
+# ESD array VBUS pin: its only free side faces away from the receptacle; via above it, B.Cu back to the VBUS track
+e5 = PADS[("U3", "5")]; ev = (e5[0], e5[1] - 1.55); via(V5, *ev); track(V5, pcbnew.F_Cu, ev[0], ev[1], e5[0], e5[1], 0.4)
+for su in (-3.25, 3.25):   # GND pads at both ends of the row: via straight in from the pad, before CC/SBU claim the space
+    tr("GND", pcbnew.F_Cu, (su, 0), (su, -1.3), 0.4); via("GND", *at(su, -1.3))
+e2 = PADS[("U3", "2")]; via("GND", e2[0], e2[1] + 1.4); track("GND", pcbnew.F_Cu, e2[0], e2[1] + 1.4, e2[0], e2[1], 0.4)   # ESD ground, boxed in by D+/D-
+_mx, _my = at(0, 3.045); track(V5, pcbnew.B_Cu, ev[0], ev[1], ev[0] - 2.6, _my, 0.5); track(V5, pcbnew.B_Cu, ev[0] - 2.6, _my, _mx, _my, 0.5)
+_bc = [at(du, dv) for du in (-6, 6.5) for dv in (-2, 4.5)]
+USB_BOX = (min(x for x, _ in _bc), min(y for _, y in _bc), max(x for x, _ in _bc), max(y for _, y in _bc))
+print("USB-C frame: u", tuple(round(v, 3) for v in U), "v", tuple(round(v, 3) for v in V), "centre", tuple(round(v, 2) for v in C0))
 
 # ---- GND stitching grid over the low-voltage area
 def stitching():
@@ -98,7 +139,7 @@ def stitching():
     ax0, ay0 = G.ANTENNA[0]; ax1, ay1 = G.ANTENNA[2]
     n = 0
     for xi in range(6, int(G.W) - 3, 10):
-        for yi in range(int(G.SELV_TOP) + 4, int(G.H) - 3, 8):
+        for yi in range(4, int(G.SELV_BOTTOM) - 1, 8):
             x, y = float(xi), float(yi)
             if ax0 - 1 <= x <= ax1 + 1 and ay0 - 1 <= y <= ay1 + 1: continue
             if any(x0 - 1.0 <= x <= x1 + 1.0 and y0 - 1.0 <= y <= y1 + 1.0 for x0, y0, x1, y1 in boxes): continue

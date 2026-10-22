@@ -12,6 +12,7 @@ KPY=/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/
 |---|---|---|
 | `layout/geometry.py` | — | Shared board geometry: relay row, terminal positions, contact columns, channel zones, isolation band, slots, antenna keep-out. Read by placement, pre-routing, routing and silkscreen. |
 | `layout/place.py <board>` | `$KPY -I` | Places every part by module area; writes the board outline. |
+| `check/placement.py <board>` | `$KPY -I` | Quick check after placement: courtyard overlaps, courtyards outside the outline, pads of different parts closer than 0.25 mm. |
 | `sync_netlist.py <project> <board>` | `$KPY -I` | Headless "Update PCB from schematic": adds/removes footprints, swaps changed footprints, copies values and fields, assigns pad nets. |
 | `route/run_pipeline.sh <project> [passes]` | zsh | Full layout regeneration: 3D model sync, prep (net classes, rule areas, locked pre-routes, stitching), Freerouting, SES import, pours and island repair, silkscreen, DRC. 40 passes, about a minute. |
 | `route/prep_board.py` | `$KPY -I` | Stage 1 of the pipeline. All hand-routed copper (mains buses, relay links, live-input lanes, USB, regulator copper) lives here. |

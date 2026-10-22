@@ -2581,7 +2581,7 @@
 					) hide
 				)
 			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C882369.pdf"
+			(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2404231543_TE-Connectivity-RT314005_C7065270.pdf"
 				(id 3)
 				(at 0 -20.32 0)
 				(effects
@@ -2608,7 +2608,7 @@
 					) hide
 				)
 			)
-			(property "LCSC Part" "C882369"
+			(property "LCSC Part" "C7065270"
 				(id 6)
 				(at 0 -27.94 0)
 				(effects
@@ -4189,7 +4189,7 @@
 				)
 			)
 		)
-		(property "Value" "K1 L/COM/NO"
+		(property "Value" "CH1 NC/COM/NO"
 			(at 115.57 64.77 0)
 			(effects
 				(font
@@ -4674,7 +4674,7 @@
 				)
 			)
 		)
-		(property "Value" "K2 L/COM/NO"
+		(property "Value" "CH2 NC/COM/NO"
 			(at 209.55 64.77 0)
 			(effects
 				(font
@@ -5159,7 +5159,7 @@
 				)
 			)
 		)
-		(property "Value" "K3 L/COM/NO"
+		(property "Value" "CH3 NC/COM/NO"
 			(at 304.8 64.77 0)
 			(effects
 				(font
@@ -5644,7 +5644,7 @@
 				)
 			)
 		)
-		(property "Value" "K4 L/COM/NO"
+		(property "Value" "CH4 NC/COM/NO"
 			(at 400.05 64.77 0)
 			(effects
 				(font
@@ -5896,7 +5896,7 @@
 				)
 			)
 		)
-		(property "Value" "HF115F/005-1ZS3A"
+		(property "Value" "RT314005"
 			(at 69.85 55.88 0)
 			(effects
 				(font
@@ -5904,7 +5904,7 @@
 				)
 			)
 		)
-		(property "Footprint" "jlc:RELAY-TH_HF115F-024-2ZS4"
+		(property "Footprint" "jlc:RELAY-TH_RT314005_HF115F-PINS"
 			(at 69.85 40.64 0)
 			(hide yes)
 			(effects
@@ -5913,7 +5913,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C882369.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2404231543_TE-Connectivity-RT314005_C7065270.pdf"
 			(at 69.85 40.64 0)
 			(hide yes)
 			(effects
@@ -5940,7 +5940,7 @@
 			)
 		)
 	
-		(property "LCSC" "C882369"
+		(property "LCSC" "C7065270"
 			(at 69.85 40.64 0)
 			(hide yes)
 			(effects
@@ -5965,7 +5965,7 @@
 				)
 			)
 		)
-		(property "Value" "HF115F/005-1ZS3A"
+		(property "Value" "RT314005"
 			(at 165.1 55.88 0)
 			(effects
 				(font
@@ -5973,7 +5973,7 @@
 				)
 			)
 		)
-		(property "Footprint" "jlc:RELAY-TH_HF115F-024-2ZS4"
+		(property "Footprint" "jlc:RELAY-TH_RT314005_HF115F-PINS"
 			(at 165.1 40.64 0)
 			(hide yes)
 			(effects
@@ -5982,7 +5982,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C882369.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2404231543_TE-Connectivity-RT314005_C7065270.pdf"
 			(at 165.1 40.64 0)
 			(hide yes)
 			(effects
@@ -6009,7 +6009,7 @@
 			)
 		)
 	
-		(property "LCSC" "C882369"
+		(property "LCSC" "C7065270"
 			(at 165.1 40.64 0)
 			(hide yes)
 			(effects
@@ -6034,7 +6034,7 @@
 				)
 			)
 		)
-		(property "Value" "HF115F/005-1ZS3A"
+		(property "Value" "RT314005"
 			(at 260.35 55.88 0)
 			(effects
 				(font
@@ -6042,7 +6042,7 @@
 				)
 			)
 		)
-		(property "Footprint" "jlc:RELAY-TH_HF115F-024-2ZS4"
+		(property "Footprint" "jlc:RELAY-TH_RT314005_HF115F-PINS"
 			(at 260.35 40.64 0)
 			(hide yes)
 			(effects
@@ -6051,7 +6051,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C882369.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2404231543_TE-Connectivity-RT314005_C7065270.pdf"
 			(at 260.35 40.64 0)
 			(hide yes)
 			(effects
@@ -6078,7 +6078,7 @@
 			)
 		)
 	
-		(property "LCSC" "C882369"
+		(property "LCSC" "C7065270"
 			(at 260.35 40.64 0)
 			(hide yes)
 			(effects
@@ -6103,7 +6103,7 @@
 				)
 			)
 		)
-		(property "Value" "HF115F/005-1ZS3A"
+		(property "Value" "RT314005"
 			(at 355.6 55.88 0)
 			(effects
 				(font
@@ -6111,7 +6111,7 @@
 				)
 			)
 		)
-		(property "Footprint" "jlc:RELAY-TH_HF115F-024-2ZS4"
+		(property "Footprint" "jlc:RELAY-TH_RT314005_HF115F-PINS"
 			(at 355.6 40.64 0)
 			(hide yes)
 			(effects
@@ -6120,7 +6120,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C882369.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2404231543_TE-Connectivity-RT314005_C7065270.pdf"
 			(at 355.6 40.64 0)
 			(hide yes)
 			(effects
@@ -6147,7 +6147,7 @@
 			)
 		)
 	
-		(property "LCSC" "C882369"
+		(property "LCSC" "C7065270"
 			(at 355.6 40.64 0)
 			(hide yes)
 			(effects

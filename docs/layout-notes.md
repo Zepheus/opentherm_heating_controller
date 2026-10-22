@@ -186,6 +186,52 @@ dead ends so the next revision does not repeat them.
   board; plain connector labels and a clear block layout communicated the
   module areas better.
 
+## Wall-hanging layout lessons (2026-10-22)
+
+- **Start from how the board is mounted.** Which edges take cables decides
+  everything else: terminals go on the cable edges, the antenna takes an edge
+  that no cable reaches. Ask before placing, not after routing.
+- **Classify every connector as edge or internal in the geometry file** and let
+  the sanity check fail on an unclassified one, on a connector facing a no-cable
+  edge, on an edge connector more than 3 mm from its edge, and on an internal
+  header closer than 8 mm to any edge.
+- **Draw fixed connector copper in the part's own frame.** The USB-C pad
+  bridges and VBUS escape are now defined along the A1→A12 pad row and mapped to
+  the board, so turning the receptacle no longer breaks the pre-route.
+- **Run a placement check before routing** (`tools/check/placement.py`):
+  courtyard overlaps, courtyards outside the outline and pads of different
+  parts closer than 0.25 mm. Tactile-switch pads stick out past their
+  courtyard and caught a neighbouring resistor that courtyards missed.
+- **Freerouting would not route the +5V net at all** in this layout (0.6 mm
+  class width, about 20 pads spread over the board), even 3 mm stubs. Removing
+  the fixed copper or narrowing the class did not help. Pre-routing the supply
+  as locked copper did: a 1.0 mm rail above the driver row, a B.Cu drop to each
+  coil's +5V pin, short stubs to each LED resistor and flyback diode, and the
+  feed from the USB VBUS track past the TVS and bulk capacitor to the regulator.
+  Turn parts so their supply pad faces the rail (the LED resistors were the
+  wrong way round, which forced a crossing).
+- **Pads boxed in by fine-pitch neighbours need their own via**: the USB-C GND
+  pads at the row ends and the ESD array's GND pin ended up as pour islands a
+  repair via could not fit into. A locked via straight off the pad fixes it.
+- **Island repair should accept any other-layer island**, not only the largest
+  one: long B.Cu supply tracks split the bottom pour into several connected
+  pieces.
+- **Routed slots are cut after routing, so the router cannot see them**: it
+  ran an OpenTherm track across the coil-to-contact slot of relay 1. Cover
+  every slot with a temporary keep-out for the router.
+- **Removing many zones through the pcbnew API breaks the board proxy**
+  (`GetTracks()` then fails); strip temporary zones in a text pass before
+  loading instead.
+- **Swapping a relay for a cheaper one with the same body**: build a footprint
+  with the old pad numbering, so the schematic symbol and every script stay
+  unchanged, and move only the pad coordinates to the new datasheet's grid.
+- **Reserve space for a stacked module (OLED) as data**: a rectangle in the
+  geometry file, a silkscreen outline from it, and a sanity check that no
+  other part sits in it.
+- **Reserve label space next to edge connectors.** A connector whose entry faces
+  the side edge has its labels on the board side, so keep a few millimetres
+  free there instead of filling it with passives.
+
 ## Review lessons
 
 - The first independent review found two "confirmed" OpenTherm wiring

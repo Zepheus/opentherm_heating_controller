@@ -19,8 +19,18 @@ for f in board.Footprints():
     BOX[f.GetReference()] = (mm(bb.GetLeft()), mm(bb.GetTop()), mm(bb.GetRight()), mm(bb.GetBottom()))
     for p in f.Pads():
         if p.GetNumber(): PAD[(f.GetReference(), p.GetNumber())] = (mm(p.GetPosition().x), mm(p.GetPosition().y))
+# reference designators (edited first: footprint proxies go stale once the board changes): hidden where a plain-language label names the part; moved where a label needs the space
+LABELLED = ["J1", "J3", "J4", "J5", "J6", "J7", "J8", "J201", "J111", "J112", "J113", "J114", "SW1", "SW2", "SW3", "SW4"]
+FP = {f.GetReference(): f for f in board.Footprints()}
+def ref_at(ref, x, y, rot):
+    r = FP[ref].Reference(); r.SetPosition(VECTOR2I(FromMM(x), FromMM(y))); r.SetTextAngleDegrees(rot)
+for ref in LABELLED: FP[ref].Reference().SetVisible(False)
+for ref in ("R1", "R2"):   # to the module side, clear of the USB label
+    x0, y0, x1, y1 = BOX[ref]; ref_at(ref, x1 + 0.7, (y0 + y1) / 2, 90)
+x0, y0, x1, y1 = BOX["U3"]; ref_at("U3", x1 + 0.7, (y0 + y1) / 2, 90)
+
 for d in list(board.GetDrawings()):
-    if d.GetClass() == "PCB_TEXT" and d.GetLayer() in (pcbnew.F_SilkS, pcbnew.B_SilkS):
+    if d.GetClass() in ("PCB_TEXT", "PCB_SHAPE") and d.GetLayer() in (pcbnew.F_SilkS, pcbnew.B_SilkS):
         board.Remove(d)
 
 def text(s, x, y, size=0.8, rot=0, layer=pcbnew.F_SilkS, h="c"):
@@ -34,35 +44,50 @@ def text(s, x, y, size=0.8, rot=0, layer=pcbnew.F_SilkS, h="c"):
     board.Add(t); return t
 def above(ref, s, size=0.8, gap=0.9):
     x0, y0, x1, y1 = BOX[ref]; text(s, (x0 + x1) / 2, y0 - gap, size)
-def pin_labels(ref, names, dy=-2.4, size=0.8):
+def pin_labels(ref, names, dy=-2.4, size=0.8, dx=0.0, h="c"):
     for i, n in enumerate(names, start=1):
-        if n: x, y = PAD[(ref, str(i))]; text(n, x, y + dy, size)
+        if n: x, y = PAD[(ref, str(i))]; text(n, x + dx, y + dy, size, h=h)
 
-# ---- relay channels: "CHn  NC  COM  NO" in the strip between each terminal block and its relay
-label_y = (BOX["J111"][3] + BOX["K101"][1]) / 2
+# ---- relay channels: "CHn  NC  COM  NO" in the strip between each relay and its terminal block below
+label_y = (BOX["K101"][3] + BOX["J111"][1]) / 2
 for n, xr in enumerate(G.RX, start=1):
     for c, dx in G.TERM_DX.items(): text(c, xr + dx, label_y, 1.0)
     text(f"CH{n}", xr - 1.6, label_y, 1.2, h="r")
-for i, line in enumerate(["RELAY OUTPUTS: VOLT-FREE", "250VAC 3A MAX", "ISOLATE BEFORE OPENING"]):
-    text(line, 10.5, 9.6 + i * 1.3, 0.8)
+for i, line in enumerate(["RELAY OUTPUTS: VOLT-FREE", "250VAC 3A MAX PER CHANNEL", "ISOLATE BEFORE OPENING"]):
+    text(line, 118.7, 45.2 + i * 1.3, 0.9)   # just above the relay strip, below the OLED
 
-# ---- low-voltage connectors
-above("J201", "OPENTHERM")
-x0, y0, x1, y1 = BOX["J3"]; text("FLOW TEMP", (x0 + x1) / 2, y0 - 3.3); pin_labels("J3", ["3V3", "DAT", "GND"])
-x0, y0, x1, y1 = BOX["J4"]; text("OUTDOOR TEMP", (x0 + x1) / 2, y0 - 3.3); pin_labels("J4", ["3V3", "DAT", "GND"])
-x0, y0, x1, y1 = BOX["J1"]; text("USB-C 5V >=1A", x1 + 0.8, (y0 + y1) / 2 + 1.5, 0.8, h="l")
-x0, y0, x1, y1 = BOX["J6"]; text("QWIIC I2C", (x0 + x1) / 2, y1 + 0.9, 0.8)
-pin_labels("J5", ["GND", "3V3", "SCL", "SDA"], dy=2.4); above("J5", "OLED")
-pin_labels("J7", ["16", "17", "10", "11", "18", "19", "3V3", "GND"]); x0, y0, x1, y1 = BOX["J7"]; text("SPARE GPIO", (x0 + x1) / 2, y0 - 3.3)
-above("J8", "BOOT JP")
-for ref, s in [("SW1", "RESET"), ("SW2", "BOOT"), ("SW3", "BTN1"), ("SW4", "BTN2")]: above(ref, s)
-x0, y0, x1, y1 = BOX["LED1"]; text("STATUS", x0 - 0.5, (y0 + y1) / 2, 0.8, h="r")
-x0, y0, x1, y1 = BOX["LED2"]; text("OT", x0 - 0.5, (y0 + y1) / 2, 0.8, h="r")
+# ---- bottom edge: OpenTherm
+x0, y0, x1, y1 = BOX["J201"]; text("OPENTHERM", x1 + 0.6, (y0 + y1) / 2, 0.8, h="l")
+for pin, lab in (("1", "OT1"), ("2", "OT2")):
+    x, y = PAD[("J201", pin)]; text(lab, x, y0 - 0.9, 0.8)
 
+# ---- left edge: entries face the edge, labels sit beside each connector on the board side
+def side_labels(ref, title, pins, title_x):
+    x0, y0, x1, y1 = BOX[ref]
+    for i, n in enumerate(pins, start=1):
+        x, y = PAD[(ref, str(i))]; text(n, x1 + 0.4, y, 0.8, h="l")
+    text(title, title_x, (y0 + y1) / 2, 0.9, rot=90)
+side_labels("J3", "FLOW", ["3V3", "DAT", "GND"], 12.4)
+side_labels("J4", "OUTDOOR", ["3V3", "DAT", "GND"], 12.4)
+x0, y0, x1, y1 = BOX["J1"]; text("USB-C 5V >=1A", x1 + 0.55, (y0 + y1) / 2, 0.8, rot=90)
+x0, y0, x1, y1 = BOX["J6"]; text("QWIIC", x1 + 0.9, (y0 + y1) / 2, 0.8, rot=90)
+
+# ---- internal headers and controls
+pin_labels("J5", ["GND", "3V3", "SCL", "SDA"], dy=-3.0)   # above the header: the module covers everything below it
+x0, y0, x1, y1 = G.OLED_BOX
+ol = pcbnew.PCB_SHAPE(board); ol.SetShape(pcbnew.SHAPE_T_RECT); ol.SetLayer(pcbnew.F_SilkS); ol.SetWidth(FromMM(0.15))
+ol.SetStart(VECTOR2I(FromMM(x0), FromMM(y0))); ol.SetEnd(VECTOR2I(FromMM(x1), FromMM(y1))); board.Add(ol)
+text("OLED MODULE", (x0 + x1) / 2, (y0 + y1) / 2 + 3, 1.0)
+pin_labels("J7", ["16", "17", "10", "11", "18", "19", "3V3", "GND"], dy=0, dx=2.0, h="l"); x0, y0, x1, y1 = BOX["J7"]; text("SPARE GPIO", (x0 + x1) / 2 + 1.5, y0 - 0.9)
+x0, y0, x1, y1 = BOX["J8"]; text("BOOT JP", (x0 + x1) / 2, y1 + 0.9, 0.8)
+for ref, s_ in [("SW1", "RESET"), ("SW2", "BOOT"), ("SW3", "BTN1"), ("SW4", "BTN2")]:
+    x0, y0, x1, y1 = BOX[ref]; text(s_, (x0 + x1) / 2, y1 + 1.6, 0.8)
+x0, y0, x1, y1 = BOX["R9"]; text("STATUS", x1 + 0.5, (y0 + y1) / 2, 0.8, h="l")
+x0, y0, x1, y1 = BOX["R11"]; text("OT", x1 + 0.5, (y0 + y1) / 2, 0.8, h="l")
 
 # ---- identity
-text("ANDIRON v1.0", 16.5, 79.5, 1.5)
-text("Cedric Van Goethem 2026", 16.5, 81.8, 0.8)
+text("ANDIRON v1.0", 148.0, 14.0, 1.5)
+text("Cedric Van Goethem 2026", 148.0, 16.4, 0.8)
 
 pcbnew.SaveBoard(B, board)
 print("silkscreen stage done")

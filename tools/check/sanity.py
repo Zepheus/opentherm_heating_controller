@@ -123,6 +123,67 @@ ok = len(slots) >= spec["required_slots_mm"]["count_min"] and all(w >= spec["req
 print(f"   isolation slots: {len(slots)}, widths {sorted(set(round(w, 2) for w in widths))} mm {'ok' if ok else 'FAIL'}")
 if not ok: fail.append("isolation slots")
 
+# ---- connectors: external ones at their edge facing out, internal headers well inside
+import math as _m, importlib.util as _iu
+_spec = _iu.spec_from_file_location("geometry", os.path.join(proj, "tools", "layout", "geometry.py")); G = _iu.module_from_spec(_spec); _spec.loader.exec_module(G)
+print("== Connectors")
+dirs = {"top": (0, -1), "bottom": (0, 1), "left": (-1, 0), "right": (1, 0)}
+eb = board.GetBoardEdgesBoundingBox()
+for f in board.Footprints():
+    r = f.GetReference()
+    c = f.GetCourtyard(pcbnew.F_CrtYd); bb = c.BBox() if c.OutlineCount() else f.GetBoundingBox(False, False)
+    gaps = {"top": mm(bb.GetTop() - eb.GetTop()), "bottom": mm(eb.GetBottom() - bb.GetBottom()),
+            "left": mm(bb.GetLeft() - eb.GetLeft()), "right": mm(eb.GetRight() - bb.GetRight())}
+    if r in G.EDGE_CONNECTORS:
+        edge, _ = G.EDGE_CONNECTORS[r]; a = _m.radians(f.GetOrientationDegrees())
+        face = (round(_m.sin(a)), round(_m.cos(a))); ok = face == dirs[edge] and gaps[edge] <= G.EDGE_MAX_GAP
+        print(f"   {r:5} {edge:6} entry faces {face}, {gaps[edge]:.1f} mm from edge  {'ok' if ok else 'FAIL'}")
+        if not ok: fail.append(f"connector {r} not at/facing the {edge} edge")
+    if r in G.EDGE_CONNECTORS and G.EDGE_CONNECTORS[r][0] in G.NO_CABLE_EDGES:
+        print(f"   {r:5} assigned to the {G.EDGE_CONNECTORS[r][0]} edge, which takes no cables  FAIL"); fail.append(f"connector {r} on a no-cable edge")
+    if r.startswith("J") and r not in G.EDGE_CONNECTORS and r not in G.INTERNAL_HEADERS:
+        print(f"   {r:5} is neither an edge connector nor an internal header in geometry.py  FAIL"); fail.append(f"connector {r} unclassified")
+    if r in G.INTERNAL_HEADERS:
+        ok = min(gaps.values()) >= G.INTERNAL_HEADERS[r]
+        print(f"   {r:5} internal, {min(gaps.values()):.1f} mm from nearest edge  {'ok' if ok else 'FAIL'}")
+        if not ok: fail.append(f"header {r} too close to the edge")
+
+# ---- OLED area: the module stacks over this rectangle, so no other part may sit in it
+ox0, oy0, ox1, oy1 = (pcbnew.FromMM(v) for v in G.OLED_BOX)
+inside = [f.GetReference() for f in board.Footprints() if f.GetReference() != "J5" and
+          (lambda bb: bb.GetRight() > ox0 and bb.GetLeft() < ox1 and bb.GetBottom() > oy0 and bb.GetTop() < oy1)(
+              f.GetCourtyard(pcbnew.F_CrtYd).BBox() if f.GetCourtyard(pcbnew.F_CrtYd).OutlineCount() else f.GetBoundingBox(False, False))]
+print("== OLED module area:", "clear" if not inside else "parts inside: " + ", ".join(inside))
+if inside: fail.append(f"parts under the OLED module {inside}")
+
+# ---- pads of different parts closer than 0.25 mm (EasyEDA footprints can have pads outside their courtyard)
+pl = []
+for f in board.Footprints():
+    for p_ in f.Pads():
+        pb = p_.GetBoundingBox(); pb.Inflate(pcbnew.FromMM(0.25)); pl.append((f.GetReference(), p_.GetNetCode(), pb))
+clash = sorted(set((a[0], c[0]) for i, a in enumerate(pl) for c in pl[i + 1:] if a[0] != c[0] and (a[1] != c[1] or a[1] == 0) and a[2].Intersects(c[2])))
+print("== Pads of neighbouring parts closer than 0.25 mm:", clash or "none")
+if clash: fail.append(f"pad clash {clash}")
+
+# ---- mounting holes: screw heads (self-tapping into ABS, pan head up to 6.0 mm) are accessible metal
+HEAD_R = 3.0
+print("== Mounting holes (screw head edge to relay contact copper, mm)")
+mains = [t for t in board.GetTracks() if t.GetNetClassName() in ("CH1", "CH2", "CH3", "CH4")] + \
+        [p for f in board.Footprints() for p in f.Pads() if p.GetNetClassName() in ("CH1", "CH2", "CH3", "CH4")]
+for f in board.Footprints():
+    if not f.GetReference().startswith("H"): continue
+    c = f.GetPosition(); d = None
+    for it in mains:
+        sh = it.GetEffectiveShape(pcbnew.F_Cu)
+        dd = (sh.GetClearance(pcbnew.SHAPE_CIRCLE(c, 0)) if hasattr(sh, "GetClearance") else None)
+        if dd is None:
+            bb = it.GetBoundingBox(); dx = max(bb.GetLeft() - c.x, 0, c.x - bb.GetRight()); dy = max(bb.GetTop() - c.y, 0, c.y - bb.GetBottom()); dd = (dx * dx + dy * dy) ** 0.5
+        d = dd if d is None else min(d, dd)
+    gap = mm(d) - HEAD_R if d is not None else 99
+    ok = gap >= 6.4
+    print(f"   {f.GetReference()}: {gap:.1f} {'ok' if ok else 'FAIL (needs 6.4)'}")
+    if not ok: fail.append(f"screw head {f.GetReference()} {gap:.1f} mm from mains")
+
 # ---- single-pad nets
 print("== Nets with a single pad")
 cnt = collections.Counter(p.GetNetname() for f in board.Footprints() for p in f.Pads() if p.GetNetname())

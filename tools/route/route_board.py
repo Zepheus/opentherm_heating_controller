@@ -39,14 +39,15 @@ def strip(s, kind):
                 if depth==0: k+=1; break
             k+=1
         blk=s[j:k]
-        if re.search(r'\(net "/Relays/(NC|COM|NO)\d"\)', blk): n+=1
+        if kind=="zone": drop=bool(re.search(r'\(name "([^"]*_ZONE|EDGE_GUARD[^"]*)"\)', blk))   # temporary routing keep-outs
+        else: drop=bool(re.search(r'\(net "/Relays/(NC|COM|NO)\d"\)', blk))
+        if drop: n+=1
         else: out.append(blk)
         i=k
     return "".join(out), n
-s,n1=strip(s,"segment"); s,n2=strip(s,"via"); open(B,"w").write(s); print("stripped relay contact segments:",n1,"vias:",n2)
-board=pcbnew.LoadBoard(B)
-for z in list(board.Zones()):
-    if z.GetZoneName().endswith("_ZONE") or z.GetZoneName().startswith("EDGE_GUARD"): board.Remove(z)
+s,n1=strip(s,"segment"); s,n2=strip(s,"via"); s,n3=strip(s,"zone"); open(B,"w").write(s)
+print("stripped relay contact segments:",n1,"vias:",n2,"| temporary keep-outs removed:",n3)
+board=pcbnew.LoadBoard(B)   # removing many zones through the API leaves the board proxy unusable, hence the text pass
 def track(net, layer, x1,y1,x2,y2, w=G.LINK_W):
     t=pcbnew.PCB_TRACK(board); t.SetStart(VECTOR2I(FromMM(x1),FromMM(y1))); t.SetEnd(VECTOR2I(FromMM(x2),FromMM(y2)))
     t.SetWidth(FromMM(w)); t.SetLayer(layer); t.SetNet(board.FindNet(net)); board.Add(t)
@@ -54,12 +55,12 @@ for n, xr in enumerate(G.RX, start=1):
     for c, dx in G.COL_DX.items():
         net = G.contact_net(n, c); x = xr + dx
         track(net, pcbnew.F_Cu, x, G.RY + G.PIN_DY, x, G.RY - G.PIN_DY)
-        track(net, pcbnew.F_Cu, x, G.RY - G.PIN_DY, xr + G.TERM_DX[c], G.TERM_Y)
+        track(net, pcbnew.F_Cu, x, G.RY + G.PIN_DY, xr + G.TERM_DX[c], G.TERM_Y)
 # Freerouting necks tracks down near pads and vias, sometimes below the 0.15 mm board minimum: widen those stubs
 narrow=[t for t in board.GetTracks() if t.GetClass()=="PCB_TRACK" and t.GetWidth()<FromMM(0.15)]
 for t in narrow: t.SetWidth(FromMM(0.15))
 print("narrow router stubs widened to 0.15 mm:", len(narrow))
-selv=[(0,G.SELV_TOP),(G.W,G.SELV_TOP),(G.W,G.H),(0,G.H)]
+selv=[(0,0),(G.W,0),(G.W,G.SELV_BOTTOM),(0,G.SELV_BOTTOM)]   # low-voltage area above the isolation band
 def pour(layer, net, prio):
     z=pcbnew.ZONE(board); z.SetLayer(layer); z.SetNet(board.FindNet(net)); z.SetZoneName(f"{net}_{board.GetLayerName(layer)}")
     z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL); z.SetMinThickness(FromMM(0.25)); z.SetLocalClearance(FromMM(0.3)); z.SetAssignedPriority(prio); z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
@@ -95,23 +96,27 @@ def repair_islands():
         zl=zF if layer==pcbnew.F_Cu else zB; zo=zF if other==pcbnew.F_Cu else zB
         pl=zl.GetFilledPolysList(layer); po=zo.GetFilledPolysList(other)
         if pl.OutlineCount()<2 or po.OutlineCount()<1: continue
-        main_o=max(range(po.OutlineCount()), key=lambda i: po.Outline(i).Area()); mo=po.Outline(main_o)
+        main_o=max(range(po.OutlineCount()), key=lambda i: po.Outline(i).Area())
+        targets=[po.Outline(main_o)]+[po.Outline(i) for i in range(po.OutlineCount()) if i!=main_o]   # main pour first, then any other island
         main_l=max(range(pl.OutlineCount()), key=lambda i: pl.Outline(i).Area())
         for i in range(pl.OutlineCount()):
             if i==main_l: continue
             o=pl.Outline(i)
             if not any(ls.Contains(layer) and o.PointInside(pt) for pp,ls in pads for pt in [pp]): continue
-            bb=o.BBox(); best=None
-            x=bb.GetLeft()+FromMM(0.5)
-            while x<bb.GetRight() and best is None:
-                y=bb.GetTop()+FromMM(0.5)
-                while y<bb.GetBottom():
-                    pts=[VECTOR2I(x+dx,y+dy) for dx,dy in ((0,0),(FromMM(0.8),0),(-FromMM(0.8),0),(0,FromMM(0.8)),(0,-FromMM(0.8)))]
-                    clear=all((h.x-x)**2+(h.y-y)**2 >= FromMM(1.4)**2 for h in holes)   # never on top of another drill
-                    clear=clear and not any(bx0-FromMM(0.65)<=x<=bx1+FromMM(0.65) and by0-FromMM(0.65)<=y<=by1+FromMM(0.65) for bx0,by0,bx1,by1 in other_pads)
-                    if clear and all(o.PointInside(p) for p in pts) and all(mo.PointInside(p) for p in pts): best=VECTOR2I(x,y); break
-                    y+=FromMM(0.5)
-                x+=FromMM(0.5)
+            best=None
+            for tgt_n in (1, len(targets)):
+              if best is not None: break
+              bb=o.BBox()
+              x=bb.GetLeft()+FromMM(0.5)
+              while x<bb.GetRight() and best is None:
+                  y=bb.GetTop()+FromMM(0.5)
+                  while y<bb.GetBottom():
+                      pts=[VECTOR2I(x+dx,y+dy) for dx,dy in ((0,0),(FromMM(0.8),0),(-FromMM(0.8),0),(0,FromMM(0.8)),(0,-FromMM(0.8)))]
+                      clear=all((h.x-x)**2+(h.y-y)**2 >= FromMM(1.4)**2 for h in holes)   # never on top of another drill
+                      clear=clear and not any(bx0-FromMM(0.65)<=x<=bx1+FromMM(0.65) and by0-FromMM(0.65)<=y<=by1+FromMM(0.65) for bx0,by0,bx1,by1 in other_pads)
+                      if clear and all(o.PointInside(p) for p in pts) and any(all(mo.PointInside(p) for p in pts) for mo in targets[:tgt_n]): best=VECTOR2I(x,y); break
+                      y+=FromMM(0.5)
+                  x+=FromMM(0.5)
             if best is not None:
                 v=pcbnew.PCB_VIA(board); v.SetPosition(best); v.SetWidth(FromMM(0.8)); v.SetDrill(FromMM(0.4)); v.SetLayerPair(pcbnew.F_Cu,pcbnew.B_Cu); v.SetNet(board.FindNet("GND")); board.Add(v); added+=1
     return added
