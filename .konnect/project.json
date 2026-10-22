@@ -1,14 +1,14 @@
 {
   "design_rules": [
-    "Net classes: MAINS (L, N, relay COM/NO, DEMAND_RET), MAINS_IN (raw live inputs ES1_IN, ES2_IN, ES3_IN, DEMAND_230) and MAINS_SENSE (sense-chain internal nodes). All three keep 6.4 mm to every other (SELV) net including vias and pours; 8 mm where space allows. MAINS to MAINS 2.0 mm, MAINS_IN to anything 2.0 mm, MAINS_SENSE to MAINS 1.3 mm (only across a chain resistor). Rules live in heating-controller.kicad_dru.",
-    "No copper pour in the mains region on either layer. Mains copper may use both layers. Mains buses 2.5 mm wide, no mains track under 2.0 mm. No silkscreen, test points, fiducials or mounting holes inside the isolation band; mounting holes at least 6.4 mm from mains copper.",
-    "1.0 mm routed slot under the AC-input LTV-817S optocoupler row and between the coil and contact pins of every HF32FA relay, extending at least 3 mm beyond each body.",
-    "Every relay MOSFET gate gets a 100 kOhm pull-down and a 100 Ohm series resistor. Relay drives only on ESP32-C6 GPIO21, 22, 23 and 3; never on strapping pins GPIO8, 9, 15 or U0TXD GPIO16. Relay LEDs from 5 V through 1 kOhm to the MOSFET drain. No MOV or snubber across relay contacts.",
-    "All mains terminals on the top edge and right edge of the mains region; USB-C, OpenTherm, 1-Wire, OLED, Qwiic and buttons on the SELV edge. ESP32-C6-WROOM-1 antenna at the board edge with no copper or parts in the keep-out.",
-    "Each 230 V AC-input channel: six 22 kOhm 1206 resistors split 3 + 3 around an LTV-817S LED with an anti-parallel 1N4148WS; output 220 kOhm pull-up to 3.3 V and 1 uF to GND. The DEMAND channel's 24 V pin lands on the LED anode node. Prefer JLCPCB Basic parts; every part carries an LCSC field.",
-    "Mains terminal blocks are rising-cage clamp types for ferruled 1.0 to 1.5 mm2 wire (WJ128V-5.0 class); never 301-series screw-on-wire terminals on the mains side. Low-voltage terminals may be 3.5 mm KF350.",
-    "Power and programming are USB-C only: 5.1 kOhm Rd on CC1/CC2, SMF5.0A on VBUS, USBLC6-2SC6 on D+/D-. No on-board mains PSU, no UART bridge. OpenTherm input: 1 A 250 V fast fuse in series with OT1 and SMAJ24A across the bridge output.",
-    "JLCPCB assembly: every courtyard inside the board outline, buttons at least 9 mm from the edge, three fiducials in the SELV region, silkscreen text at least 0.8 mm high."
+    "The only mains on the board is the four relay channels' volt-free contacts. Net classes CH1..CH4 (nets /Relays/NCn, COMn, NOn). Each channel keeps 6.4 mm clearance and creepage from anything that is not the same channel (other channels and every low-voltage net); contacts within one channel 2.0 mm. Rules live in heating-controller.kicad_dru, limits and basis in tools/check/spacing_rules.json.",
+    "Contact copper at least 2.0 mm wide (links 2.5 mm), at least 2.0 mm from the board edge. No copper pour near the contacts; GND pours start below the isolation band. No silkscreen, fiducials or test points in the isolation band.",
+    "1.0 mm routed slots inside every relay footprint between coil and contacts, and between neighbouring channels.",
+    "Relays HF115F/005-1ZS3A lie horizontally, coil end left, contact columns NC/COM/NO directly under terminal pins 1/2/3 (WJ128V-5.0-3P rising-cage terminals on the top edge). Board geometry lives in tools/layout/geometry.py.",
+    "Every relay MOSFET gate gets a 100 kOhm pull-down and a 100 Ohm series resistor. Relay drives only on GPIO21, 22, 23 and 3; never on strapping pins GPIO8, 9, 15 or U0TXD GPIO16. Relay LEDs from 5 V through 1 kOhm to the MOSFET drain. No MOV or snubber across contacts.",
+    "ESP32-C6-WROOM-1 antenna end at the left board edge with no copper under it (ANTENNA_KEEPOUT rule area) and no terminals, USB shell or screws near it.",
+    "Power and programming are USB-C only: 5.1 kOhm Rd on CC1/CC2, SMF5.0A on VBUS, USBLC6-2SC6 on D+/D-. 3.3 V from an LDL1117S33R (SOT-223, no extra heat-spreading copper). OpenTherm input: 1 A 250 V fast fuse in series with OT1 and SMAJ24A across the bridge output.",
+    "Low-voltage clearance 0.25 mm (0.2 mm for USB nets and inside the USB-C pad row). Prefer JLCPCB Basic parts; every part carries an LCSC field.",
+    "JLCPCB assembly: every courtyard inside the board outline, buttons at least 5 mm from the edge, three fiducials in the low-voltage area, silkscreen text at least 0.8 mm high."
   ],
   "fab_constraints": {},
   "naming_conventions": {},

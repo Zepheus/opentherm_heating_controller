@@ -1,44 +1,35 @@
 (version 1)
 
-# Reinforced insulation between the 230 V section (MAINS + MAINS_SENSE) and everything else.
-# IEC 62368-1 reinforced at 230 V / OVC II / PD2: 3.0 mm clearance, 5.0 mm creepage; design floor 6.4 mm.
-(rule "mains-to-selv"
-    (condition "(A.NetClass == 'MAINS' || A.NetClass == 'MAINS_SENSE' || A.NetClass == 'MAINS_IN') && B.NetClass != 'MAINS' && B.NetClass != 'MAINS_SENSE' && B.NetClass != 'MAINS_IN'")
+# Andiron v1.0: the only mains on the board is the four relay channels' volt-free contacts (net classes CH1..CH4,
+# nets /Relays/NCn, COMn, NOn). Each channel is its own circuit: it may switch 230 V while a neighbour switches a
+# boiler's low-voltage loop, so every channel is isolated from everything that is not itself.
+# IEC 62368-1 reinforced at 230 V, OVC II, PD2, material group IIIb: 3.0 mm clearance, 5.0 mm creepage.
+# Design floor 6.4 mm for both. Limits and their basis: tools/check/spacing_rules.json (checked by tools/check/sanity.py).
+
+(rule "channel-isolation"
+    (condition "(A.NetClass == 'CH1' && B.NetClass != 'CH1') || (A.NetClass == 'CH2' && B.NetClass != 'CH2') || (A.NetClass == 'CH3' && B.NetClass != 'CH3') || (A.NetClass == 'CH4' && B.NetClass != 'CH4')")
     (constraint clearance (min 6.4mm)))
 
-# Creepage (surface path, following slots) for the same barrier: 62368-1 reinforced at 250 V working, PD2, material
-# group IIIb is 5.0 mm; held to the 6.4 mm design floor like clearance.
-(rule "mains-to-selv-creepage"
-    (condition "(A.NetClass == 'MAINS' || A.NetClass == 'MAINS_SENSE' || A.NetClass == 'MAINS_IN') && B.NetClass != 'MAINS' && B.NetClass != 'MAINS_SENSE' && B.NetClass != 'MAINS_IN'")
+(rule "channel-isolation-creepage"
+    (condition "(A.NetClass == 'CH1' && B.NetClass != 'CH1') || (A.NetClass == 'CH2' && B.NetClass != 'CH2') || (A.NetClass == 'CH3' && B.NetClass != 'CH3') || (A.NetClass == 'CH4' && B.NetClass != 'CH4')")
     (constraint creepage (min 6.4mm)))
 
-# Functional insulation between mains nets (L, N, COM, NO) themselves: 62368-1 basic clearance at 2.5 kV is 1.5 mm.
-(rule "mains-to-mains"
-    (condition "A.NetClass == 'MAINS' && B.NetClass == 'MAINS'")
+# NC, COM and NO of the same channel: functional insulation across an open contact; 62368-1 basic clearance at 2.5 kV is 1.5 mm.
+(rule "contacts-within-channel"
+    (condition "A.NetClass == B.NetClass && (A.NetClass == 'CH1' || A.NetClass == 'CH2' || A.NetClass == 'CH3' || A.NetClass == 'CH4')")
     (constraint clearance (min 2.0mm)))
-
-# Raw live terminal nets (ES1_IN/ES2_IN/ES3_IN/DEMAND_230) are at line potential before any resistor: 2.0 mm to everything.
-(rule "mains-in-to-anything"
-    (condition "A.NetClass == 'MAINS_IN'")
-    (constraint clearance (min 2.0mm)))
-
-# Chain-internal sense nodes (S*_n, LEDA/LEDK): the only MAINS copper they neighbour is the far pad of their own 22 k resistor (~40 V across it), so 1.3 mm.
-# The raw live inputs ES1_IN/ES2_IN/ES3_IN/DEMAND_230 are in the MAINS_IN class (rule below), not here.
-(rule "sense-to-mains"
-    (condition "A.NetClass == 'MAINS_SENSE' && B.NetClass == 'MAINS'")
-    (constraint clearance (min 1.3mm)))
 
 (rule "mains-to-edge"
-    (condition "A.NetClass == 'MAINS' || A.NetClass == 'MAINS_SENSE' || A.NetClass == 'MAINS_IN'")
+    (condition "A.NetClass == 'CH1' || A.NetClass == 'CH2' || A.NetClass == 'CH3' || A.NetClass == 'CH4'")
     (constraint edge_clearance (min 2.0mm)))
 
-# Each raw live input's own series resistor: ~38 V across it (one sixth of 230 V), so the 1206's 1.8 mm pad gap and the
-# locked exit stub are allowed 1.3 mm to that first chain node only. Last rule wins, so this sits after mains-in-to-anything.
-(rule "mains-in-own-first-resistor"
-    (condition "(A.NetClass == 'MAINS_IN' && (B.NetName == '/Mains IO/S1_1' || B.NetName == '/Mains IO/S2_1' || B.NetName == '/Mains IO/S3_1' || B.NetName == '/Mains IO/S4_1')) || (B.NetClass == 'MAINS_IN' && (A.NetName == '/Mains IO/S1_1' || A.NetName == '/Mains IO/S2_1' || A.NetName == '/Mains IO/S3_1' || A.NetName == '/Mains IO/S4_1'))")
-    (constraint clearance (min 1.3mm)))
-
-# L/N/COM/NO carry the valve fault current until the 3 A fuse clears.
+# Contact copper carries the switched load until the external 3 A fuse clears.
 (rule "mains-track-width"
-    (condition "A.NetClass == 'MAINS'")
+    (condition "A.NetClass == 'CH1' || A.NetClass == 'CH2' || A.NetClass == 'CH3' || A.NetClass == 'CH4'")
     (constraint track_width (min 2.0mm)))
+
+# USB-C receptacle: its own pad row is 0.5 mm pitch with 0.2 mm gaps (manufacturer land pattern). The low-voltage
+# 0.25 mm clearance applies everywhere else; the USB nets have their own 0.2 mm class for the escape.
+(rule "usb-c-pad-row"
+    (condition "A.memberOfFootprint('J1') && B.memberOfFootprint('J1')")
+    (constraint clearance (min 0.15mm)))

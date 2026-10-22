@@ -1,6 +1,12 @@
-"""Stage 2 (KiCad closed): import SES, drop corridor keepouts, re-add mains buses deterministically, slots, GND pours, fill, save."""
-import sys, re, collections, pcbnew
+"""Stage 2 of the routing pipeline: restore the outline and cut the isolation slots, import the SES, strip and re-lay
+the relay contact copper deterministically, drop the temporary keep-outs, pour GND over the low-voltage area, repair
+pour islands, save.
+usage: <kicad python> -I route_board.py <project_dir>
+"""
+import sys, re, os, collections, importlib.util, pcbnew
 from pcbnew import FromMM, VECTOR2I
+_spec = importlib.util.spec_from_file_location("geometry", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "layout", "geometry.py"))
+G = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(G)
 P=sys.argv[1]; B=P+"/heating-controller.kicad_pcb"; SES=P+"/fab/route/heating-controller.ses"
 PRO=P+"/heating-controller.kicad_pro"
 pcbnew.GetSettingsManager().LoadProject(PRO)
@@ -8,15 +14,15 @@ board=pcbnew.LoadBoard(B)
 for d in list(board.GetDrawings()):
     if d.GetLayer()==pcbnew.Edge_Cuts: board.Remove(d)
 sh=pcbnew.PCB_SHAPE(board); sh.SetShape(pcbnew.SHAPE_T_RECT); sh.SetLayer(pcbnew.Edge_Cuts)
-sh.SetStart(VECTOR2I(0,0)); sh.SetEnd(VECTOR2I(FromMM(150),FromMM(95))); sh.SetWidth(FromMM(0.1)); board.Add(sh)
+sh.SetStart(VECTOR2I(0,0)); sh.SetEnd(VECTOR2I(FromMM(G.W),FromMM(G.H))); sh.SetWidth(FromMM(0.1)); board.Add(sh)
 def slot(x1,y1,x2,y2):
     s=pcbnew.PCB_SHAPE(board); s.SetShape(pcbnew.SHAPE_T_RECT); s.SetLayer(pcbnew.Edge_Cuts)
     s.SetStart(VECTOR2I(FromMM(x1),FromMM(y1))); s.SetEnd(VECTOR2I(FromMM(x2),FromMM(y2))); s.SetWidth(FromMM(0.1)); board.Add(s)
-for x in [32,49,66,83]: slot(x-8,32.5,x+8,33.5)
-slot(93,51.5,137,52.5)
+for xr in G.RX:
+    for sl in G.slots(xr): slot(*sl)
 ok=pcbnew.ImportSpecctraSES(board, SES); print("ses import:", ok)
 pcbnew.SaveBoard(B, board)
-# text pass: drop every MAINS_L / MAINS_N segment and via the router or the export round-trip left behind
+# text pass: drop every relay contact segment and via the export round trip left behind; they are re-laid below
 s=open(B).read()
 def strip(s, kind):
     out=[]; i=0; n=0
@@ -33,51 +39,33 @@ def strip(s, kind):
                 if depth==0: k+=1; break
             k+=1
         blk=s[j:k]
-        if any(('(net "/Mains IO/%s")' % nn) in blk for nn in ["MAINS_L","MAINS_N","DEMAND_RET","COM1","COM2","COM3","COM4","NO1","NO2","NO3","NO4"]): n+=1
+        if re.search(r'\(net "/Relays/(NC|COM|NO)\d"\)', blk): n+=1
         else: out.append(blk)
         i=k
     return "".join(out), n
-s,n1=strip(s,"segment"); s,n2=strip(s,"via"); open(B,"w").write(s); print("stripped L/N segments:",n1,"vias:",n2)
+s,n1=strip(s,"segment"); s,n2=strip(s,"via"); open(B,"w").write(s); print("stripped relay contact segments:",n1,"vias:",n2)
 board=pcbnew.LoadBoard(B)
 for z in list(board.Zones()):
-    if z.GetZoneName().startswith("MAINS_BUS_CORRIDOR") or z.GetZoneName().startswith("EDGE_GUARD") or z.GetZoneName()=="LDO_POUR_KEEPOUT": board.Remove(z)
-L="/Mains IO/MAINS_L"; N="/Mains IO/MAINS_N"
-def track(net, layer, x1,y1,x2,y2, w=2.5):
+    if z.GetZoneName().endswith("_ZONE") or z.GetZoneName().startswith("EDGE_GUARD"): board.Remove(z)
+def track(net, layer, x1,y1,x2,y2, w=G.LINK_W):
     t=pcbnew.PCB_TRACK(board); t.SetStart(VECTOR2I(FromMM(x1),FromMM(y1))); t.SetEnd(VECTOR2I(FromMM(x2),FromMM(y2)))
     t.SetWidth(FromMM(w)); t.SetLayer(layer); t.SetNet(board.FindNet(net)); board.Add(t)
-def via(net, x,y, d=1.6, drill=0.8):
-    v=pcbnew.PCB_VIA(board); v.SetPosition(VECTOR2I(FromMM(x),FromMM(y))); v.SetWidth(FromMM(d)); v.SetDrill(FromMM(drill))
-    v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu); v.SetNet(board.FindNet(net)); board.Add(v)
-def buses():
-    # L bus nearest the terminals (y 12.5) so its drops to J111..J114 pin 1 never cross N; N bus at y 17
-    track(L,pcbnew.F_Cu,14.5,8,14.5,12.5); track(L,pcbnew.F_Cu,14.5,12.5,131,12.5)
-    for x in [27,44,61,78]: track(L,pcbnew.F_Cu,x,12.5,x,8)
-    via(L,130.6,12.5,1.2,0.6); track(L,pcbnew.B_Cu,130.6,12.5,130.6,23.2,2.0); via(L,130.6,23.2,1.2,0.6); track(L,pcbnew.F_Cu,130.6,23.2,131,24.3,2.0)
-    track(N,pcbnew.B_Cu,19.5,8,19.5,17); via(N,19.5,17); track(N,pcbnew.F_Cu,19.5,17,135,17)
-    for x in [99,108,117,135]:
-        via(N,x,17); track(N,pcbnew.B_Cu,x,17,x,23.2); via(N,x,23.2); track(N,pcbnew.F_Cu,x,23.2,x,24.3,2.0)
-buses()
-# relay contacts + DEMAND_RET, fixed so the router works around them
-def contacts_and_demand():
-    for n,xt in enumerate([32,49,66,83], start=1):
-        for net,xp,xr in [(f"/Mains IO/COM{n}",xt,xt-2.55),(f"/Mains IO/NO{n}",xt+5,xt+3.8)]:
-            track(net,pcbnew.B_Cu,xp,8,xp,19); track(net,pcbnew.B_Cu,xp,19,xr,25.38)
-    DR="/Mains IO/DEMAND_RET"
-    track(DR,pcbnew.B_Cu,143.5,25,140.5,28,2.0); track(DR,pcbnew.B_Cu,140.5,28,126,28,2.0); track(DR,pcbnew.B_Cu,126,28,126,23.2,2.0)   # sense-chain return only: 2.0 mm, leaves room for the DEMAND_230 lane
-    via(DR,126,23.2); track(DR,pcbnew.F_Cu,126,23.2,126,24.3,2.0)
-contacts_and_demand()
-selv=[(0,39),(88.5,39),(88.5,55.5),(150,55.5),(150,95),(0,95)]
+for n, xr in enumerate(G.RX, start=1):
+    for c, dx in G.COL_DX.items():
+        net = G.contact_net(n, c); x = xr + dx
+        track(net, pcbnew.F_Cu, x, G.RY + G.PIN_DY, x, G.RY - G.PIN_DY)
+        track(net, pcbnew.F_Cu, x, G.RY - G.PIN_DY, xr + G.TERM_DX[c], G.TERM_Y)
+# Freerouting necks tracks down near pads and vias, sometimes below the 0.15 mm board minimum: widen those stubs
+narrow=[t for t in board.GetTracks() if t.GetClass()=="PCB_TRACK" and t.GetWidth()<FromMM(0.15)]
+for t in narrow: t.SetWidth(FromMM(0.15))
+print("narrow router stubs widened to 0.15 mm:", len(narrow))
+selv=[(0,G.SELV_TOP),(G.W,G.SELV_TOP),(G.W,G.H),(0,G.H)]
 def pour(layer, net, prio):
     z=pcbnew.ZONE(board); z.SetLayer(layer); z.SetNet(board.FindNet(net)); z.SetZoneName(f"{net}_{board.GetLayerName(layer)}")
     z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL); z.SetMinThickness(FromMM(0.25)); z.SetLocalClearance(FromMM(0.3)); z.SetAssignedPriority(prio); z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
     for x,y in selv: z.AppendCorner(VECTOR2I(FromMM(x),FromMM(y)), -1, False)
     board.Add(z)
 pour(pcbnew.F_Cu,"GND",1); pour(pcbnew.B_Cu,"GND",0)
-# +3V3 heat-spreading copper on the AMS1117 tab (SOT-223 tab = pin 2 = 3V3); the area was a routing keepout, so it fills whole
-z=pcbnew.ZONE(board); z.SetLayer(pcbnew.F_Cu); z.SetNet(board.FindNet("+3V3")); z.SetZoneName("3V3_LDO_TAB")
-z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL); z.SetMinThickness(FromMM(0.25)); z.SetLocalClearance(FromMM(0.3)); z.SetAssignedPriority(5); z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
-for x,y in [(53.3,66.5),(62.6,66.5),(62.6,79.8),(60.0,79.8),(60.0,84.5),(55.0,84.5),(55.0,79.8),(53.3,79.8)]: z.AppendCorner(VECTOR2I(FromMM(x),FromMM(y)), -1, False)
-board.Add(z)
 pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 # a stitching via whose GND island on each layer holds no GND pad connects nothing: drop it so island removal clears the copper
 gnd=board.FindNet("GND").GetNetCode()
@@ -95,6 +83,11 @@ for v in drop: board.Remove(v)
 if drop: pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 print("floating stitching vias removed:", len(drop))
 # GND islands that hold pads but are cut off from the main pour: add a via where the other layer's main pour lies underneath
+other_pads=[]
+for f in board.Footprints():
+    for p_ in f.Pads():
+        if p_.GetNetCode()!=gnd:
+            bb=p_.GetBoundingBox(); other_pads.append((bb.GetLeft(),bb.GetTop(),bb.GetRight(),bb.GetBottom()))
 def repair_islands():
     added=0
     holes=[t.GetPosition() for t in board.GetTracks() if t.GetClass()=="PCB_VIA"]+[p.GetPosition() for f in board.Footprints() for p in f.Pads() if p.GetDrillSize().x>0]
@@ -115,6 +108,7 @@ def repair_islands():
                 while y<bb.GetBottom():
                     pts=[VECTOR2I(x+dx,y+dy) for dx,dy in ((0,0),(FromMM(0.8),0),(-FromMM(0.8),0),(0,FromMM(0.8)),(0,-FromMM(0.8)))]
                     clear=all((h.x-x)**2+(h.y-y)**2 >= FromMM(1.4)**2 for h in holes)   # never on top of another drill
+                    clear=clear and not any(bx0-FromMM(0.65)<=x<=bx1+FromMM(0.65) and by0-FromMM(0.65)<=y<=by1+FromMM(0.65) for bx0,by0,bx1,by1 in other_pads)
                     if clear and all(o.PointInside(p) for p in pts) and all(mo.PointInside(p) for p in pts): best=VECTOR2I(x,y); break
                     y+=FromMM(0.5)
                 x+=FromMM(0.5)

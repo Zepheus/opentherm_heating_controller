@@ -156,9 +156,9 @@
         "min_track_width": 0.15,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.5,
+        "solder_mask_min_width": 0.0,
         "solder_mask_to_copper_clearance": 0.0,
-        "use_height_for_length_calcs": true,
-        "solder_mask_min_width": 0.0
+        "use_height_for_length_calcs": true
       },
       "teardrop_options": [
         {
@@ -275,7 +275,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.25,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -301,7 +301,7 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "MAINS",
+        "name": "CH1",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -320,33 +320,71 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "MAINS_IN",
+        "name": "CH2",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.5,
+        "track_width": 2.5,
         "tuning_profile": "",
-        "via_diameter": 1.0,
-        "via_drill": 0.5,
+        "via_diameter": 1.6,
+        "via_drill": 0.8,
         "wire_width": 6
       },
       {
         "bus_width": 12,
-        "clearance": 0.5,
+        "clearance": 2.0,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "MAINS_SENSE",
+        "name": "CH3",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.5,
+        "track_width": 2.5,
         "tuning_profile": "",
-        "via_diameter": 1.0,
-        "via_drill": 0.5,
+        "via_diameter": 1.6,
+        "via_drill": 0.8,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 2.0,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "CH4",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 2.5,
+        "tuning_profile": "",
+        "via_diameter": 1.6,
+        "via_drill": 0.8,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.25,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 10,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.6,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
         "wire_width": 6
       },
       {
@@ -358,11 +396,11 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "Power",
+        "name": "USB",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 3,
+        "priority": 9,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.6,
+        "track_width": 0.2,
         "tuning_profile": "",
         "via_diameter": 0.8,
         "via_drill": 0.4,
@@ -376,208 +414,76 @@
     "netclass_assignments": {},
     "netclass_patterns": [
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/MAINS_L"
+        "netclass": "CH1",
+        "pattern": "/Relays/NC1"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/MAINS_N"
+        "netclass": "CH1",
+        "pattern": "/Relays/COM1"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/DEMAND_RET"
+        "netclass": "CH1",
+        "pattern": "/Relays/NO1"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/COM1"
+        "netclass": "CH2",
+        "pattern": "/Relays/NC2"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/COM2"
+        "netclass": "CH2",
+        "pattern": "/Relays/COM2"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/COM3"
+        "netclass": "CH2",
+        "pattern": "/Relays/NO2"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/COM4"
+        "netclass": "CH3",
+        "pattern": "/Relays/NC3"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/NO1"
+        "netclass": "CH3",
+        "pattern": "/Relays/COM3"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/NO2"
+        "netclass": "CH3",
+        "pattern": "/Relays/NO3"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/NO3"
+        "netclass": "CH4",
+        "pattern": "/Relays/NC4"
       },
       {
-        "netclass": "MAINS",
-        "pattern": "/Mains IO/NO4"
+        "netclass": "CH4",
+        "pattern": "/Relays/COM4"
       },
       {
-        "netclass": "MAINS_IN",
-        "pattern": "/Mains IO/DEMAND_230"
+        "netclass": "CH4",
+        "pattern": "/Relays/NO4"
       },
       {
-        "netclass": "MAINS_IN",
-        "pattern": "/Mains IO/ES1_IN"
+        "netclass": "USB",
+        "pattern": "/Power + MCU/USB_DN_C"
       },
       {
-        "netclass": "MAINS_IN",
-        "pattern": "/Mains IO/ES2_IN"
+        "netclass": "USB",
+        "pattern": "/Power + MCU/USB_DP_C"
       },
       {
-        "netclass": "MAINS_IN",
-        "pattern": "/Mains IO/ES3_IN"
+        "netclass": "USB",
+        "pattern": "/Power + MCU/USB_DN"
       },
       {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/DEMAND_24"
+        "netclass": "USB",
+        "pattern": "/Power + MCU/USB_DP"
       },
       {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S1_1"
+        "netclass": "USB",
+        "pattern": "/Power + MCU/CC1"
       },
       {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S1_2"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S1_3"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S1_4"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S1_5"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S2_1"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S2_2"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S2_3"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S2_4"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S2_5"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S3_1"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S3_2"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S3_3"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S3_4"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S3_5"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S4_1"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S4_2"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S4_3"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S4_4"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S4_5"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S5_1"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S5_2"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S5_3"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S5_4"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/S5_5"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDA1"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDA2"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDA3"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDA4"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDA5"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDK1"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDK2"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDK3"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDK4"
-      },
-      {
-        "netclass": "MAINS_SENSE",
-        "pattern": "/Mains IO/LEDK5"
+        "netclass": "USB",
+        "pattern": "/Power + MCU/CC2"
       },
       {
         "netclass": "Power",

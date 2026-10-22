@@ -90,7 +90,7 @@ for refs, val, fp, lcsc, info, price, cost in lines:
     link = f"[{lcsc}](https://jlcpcb.com/partdetail/{lcsc})" if lcsc else "—"
     md.append(f"| {len(refs)} | {', '.join(refs)} | {val} | {fp} | {link} | {mpn} | {lib} | {price:.4f} | {cost:.2f} |")
 md += ["", "## Not fitted (DNP)", "", "| Reference | Value | Why it is on the board |", "|---|---|---|"]
-why = {"K104": "fourth relay channel, fit for a future zone", "R17": "OLED pin-order option", "R19": "OLED pin-order option",
+why = {"R17": "OLED pin-order option", "R19": "OLED pin-order option",
        "R21": "OLED VCC option"}
 for r in sorted(dnp, key=lambda r: refkey(r["Reference"])):
     md.append(f"| {r['Reference']} | {r['Value']} | {why.get(r['Reference'], 'option')} |")

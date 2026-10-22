@@ -4671,6 +4671,338 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector_Generic:Conn_01x08"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x08"
+				(at 0 -12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x08_1_1"
+				(rectangle
+					(start -1.27 8.89)
+					(end 1.27 -11.43)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 7.747)
+					(end 0 7.493)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 5.207)
+					(end 0 4.953)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -7.493)
+					(end 0 -7.747)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -10.033)
+					(end 0 -10.287)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 7.62 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 0)
+					(length 3.81)
+					(name "Pin_7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -10.16 0)
+					(length 3.81)
+					(name "Pin_8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(no_connect
 		(at 64.77 92.71)
@@ -4684,6 +5016,10 @@
 		(at 261.62 134.62)
 		(uuid "fa95724f-c2d1-4b7c-9120-f4f81484f802")
 	)
+	(no_connect
+		(at 261.62 144.78)
+		(uuid "7d735945-948f-482f-868a-b930df3e86c8")
+	)
 	(text "POWER + MCU. USB-C is the only supply and programmer (native USB-Serial-JTAG on IO12/IO13). Relay drives on IO21/22/23/3 only. Strapping: IO8 high (LED pull-up), IO9 BOOT, IO15 LED pull-up."
 		(at 30 30 0)
 		(effects
@@ -4694,7 +5030,7 @@
 		)
 		(uuid "e437fe2c-74a1-4efe-ac73-792777b548bc")
 	)
-	(text "OLED header: JP1/JP2 select pin-1/2 order (GND,VCC default). JP3 selects OLED VCC 3V3 (default) or 5V. Qwiic = GND,3V3,SDA,SCL."
+	(text "OLED header J5: GND, 3V3, SCL, SDA (standard 4-pin I2C OLED modules). Qwiic J6: GND, 3V3, SDA, SCL. Spare J7: IO16, IO17, IO10, IO11, IO18, IO19, 3V3, GND."
 		(at 30 150 0)
 		(effects
 			(font
@@ -5244,26 +5580,6 @@
 		)
 		(uuid "0a7a8765-93ef-4ffc-9b47-a50592dd5f04")
 	)
-	(label "OLED_P1"
-		(at 90.17 162.56 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "17a8bcf9-cbf8-41b8-bc74-7627212fcfd3")
-	)
-	(label "OLED_P2"
-		(at 90.17 165.1 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "2cbad388-6f60-4716-8468-8fb885513cac")
-	)
 	(label "SCL"
 		(at 90.17 167.64 180)
 		(effects
@@ -5364,25 +5680,45 @@
 		)
 		(uuid "de4f508e-baf8-4259-a9bb-0e48be152bb2")
 	)
-	(label "SPARE16"
-		(at 165.1 222.25 180)
+	(label "IO10"
+		(at 218.44 144.78 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify right)
 		)
-		(uuid "bc045cc7-4b4d-4643-949a-ceb9be474099")
+		(uuid "67730279-039b-41e5-922e-64e52d3610a6")
 	)
-	(label "SPARE17"
-		(at 165.1 224.79 180)
+	(label "IO11"
+		(at 218.44 147.32 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify right)
 		)
-		(uuid "78d3057c-6dd0-43c8-8306-bafb86886057")
+		(uuid "fcf5024a-20f9-4c1c-8802-f9e88a06ca27")
+	)
+	(label "IO18"
+		(at 261.62 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f993c41b-cb8f-425a-b9f3-2343f3f83cae")
+	)
+	(label "IO19"
+		(at 261.62 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1be39050-33ae-4961-9bd8-da0b5aa3e2db")
 	)
 	(global_label "+5V"
 		(shape passive)
@@ -6187,28 +6523,6 @@
 		)
 		(uuid "74f04b5e-7b6d-4fe7-9586-638f4e461c4c")
 	)
-	(global_label "+3V3"
-		(shape passive)
-		(at 165.1 227.33 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "88ffbcda-d7a9-40c1-8767-4176595e5dee")
-	)
-	(global_label "GND"
-		(shape passive)
-		(at 165.1 229.87 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "6302cb09-6c70-4ef2-bc91-dbdb0150293b")
-	)
 	(global_label "GND"
 		(shape passive)
 		(at 39.37 250.19 90)
@@ -6274,61 +6588,6 @@
 			(justify right)
 		)
 		(uuid "33bbd692-21f7-429c-ac69-1d7151d5a1b4")
-	)
-	(hierarchical_label "ES1"
-		(shape bidirectional)
-		(at 218.44 144.78 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "67730279-039b-41e5-922e-64e52d3610a6")
-	)
-	(hierarchical_label "ES2"
-		(shape bidirectional)
-		(at 218.44 147.32 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "fcf5024a-20f9-4c1c-8802-f9e88a06ca27")
-	)
-	(hierarchical_label "ES3"
-		(shape bidirectional)
-		(at 261.62 149.86 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "f993c41b-cb8f-425a-b9f3-2343f3f83cae")
-	)
-	(hierarchical_label "DEMAND_IN"
-		(shape bidirectional)
-		(at 261.62 147.32 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1be39050-33ae-4961-9bd8-da0b5aa3e2db")
-	)
-	(hierarchical_label "MAINS_OK"
-		(shape bidirectional)
-		(at 261.62 144.78 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "a42e409f-82c7-4ad8-b282-b7da48c07a25")
 	)
 	(hierarchical_label "RLY1"
 		(shape bidirectional)
@@ -7030,7 +7289,7 @@
 				)
 			)
 		)
-		(property "Value" "AMS1117-3.3"
+		(property "Value" "LDL1117S33R"
 			(at 170.18 51.435 0)
 			(effects
 				(font
@@ -7048,7 +7307,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.advanced-monolithic.com/pdf/ds1117.pdf"
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/ldl1117.pdf"
 			(at 170.18 54.61 0)
 			(hide yes)
 			(effects
@@ -7066,7 +7325,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C6186"
+		(property "LCSC" "C435835"
 			(at 170.18 54.61 0)
 			(hide yes)
 			(effects
@@ -8839,7 +9098,7 @@
 				)
 			)
 		)
-		(property "Value" "OLED"
+		(property "Value" "OLED GND/3V3/SCL/SDA"
 			(at 95.25 172.72 0)
 			(effects
 				(font
@@ -9307,75 +9566,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
-		(at 170.18 224.79 0)
-		(unit 1)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "697dbf6e-7bad-4a88-90bd-4c889f7352fa")
-		(property "Reference" "J7"
-			(at 170.18 219.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SPARE"
-			(at 170.18 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-			(at 170.18 224.79 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 170.18 224.79 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 170.18 224.79 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C2691448"
-			(at 170.18 224.79 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "heating-controller"
-				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 39.37 250.19 0)
 		(unit 1)
@@ -9681,31 +9871,31 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 62.23 190.5 0)
+		(lib_id "Connector_Generic:Conn_01x08")
+		(at 170.18 228.6 0)
 		(unit 1)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "58a1aa07-1903-48bd-ba31-e77fe30c4997")
-		(property "Reference" "R16"
-			(at 64.262 190.5 90)
+		(uuid "547f65a5-d408-4406-8777-d9db1c13a1d0")
+		(property "Reference" "J7"
+			(at 170.18 218.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "0R"
-			(at 62.23 190.5 90)
+		(property "Value" "SPARE GPIO"
+			(at 170.18 241.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 62.23 190.5 0)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
+			(at 170.18 228.6 0)
 			(hide yes)
 			(effects
 				(font
@@ -9714,7 +9904,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 62.23 190.5 0)
+			(at 170.18 228.6 0)
 			(hide yes)
 			(effects
 				(font
@@ -9722,8 +9912,8 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 62.23 190.5 0)
+		(property "Description" "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 170.18 228.6 0)
 			(hide yes)
 			(effects
 				(font
@@ -9734,14 +9924,14 @@
 		(instances
 			(project "heating-controller"
 				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "R16")
+					(reference "J7")
 					(unit 1)
 				)
 			)
 		)
 	
-		(property "LCSC" "C21189"
-			(at 62.23 190.5 0)
+		(property "LCSC" "C492407"
+			(at 170.18 228.6 0)
 			(hide yes)
 			(effects
 				(font
@@ -9749,473 +9939,108 @@
 				)
 			)
 		))
-	(symbol
-		(lib_id "Device:R")
-		(at 77.47 190.5 0)
-		(unit 1)
-		(in_bom yes)
-		(on_board yes)
-		(dnp yes)
-		(uuid "041cb0ed-d1b9-40d6-be7e-a69eaa7532b5")
-		(property "Reference" "R17"
-			(at 79.502 190.5 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0R (DNP)"
-			(at 77.47 190.5 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 77.47 190.5 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 77.47 190.5 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 77.47 190.5 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "heating-controller"
-				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "R17")
-					(unit 1)
-				)
-			)
-		)
-	
-		(property "LCSC" "C21189"
-			(at 77.47 190.5 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		))
-	(symbol
-		(lib_id "Device:R")
-		(at 62.23 204.47 0)
-		(unit 1)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "eee5a8ce-f3b7-4191-ae5c-0b154c1ad946")
-		(property "Reference" "R18"
-			(at 64.262 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0R"
-			(at 62.23 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 62.23 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 62.23 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 62.23 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "heating-controller"
-				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "R18")
-					(unit 1)
-				)
-			)
-		)
-	
-		(property "LCSC" "C21189"
-			(at 62.23 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		))
-	(symbol
-		(lib_id "Device:R")
-		(at 77.47 204.47 0)
-		(unit 1)
-		(in_bom yes)
-		(on_board yes)
-		(dnp yes)
-		(uuid "d3c3076b-ce27-41d8-ba5b-1c15b311d601")
-		(property "Reference" "R19"
-			(at 79.502 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0R (DNP)"
-			(at 77.47 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 77.47 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 77.47 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 77.47 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "heating-controller"
-				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "R19")
-					(unit 1)
-				)
-			)
-		)
-	
-		(property "LCSC" "C21189"
-			(at 77.47 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		))
-	(symbol
-		(lib_id "Device:R")
-		(at 110.49 204.47 0)
-		(unit 1)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9590b2eb-971a-46b1-9dda-388f911644fb")
-		(property "Reference" "R20"
-			(at 112.522 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0R"
-			(at 110.49 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 110.49 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 110.49 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 110.49 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "heating-controller"
-				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "R20")
-					(unit 1)
-				)
-			)
-		)
-	
-		(property "LCSC" "C21189"
-			(at 110.49 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		))
-	(symbol
-		(lib_id "Device:R")
-		(at 125.73 204.47 0)
-		(unit 1)
-		(in_bom yes)
-		(on_board yes)
-		(dnp yes)
-		(uuid "b506117a-1546-4e2b-95f6-0359562c5856")
-		(property "Reference" "R21"
-			(at 127.762 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0R (DNP)"
-			(at 125.73 204.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 125.73 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 125.73 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 125.73 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "heating-controller"
-				(path "/23b12b18-7422-4c89-b4f7-c26e3f08412d/f602d427-af24-4a8b-a8af-8f2deb33ae4a"
-					(reference "R21")
-					(unit 1)
-				)
-			)
-		)
-	
-		(property "LCSC" "C21189"
-			(at 125.73 204.47 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		))
-	(label "OLED_P1"
-		(at 62.23 186.69 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "55850cc9-3549-4723-b87e-817f45bfb237")
-	)
-	(global_label "GND"
-		(shape passive)
-		(at 62.23 194.31 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "dd377390-fb02-48b5-adeb-7531136c7404")
-	)
-	(label "OLED_P1"
-		(at 77.47 186.69 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fb98a9da-4434-4431-b3d6-69958768c7b5")
-	)
-	(label "OLED_VCC"
-		(at 77.47 194.31 270)
+	(label "SPARE16"
+		(at 165.10 220.98 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "8797b9a2-ee93-4f0c-8c17-e6eb157e4b5f")
+		(uuid "9cd6a44a-5e44-4f7d-b220-2c942be0857d")
 	)
-	(label "OLED_P2"
-		(at 62.23 200.66 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "94b566f6-2fe6-4664-9f3d-d093c9095fd5")
-	)
-	(label "OLED_VCC"
-		(at 62.23 208.28 270)
+	(label "SPARE17"
+		(at 165.10 223.52 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "1e29bcf7-83f8-440c-a48e-c1d98394fd91")
+		(uuid "daac994f-96a0-463f-9680-5c3dc9bbb527")
 	)
-	(label "OLED_P2"
-		(at 77.47 200.66 90)
+	(label "IO10"
+		(at 165.10 226.06 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "83ca4976-dbdd-4821-81bd-49ada328bc9a")
+		(uuid "c55f4514-60ef-4fb3-be01-00ad4bd87a01")
 	)
-	(global_label "GND"
-		(shape passive)
-		(at 77.47 208.28 270)
+	(label "IO11"
+		(at 165.10 228.60 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
-		(uuid "dd84d3c1-34af-4a98-a571-fec98a213ede")
+		(uuid "63170627-3d3f-4c88-902d-053b4353a68e")
 	)
-	(label "OLED_VCC"
-		(at 110.49 200.66 90)
+	(label "IO18"
+		(at 165.10 231.14 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "1fb2fbee-f018-49c2-87eb-5d409ccec533")
+		(uuid "90cd4fcb-eda8-4657-9411-6bd058b08a6a")
 	)
-	(label "OLED_VCC"
-		(at 125.73 200.66 90)
+	(label "IO19"
+		(at 165.10 233.68 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "4dc435df-f31e-4297-9006-e09c7d26e2b2")
-	)
-	(global_label "+5V"
-		(shape passive)
-		(at 125.73 208.28 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "70d1902d-3794-4f9e-b6a0-9e9bf44d9f85")
+		(uuid "aec5c1ea-ba4c-4a14-933a-0c6b73e9b7fd")
 	)
 	(global_label "+3V3"
 		(shape passive)
-		(at 110.49 208.28 270)
+		(at 165.10 236.22 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right)
 		)
-		(uuid "682d69be-6f82-4409-8320-0a64ab6e16de")
+		(uuid "28135fb1-785c-41c9-a247-13c0110a6b81")
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 165.10 238.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d7c954b5-b52c-4c48-ba3c-e450782812ca")
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 90.17 162.56 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "478c0a54-2104-4712-9968-7ce898cdbc31")
+	)
+	(global_label "+3V3"
+		(shape passive)
+		(at 90.17 165.10 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "24212fdf-f402-4e86-82bf-4c19a1004ff1")
 	)
 )

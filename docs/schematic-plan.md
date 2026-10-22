@@ -1,49 +1,39 @@
-# Schematic plan
+# Schematic structure
 
-Hierarchical, four sheets. Net names are fixed here so sheets can be drawn
-independently and ERC'd together.
+Hierarchical, four sheets, net labels at every pin (no wires).
 
 ## Sheets
 
 | # | File | Contents |
 |---|---|---|
-| 1 | `heating-controller.kicad_sch` (root) | Title, three sheet blocks, rail notes |
-| 2 | `power_mcu.kicad_sch` | USB-C + protection, 5 V bulk, AMS1117-3.3, ESP32-C6-WROOM-1, decoupling, EN/RESET, BOOT button + jumper, BTN1/BTN2, STATUS/OT LEDs, OLED header + jumpers + I2C pull-ups, Qwiic, spare header, 1-Wire bus + FLOW/OUTDOOR terminals |
-| 3 | `opentherm.kicad_sch` | Melnyk master adapter: bridge, zeners, 2 × LTV-817S, S8550, OT terminal |
-| 4 | `mains_io.kicad_sch` | K1–K4 + AO3400A drivers + flyback + LEDs + COM/NO terminals + L/N terminals; 5 × AC sense channels (6 × 22 kΩ chain, 1N4148WS, LTV-817S, 47 kΩ, 1 µF) |
+| 1 | `heating-controller.kicad_sch` (root) | Title block and the three sheet blocks |
+| 2 | `power_mcu.kicad_sch` | USB-C + protection, 5 V bulk, LDL1117 3.3 V regulator, ESP32-C6-WROOM-1 and decoupling, EN/RESET, BOOT button + jumper, BTN1/BTN2, STATUS/OT LEDs, OLED header and I2C pull-ups, Qwiic, 8-pin spare header, 1-Wire bus + FLOW/OUTDOOR terminals |
+| 3 | `opentherm.kicad_sch` | Melnyk master adapter: fuse, bridge, TVS, zeners, 2 × LTV-817S, S8550, OT terminal |
+| 4 | `relays.kicad_sch` | Four channels: HF115F changeover relay, AO3400A driver, gate resistors, flyback diode, coil LED, NC/COM/NO terminal |
 
-## Global nets (power symbols / global labels)
+## Nets
 
-`+5V`, `+3V3`, `GND` — SELV only.
-`MAINS_L`, `MAINS_N` — mains, never cross to SELV.
+`+5V`, `+3V3`, `GND` are global and low-voltage only. Relay contact nets
+`/Relays/NCn`, `/Relays/COMn`, `/Relays/NOn` (net classes CH1–CH4) stay within
+their channel; nothing else may connect to them.
 
-## Signals (hierarchical labels, sheet 2 ↔ 3/4)
+Signals crossing sheets (hierarchical labels):
 
-| Net | GPIO | Dir (from MCU) | Sheet |
+| Net | GPIO | Direction (from MCU) | Sheet |
 |---|---|---|---|
-| OT_IN | 1 | in | 3 |
-| OT_OUT | 2 | out | 3 |
-| RLY1..RLY4 | 21,22,23,3 | out | 4 |
-| ES1, ES2, ES3 | 10,11,18 | in | 4 |
-| DEMAND_IN | 19 | in | 4 |
-| MAINS_OK | 20 | in | 4 |
+| OT_IN | 1 | in | OpenTherm |
+| OT_OUT | 2 | out | OpenTherm |
+| RLY1..RLY4 | 21, 22, 23, 3 | out | Relays |
 
 Sheet-2-local: USB_DP/DN (12/13), SDA/SCL (6/7), ONEWIRE (0), BTN1/BTN2 (4/5),
-LED_STATUS (8), LED_OT (15), BOOT (9), SPARE16/17.
+LED_STATUS (8), LED_OT (15), BOOT (9), spare header IO10/IO11/IO18/IO19 and
+SPARE16/SPARE17; IO20 not connected.
 
-## Reference designator blocks
+## Reference designators
 
-U1 ESP, U2 LDO, U3 USB ESD, U4–U5 OT optos, U6–U10 sense optos; K1–K4; Q1–Q4
-relay FETs, Q5 OT PNP; J1 USB-C, J2 OT, J3 FLOW, J4 OUTDOOR, J5 OLED, J6 Qwiic,
-J7 spare, J8 BOOT jumper, J10+ mains terminals; SW1 RESET, SW2 BOOT, SW3 BTN1,
-SW4 BTN2; D1 VBUS TVS, D2.. flyback/bridge; ZD1–3; LED1 STATUS, LED2 OT,
-LED3–6 relays.
-
-## Order of work
-
-1. Sheet 2 (power + MCU) → ERC clean on its own.
-2. Sheet 3 (OT) → ERC.
-3. Sheet 4 (mains I/O) → ERC.
-4. Root: sheet pins imported, ERC on the whole hierarchy, netlist summary
-   checked against the GPIO table, footprints assigned and verified against
-   LCSC numbers, visual check of each sheet via PNG render.
+Sheet 2: 1–99 (U1 module, U2 regulator, U3 USB ESD, J1 USB-C, J3 FLOW, J4
+OUTDOOR, J5 OLED, J6 Qwiic, J7 spare, J8 BOOT jumper, SW1 RESET, SW2 BOOT, SW3
+BTN1, SW4 BTN2, LED1 STATUS, LED2 OT). Sheet 3: 200-series (J201 OpenTherm,
+F201 fuse, U201/U202 optos). Sheet 4: 100-series, one block per channel n
+(K10n relay, Q10n driver, R1n1 gate, R1n2 pull-down, R1n3 LED resistor, D10n
+flyback, LED10n, J11n terminal).

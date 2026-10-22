@@ -25,7 +25,7 @@ for t in board.GetTracks():
     else:
         if mm(t.GetWidth()) < cls_min[nc]: cls_min[nc] = mm(t.GetWidth()); cls_where[nc] = (t.GetNetname().split("/")[-1], round(mm(t.GetStart().x), 1), round(mm(t.GetStart().y), 1))
 print("== Narrowest track per net class (mm)")
-expect = {"MAINS": 2.0, "MAINS_IN": 0.5, "MAINS_SENSE": 0.5, "Power": 0.3, "Default": 0.2}
+expect = {"CH1": 2.0, "CH2": 2.0, "CH3": 2.0, "CH4": 2.0, "USB": 0.2, "Power": 0.3, "Default": 0.2}
 for c, w in sorted(cls_min.items()):
     ok = w >= min(expect.get(c.split(",")[0], 0.2), 99) - 1e-6
     print(f"   {c:12} {w:.2f}  {'ok' if ok else 'below class width ' + str(expect.get(c)) + ' (router neck-down), at ' + str(cls_where[c])}")
@@ -89,7 +89,7 @@ else:
 
 # ---- tallest parts (enclosure clearance) and parts JLC may rotate
 print("== Tallest 3D bodies (from model bounding boxes is not available headless; listed by known heights)")
-heights = {"RELAY-TH": 15.6, "WJ128V": 14.1, "CP_Elec_8x10": 10.5, "KF350": 8.7, "PinHeader": 8.5, "ESP32": 3.2}
+heights = {"RELAY-TH": 15.7, "WJ128V": 14.1, "CP_Elec_8x10": 10.5, "KF350": 8.7, "PinHeader": 8.5, "ESP32": 3.2}
 tall = collections.defaultdict(list)
 for f in board.Footprints():
     n = str(f.GetFPID().GetLibItemName())

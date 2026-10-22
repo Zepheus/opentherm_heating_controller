@@ -155,6 +155,37 @@ dead ends so the next revision does not repeat them.
   (`tools/check/spacing_rules.json`), verified against the DRC rule file on
   every run, so a rule cannot be weakened or deleted silently.
 
+## v1.0 redesign lessons (2026-10-22)
+
+- **Challenge scope before drawing it.** The mains sensing came from a design
+  review and cost a third of the board, all the 230 V input circuitry and most
+  of the later review findings, for monitoring a home install did not need.
+  Weigh each "nice to have" safety feature against what it adds to the mains
+  area, and ask the owner.
+- **Let the part geometry choose the orientation.** Lying the HF115F relays
+  horizontally puts the three contact columns on the same 5 mm pitch as the
+  terminal pins, so every contact link is a straight 2.5 mm track. Upright, the
+  doubled contact pins blocked any route at 2.0 mm clearance.
+- **One net class per isolated circuit** (CH1..CH4) turns "isolate each channel
+  from everything else" into a single DRC rule for clearance and creepage.
+- **Generate placement and silkscreen from a shared geometry file.** Labels
+  positioned from footprint bounding boxes follow the parts; hard-coded label
+  coordinates went stale every time a part moved.
+- **A keep-out over a module's own pads disconnects them**: the antenna
+  keep-out first covered the module's end GND pins, so the pour could not reach
+  them. Stop keep-outs short of pads.
+- **EasyEDA footprints can have pads outside the courtyard** (the optos);
+  anything that avoids parts by courtyard (stitching vias, repair vias) must
+  also avoid pads.
+- **Raising clearance exposes footprint-internal gaps**: the USB-C pad row is
+  0.2 mm by design, so it needs its own exemption and the USB nets their own
+  class; give fine-pitch connectors that treatment up front.
+- **Freerouting necks tracks down below the board minimum** at pads and vias;
+  widen any stub under 0.15 mm after the import and let DRC confirm.
+- **Area titles on silkscreen collided with reference designators** in a dense
+  board; plain connector labels and a clear block layout communicated the
+  module areas better.
+
 ## Review lessons
 
 - The first independent review found two "confirmed" OpenTherm wiring

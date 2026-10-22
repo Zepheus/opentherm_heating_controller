@@ -1,14 +1,12 @@
 {
-  "_comment": "Isolation and spacing requirements for Andiron. tools/check/sanity.py verifies that heating-controller.kicad_dru encodes each rule with at least this value, so DRC enforces them on every run. Basis: IEC 62368-1 / 60730-1, 230 V mains, OVC II (2.5 kV impulse), pollution degree 2, material group IIIb assumed.",
+  "_comment": "Isolation and spacing requirements for Andiron v1.0. tools/check/sanity.py verifies that heating-controller.kicad_dru encodes each rule with at least this value, so DRC enforces them on every run. Basis: IEC 62368-1 / 60730-1, 230 V mains, OVC II (2.5 kV impulse), pollution degree 2, material group IIIb assumed. The only mains on the board is the relay contacts; each channel is isolated from everything that is not itself.",
   "rules": [
-    {"rule": "mains-to-selv",          "constraint": "clearance",      "min_mm": 6.4, "basis": "reinforced 3.0 mm required; 6.4 mm design floor"},
-    {"rule": "mains-to-selv-creepage", "constraint": "creepage",       "min_mm": 6.4, "basis": "reinforced 5.0 mm required (PD2, IIIb); 6.4 mm design floor"},
-    {"rule": "mains-to-mains",         "constraint": "clearance",      "min_mm": 2.0, "basis": "basic/functional 1.5 mm at 2.5 kV"},
-    {"rule": "mains-in-to-anything",   "constraint": "clearance",      "min_mm": 2.0, "basis": "raw live terminal nets before any resistor"},
-    {"rule": "sense-to-mains",         "constraint": "clearance",      "min_mm": 1.3, "basis": "chain nodes, ~40 V across one 22 k resistor"},
-    {"rule": "mains-to-edge",          "constraint": "edge_clearance", "min_mm": 2.0, "basis": "mains copper away from the board edge and enclosure"},
-    {"rule": "mains-track-width",      "constraint": "track_width",    "min_mm": 2.0, "basis": "fault current until the 3 A fuse clears"}
+    {"rule": "channel-isolation",          "constraint": "clearance",      "min_mm": 6.4, "basis": "reinforced 3.0 mm required between a channel and low-voltage copper or another channel; 6.4 mm design floor"},
+    {"rule": "channel-isolation-creepage", "constraint": "creepage",       "min_mm": 6.4, "basis": "reinforced 5.0 mm required (PD2, IIIb); 6.4 mm design floor"},
+    {"rule": "contacts-within-channel",    "constraint": "clearance",      "min_mm": 2.0, "basis": "NC/COM/NO of one channel, functional insulation across an open contact; 1.5 mm at 2.5 kV"},
+    {"rule": "mains-to-edge",              "constraint": "edge_clearance", "min_mm": 2.0, "basis": "contact copper away from the board edge and the enclosure"},
+    {"rule": "mains-track-width",          "constraint": "track_width",    "min_mm": 2.0, "basis": "load current until the external 3 A fuse clears"}
   ],
   "required_rule_areas": ["ISOLATION_BAND", "ANTENNA_KEEPOUT"],
-  "required_slots_mm": {"width_min": 1.0, "count_min": 5}
+  "required_slots_mm": {"width_min": 1.0, "count_min": 7}
 }

@@ -25,9 +25,11 @@ before changing anything.
 - Every component carries an LCSC field; Description and Datasheet fields are
   copied into the PCB so `kicad-cli pcb drc --schematic-parity` stays clean
   (only the 7 board-only holes and fiducials may remain).
-- The board is routed by `tools/route/run_pipeline.sh`, not by hand. Change
-  placement or pre-routes in the scripts and rerun; close the KiCad PCB editor
-  first because the pipeline rewrites the files on disk.
+- The board is generated, not hand-routed: schematic changes reach the board
+  with `tools/sync_netlist.py`, placement lives in `tools/layout/place.py`,
+  shared dimensions in `tools/layout/geometry.py`, pre-routes in
+  `tools/route/prep_board.py`; then run `tools/route/run_pipeline.sh`. Close the
+  KiCad PCB editor first because the pipeline rewrites the files on disk.
 - Done means: ERC 0 errors, DRC 0 errors and 0 unconnected, parity clean,
   all courtyards inside the outline, pour areas checked
   (`tools/check/pour_islands.py`). Then regenerate the BOM and the renders

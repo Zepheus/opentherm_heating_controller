@@ -1,59 +1,68 @@
-"""Silkscreen stage: board-level labels at every terminal pin plus warnings and the revision string.
+"""Silkscreen stage: plain-language labels at every connector, channel names, area titles, warnings, identity.
 
-Idempotent: every board-level text on F.SilkS / B.SilkS is removed first, then the full set is re-added, so the
-stage can run after every re-route. Footprint reference designators are left alone.
-usage: silk.py <project_dir>
+Positions are derived from the footprints (and tools/layout/geometry.py), so labels follow the parts when placement
+changes. Idempotent: all board-level text on F.SilkS / B.SilkS is removed first. Reference designators are untouched.
+usage: <kicad python> -I silk.py <project_dir>
 """
-import sys, pcbnew
+import sys, os, importlib.util, pcbnew
 from pcbnew import FromMM, VECTOR2I
+_spec = importlib.util.spec_from_file_location("geometry", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "layout", "geometry.py"))
+G = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(G)
 
 P = sys.argv[1]; B = P + "/heating-controller.kicad_pcb"
 board = pcbnew.LoadBoard(B)
+mm = lambda v: v / 1e6
+# footprint data first (proxies go stale after edits in this process)
+BOX, PAD = {}, {}
+for f in board.Footprints():
+    c = f.GetCourtyard(pcbnew.F_CrtYd); bb = c.BBox() if c.OutlineCount() else f.GetBoundingBox(False, False)
+    BOX[f.GetReference()] = (mm(bb.GetLeft()), mm(bb.GetTop()), mm(bb.GetRight()), mm(bb.GetBottom()))
+    for p in f.Pads():
+        if p.GetNumber(): PAD[(f.GetReference(), p.GetNumber())] = (mm(p.GetPosition().x), mm(p.GetPosition().y))
 for d in list(board.GetDrawings()):
     if d.GetClass() == "PCB_TEXT" and d.GetLayer() in (pcbnew.F_SilkS, pcbnew.B_SilkS):
         board.Remove(d)
 
-def text(s, x, y, size=0.8, rot=0, layer=pcbnew.F_SilkS, thick=None, h="c"):
+def text(s, x, y, size=0.8, rot=0, layer=pcbnew.F_SilkS, h="c"):
     t = pcbnew.PCB_TEXT(board); t.SetText(s); t.SetLayer(layer)
     t.SetPosition(VECTOR2I(FromMM(x), FromMM(y)))
-    t.SetTextSize(VECTOR2I(FromMM(size), FromMM(size))); t.SetTextThickness(FromMM(thick or round(size * 0.15, 2)))
+    t.SetTextSize(VECTOR2I(FromMM(size), FromMM(size))); t.SetTextThickness(FromMM(round(size * 0.15, 2)))
     t.SetTextAngleDegrees(rot)
     t.SetHorizJustify({"c": pcbnew.GR_TEXT_H_ALIGN_CENTER, "l": pcbnew.GR_TEXT_H_ALIGN_LEFT, "r": pcbnew.GR_TEXT_H_ALIGN_RIGHT}[h])
     t.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
+    if layer == pcbnew.B_SilkS: t.SetMirrored(True)
     board.Add(t); return t
+def above(ref, s, size=0.8, gap=0.9):
+    x0, y0, x1, y1 = BOX[ref]; text(s, (x0 + x1) / 2, y0 - gap, size)
+def pin_labels(ref, names, dy=-2.4, size=0.8):
+    for i, n in enumerate(names, start=1):
+        if n: x, y = PAD[(ref, str(i))]; text(n, x, y + dy, size)
 
-# --- mains edge: terminal pin names just below each block (bodies end at y 13.35), channel names below that
-text("L", 14.5, 14.8); text("N (sense)", 19.5, 14.8, h="l")
-for n, x in enumerate([32, 49, 66, 83], start=1):
-    text("L", x - 5, 14.8); text("COM", x, 14.8); text("NO", x + 5, 14.8)
-    text(f"K{n}", x, 16.6, size=1.0)
-text("MAINS IN", 17, 16.6, size=1.0)
-text("DANGER 230V - ISOLATE SUPPLY BEFORE OPENING", 114, 5.0, size=1.0)
-# right edge: J116 (DEMAND) and J115 (END SW), words run vertically beside the block, one per pin
-for s, y in [("230V", 15), ("24V", 20), ("RET", 25), ("ES3", 32), ("ES2", 37), ("ES1", 42)]:
-    text(s, 137.6, y, size=0.8, rot=90)
-# J116 warning: three right-aligned lines between hole H2 (ends y 7.5) and the J116 body (starts y 12.45), inside the edge
-for line, y in [("DEMAND: 230V OR 24V", 8.6), ("NEVER BOTH. 24V PIN", 9.7), ("IS LIVE IN 230V MODE", 10.8)]:
-    text(line, 148.5, y, size=0.8, h="r")
-text("END SW", 142.5, 46.0, size=0.8)
+# ---- relay channels: "CHn  NC  COM  NO" in the strip between each terminal block and its relay
+label_y = (BOX["J111"][3] + BOX["K101"][1]) / 2
+for n, xr in enumerate(G.RX, start=1):
+    for c, dx in G.TERM_DX.items(): text(c, xr + dx, label_y, 1.0)
+    text(f"CH{n}", xr - 1.6, label_y, 1.2, h="r")
+for i, line in enumerate(["RELAY OUTPUTS: VOLT-FREE", "250VAC 3A MAX", "ISOLATE BEFORE OPENING"]):
+    text(line, 10.5, 9.6 + i * 1.3, 0.8)
 
-# --- SELV edge
-text("OT 24V MAX", 58, 84.3, size=0.8)
-for xs, name in [((73.5, 70, 66.5), "FLOW"), ((85.5, 82, 78.5), "OUTDOOR")]:
-    text("3V3", xs[0], 84.4, size=0.8); text("DAT", xs[1], 84.4, size=0.8); text("GND", xs[2], 84.4, size=0.8)
-    text(name, xs[1], 83.0, size=0.8)
-text("P1 P2 SCL SDA", 108.2, 86.3, size=0.8); text("OLED: P1/P2 SET BY R16-R21", 108.2, 85.0, size=0.8)
-text("QWIIC", 98, 87.6, size=0.8)
-text("16 17 3V3 GND", 95.8, 78.3, size=0.8); text("SPARE", 95.8, 77.0, size=0.8)
-text("BOOT JP", 121.3, 68.8, size=0.8)
-for s, x, y in [("RST", 120, 86.2), ("BOOT", 129, 86.2), ("BTN1", 138, 86.2), ("BTN2", 138, 76.2)]:
-    text(s, x, y, size=0.8)
-text("USB-C 5V 1A", 40, 83.3, size=0.8)
-# identity block along the left edge of the SELV region (x 2.6/4.0 clears the tracks at x >= 4.7 and FID1 at x >= 6.2)
-text("ANDIRON v1.0", 2.6, 64, size=1.5, rot=90)
-text("Cedric Van Goethem 2026", 4.0, 64, size=0.8, rot=90)
-# repository on the back, where there is room
-text("github.com/Zepheus/opentherm_heating_controller", 115, 92, size=1.0, layer=pcbnew.B_SilkS).SetMirrored(True)
+# ---- low-voltage connectors
+above("J201", "OPENTHERM")
+x0, y0, x1, y1 = BOX["J3"]; text("FLOW TEMP", (x0 + x1) / 2, y0 - 3.3); pin_labels("J3", ["3V3", "DAT", "GND"])
+x0, y0, x1, y1 = BOX["J4"]; text("OUTDOOR TEMP", (x0 + x1) / 2, y0 - 3.3); pin_labels("J4", ["3V3", "DAT", "GND"])
+x0, y0, x1, y1 = BOX["J1"]; text("USB-C 5V >=1A", x1 + 0.8, (y0 + y1) / 2 + 1.5, 0.8, h="l")
+x0, y0, x1, y1 = BOX["J6"]; text("QWIIC I2C", (x0 + x1) / 2, y1 + 0.9, 0.8)
+pin_labels("J5", ["GND", "3V3", "SCL", "SDA"], dy=2.4); above("J5", "OLED")
+pin_labels("J7", ["16", "17", "10", "11", "18", "19", "3V3", "GND"]); x0, y0, x1, y1 = BOX["J7"]; text("SPARE GPIO", (x0 + x1) / 2, y0 - 3.3)
+above("J8", "BOOT JP")
+for ref, s in [("SW1", "RESET"), ("SW2", "BOOT"), ("SW3", "BTN1"), ("SW4", "BTN2")]: above(ref, s)
+x0, y0, x1, y1 = BOX["LED1"]; text("STATUS", x0 - 0.5, (y0 + y1) / 2, 0.8, h="r")
+x0, y0, x1, y1 = BOX["LED2"]; text("OT", x0 - 0.5, (y0 + y1) / 2, 0.8, h="r")
+
+
+# ---- identity
+text("ANDIRON v1.0", 16.5, 79.5, 1.5)
+text("Cedric Van Goethem 2026", 16.5, 81.8, 0.8)
 
 pcbnew.SaveBoard(B, board)
-print("silkscreen stage done")  # counting via GetDrawings() breaks after SaveBoard in KiCad 10.0.7 SWIG
+print("silkscreen stage done")
