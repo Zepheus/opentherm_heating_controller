@@ -3020,7 +3020,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2116"
+		(property "LCSC" "C19077400"
 			(at 139.7 110.49 0)
 			(hide yes)
 			(effects
@@ -3089,7 +3089,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2104"
+		(property "LCSC" "C19077412"
 			(at 160.02 100.33 0)
 			(hide yes)
 			(effects
@@ -3158,7 +3158,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2115"
+		(property "LCSC" "C19077399"
 			(at 175.26 129.54 0)
 			(hide yes)
 			(effects
@@ -3498,7 +3498,7 @@
 				)
 			)
 		)
-		(property "Description" "Bidirectional transient-voltage-suppression diode"
+		(property "Description" "Unidirectional transient-voltage-suppression diode, cathode (pin 1) on the protected rail"
 			(at 100.33 154.94 0)
 			(hide yes)
 			(effects
@@ -3507,7 +3507,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C89612"
+		(property "LCSC" "C19077541"
 			(at 100.33 154.94 0)
 			(hide yes)
 			(effects

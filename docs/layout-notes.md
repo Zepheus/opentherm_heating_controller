@@ -243,3 +243,15 @@ dead ends so the next revision does not repeat them.
   design doc as a deliverable that is diffed against the netlist, not prose.
 - A detector-margin argument made with peak currents was wrong; a 20-line
   time-domain model settled it in seconds. Model the periodic steady state.
+
+## JLCPCB upload (2026-10-22)
+
+- KiCad's position file is not JLC's placement file. JLC places each part by its own EasyEDA model, centre origin
+  and own zero rotation. Footprints from `lib/jlc` (EasyEDA-derived) matched as-is; KiCad library footprints did not:
+  SOT-23 and SOT-223 needed 180°, SOT-23-6 −90°, pin headers 90° plus the pad centre (KiCad's origin is pin 1), and
+  the HRO USB-C receptacle the pad centre (KiCad's origin is 1.46 mm off). `tools/cpl.py` holds these as data.
+- Check every footprint type in JLC's placement viewer, zoomed in: the magenta dot is the model's pin 1 and must
+  sit on the silkscreen's pin-1 mark. In that viewer, dragging and the arrow buttons move the selected parts, not the
+  view; re-uploading the placement file resets any accidental move.
+- Economic assembly takes the through-hole relays and terminals (hand-soldering fee). Board cleaning stays "No":
+  the RT1 relays are only flux-proof.

@@ -199,6 +199,16 @@ and not adopted.
   OpenTherm terminals on the bottom edge, USB-C, probes and Qwiic on the left
   edge, antenna at the top edge. Relay terminal pins read NC, COM, NO from
   left to right.
+- **v1.0 Preferred parts (22 Oct 2026):** the SMF5.0A (D1, D2), SMAJ24A (D208)
+  and the three BZT52 zeners (D205–D207) moved to the same part types from
+  JLC's Preferred library (Hongjiacheng), which carries no Extended-part fee on
+  Economic assembly: 20 → 15 fee-bearing parts. Datasheets checked: same
+  packages and ratings; the zeners are 350 mW instead of 500 mW, against
+  ≤0.1 W worst case in the OpenTherm stage (Q201 holds the line at ~15.6 V,
+  line current ≤23 mA). No Basic or Preferred part exists for the module,
+  relays, connectors, fuse, bulk capacitor or U3 (the SRV05-4 lacks the
+  USBLC6 pass-through the layout uses); the AMS1117 was rejected for U2
+  because of its ~1.1 V dropout.
 
 ## Open questions
 

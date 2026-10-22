@@ -1168,7 +1168,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2115"
+		(property "LCSC" "C19077399"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -8782,7 +8782,7 @@
 				)
 			)
 		)
-		(property "Description" "Bidirectional transient-voltage-suppression diode"
+		(property "Description" "Unidirectional transient-voltage-suppression diode, cathode (pin 1) on the protected rail"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -8793,7 +8793,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C89612"
+		(property "LCSC" "C19077541"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -10306,7 +10306,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2104"
+		(property "LCSC" "C19077412"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -12906,7 +12906,7 @@
 				)
 			)
 		)
-		(property "Description" "Bidirectional transient-voltage-suppression diode"
+		(property "Description" "Unidirectional transient-voltage-suppression diode, cathode (pin 1) on the protected rail"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -12917,7 +12917,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C193402"
+		(property "LCSC" "C19077497"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -15517,7 +15517,7 @@
 				)
 			)
 		)
-		(property "Description" "Bidirectional transient-voltage-suppression diode"
+		(property "Description" "Unidirectional transient-voltage-suppression diode, cathode (pin 1) on the protected rail"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -15528,7 +15528,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C193402"
+		(property "LCSC" "C19077497"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -21428,7 +21428,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2116"
+		(property "LCSC" "C19077400"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)

@@ -6964,7 +6964,7 @@
 				)
 			)
 		)
-		(property "Description" "Bidirectional transient-voltage-suppression diode"
+		(property "Description" "Unidirectional transient-voltage-suppression diode, cathode (pin 1) on the protected rail"
 			(at 85.09 124.46 0)
 			(hide yes)
 			(effects
@@ -6973,7 +6973,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C193402"
+		(property "LCSC" "C19077497"
 			(at 85.09 124.46 0)
 			(hide yes)
 			(effects
@@ -9400,7 +9400,7 @@
 				)
 			)
 		)
-		(property "Description" "Bidirectional transient-voltage-suppression diode"
+		(property "Description" "Unidirectional transient-voltage-suppression diode, cathode (pin 1) on the protected rail"
 			(at 190.5 190.5 0)
 			(hide yes)
 			(effects
@@ -9409,7 +9409,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C193402"
+		(property "LCSC" "C19077497"
 			(at 190.5 190.5 0)
 			(hide yes)
 			(effects

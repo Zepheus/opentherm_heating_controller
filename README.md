@@ -39,7 +39,7 @@ same body) and the USB-C receptacle (GCT USB4105, same footprint).
 The full BOM with LCSC part numbers and cost estimates is in
 [`docs/BOM.md`](docs/BOM.md); the JLCPCB upload file is
 [`docs/bom/andiron-bom-jlc.csv`](docs/bom/andiron-bom-jlc.csv). At LCSC prices
-from October 2026, components came to roughly $16 per board, or about $28 per
+from October 2026, components came to roughly $16 per board, or about $25 per
 board for a run of five once Extended-part loading fees are included. The four
 relays are $7.60 of that. PCB,
 assembly and shipping come on top, from the JLCPCB quote.

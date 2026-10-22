@@ -24,6 +24,8 @@ KPY=/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/
 | `sync_models.py <project>` | `$KPY -I` | Relinks every footprint to its 3D model with portable paths. |
 | `bom.py [project] [--boards N]` | `python3` | BOM with cost estimates from the schematic and the Konnect JLCPCB database. |
 | `render.sh [project]` | zsh | 3D renders and 2D layer plots for the README. |
+| `fab.sh [project]` | zsh | JLCPCB package in `fab/jlc/` (git-ignored): Gerber + drill zip, placement file (CPL, via `cpl.py`), BOM copy. Run `bom.py` first. |
+| `cpl.py <board> <bom> <out>` | `$KPY -I` | JLC placement file with per-footprint rotation and centre corrections (`FIX`), each verified in JLC's placement viewer. |
 | `check/sanity.py <board>` | `$KPY -I` | Pre-fabrication report: spacing rules from `check/spacing_rules.json` encoded in the DRC file, rule areas and slots present, track widths per class, JLCPCB drill and annular limits, decoupling distances, antenna keep-out, tallest parts. Exit 1 on failure; the pipeline runs it last. |
 | `check/spacing_rules.json` | — | The isolation and spacing requirements, each with its basis. |
 | `check/pour_islands.py <board>` | `$KPY -I` | Lists GND pour islands and what they contain; DRC does not report silently removed copper. |

@@ -3,7 +3,7 @@
 
 Outputs (both committed, both regenerated after every schematic change):
   docs/bom/andiron-bom-jlc.csv   JLCPCB assembly upload format (Comment, Designator, Footprint, LCSC), fitted parts only
-  docs/BOM.md                    human BOM: grouped lines, LCSC part, Basic/Extended, unit price, line cost, totals, DNP list
+  docs/BOM.md                    human BOM: grouped lines, LCSC part, Basic/Preferred/Extended, unit price, line cost, totals, DNP list
 
 Prices come from the local JLCPCB parts database that Konnect downloads (~/.konnect/jlcpcb.db, refresh it with the Konnect
 tool download_jlcpcb_database). They are LCSC single-unit prices, so they over-estimate small passives bought in reels.
@@ -51,7 +51,7 @@ for (lcsc, fp), e in sorted(fitted.items(), key=lambda kv: refkey(sorted(kv[1]["
     info = part(lcsc)
     if info is None: missing.append(lcsc or "/".join(refs))
     price = info["price"] if info else 0.0
-    if info and info["lib"] != "Basic": ext_parts.add(lcsc)
+    if info and info["lib"] == "Extended": ext_parts.add(lcsc)
     lines.append((refs, val, fp.split(":")[-1], lcsc, info, price, price * len(refs))); total += price * len(refs)
 
 os.makedirs(os.path.join(P, "docs", "bom"), exist_ok=True)
@@ -78,7 +78,7 @@ md = [f"# Andiron v1.0 — bill of materials",
       f"| **Components per board at {BOARDS} boards, fees included** | **{total + fees / BOARDS:.2f}** |",
       "",
       "PCB fabrication, assembly setup, through-hole soldering, stencil and shipping are not included; take them from the "
-      "JLCPCB quote. The Library column is what the parts database reports; JLC also waives the fee for some \"preferred\" Extended parts, so the fee line is an upper bound. Swapping an Extended part for a Basic equivalent saves its fee.",
+      "JLCPCB quote. The Library column is what the parts database reports; \"Preferred\" parts carry no loading fee on Economic assembly, so only \"Extended\" parts are counted. Swapping an Extended part for a Basic or Preferred equivalent saves its fee.",
       "",
       "## Fitted parts",
       "",
