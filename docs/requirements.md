@@ -93,6 +93,13 @@ not *why*.
 - R10.4 Enclosure: printed in a UL94 V-0 rated filament (ABS-FR/PC-FR), ≥2.5 mm
   walls, screwed lid, no vents above live parts, warning label. A filament's
   V-0 rating is for the raw material; the printed wall is not certified.
+- R10.6 Spacing and isolation limits are a checked specification, not prose:
+  `tools/check/spacing_rules.json` lists every limit with its basis (6.4 mm
+  mains-to-SELV clearance and creepage, 2.0 mm mains-to-mains and raw live
+  inputs, 1.3 mm within a sense chain, 2.0 mm mains-to-edge, 2.0 mm minimum
+  mains track). `heating-controller.kicad_dru` encodes them so DRC enforces
+  them on every run, and `tools/check/sanity.py` fails if a rule, the
+  isolation band, the antenna keep-out or the isolation slots go missing.
 - R10.5 Firmware: `restore_mode: ALWAYS_OFF`; `api.reboot_timeout: 0s`; HA
   heartbeat: after 30 min without it every relay and OT CH-enable go off;
   task/interrupt watchdogs left at their ESP-IDF defaults (reset on hang);

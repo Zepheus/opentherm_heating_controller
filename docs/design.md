@@ -132,7 +132,7 @@ prints on 16 at every reset). ADC1 on GPIO0–6. GPIO14 not bonded out.
 | GPIO | Function | Boot notes |
 |---|---|---|
 | 0 | 1-Wire bus (FLOW + OUTDOOR terminals) | high-Z at reset |
-| 1 | OT_IN (adapter OUT, PC817 open-collector, 10 kΩ pull-up) | interrupt-capable |
+| 1 | OT_IN (RX opto U202 as emitter follower from 3V3, 1.5 kΩ pull-down R205) | interrupt-capable |
 | 2 | OT_OUT (adapter IN, S8550 base drive) | high-Z; confirm idle polarity on devkit |
 | 3 | RLY4 drive (DNP footprint) | 100 kΩ pull-down |
 | 4 | BTN1 to GND, 10 kΩ pull-up, 100 nF | MTMS strap: SDIO only |

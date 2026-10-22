@@ -5,7 +5,7 @@ ESPHome firmware controlled from Home Assistant. Read `docs/requirements.md`
 (what), `docs/design.md` (why) and `docs/layout-notes.md` (layout lessons)
 before changing anything.
 
-## BOM and cost — always current
+## BOM and cost
 
 - After **any** schematic change (part added, removed, value, footprint, LCSC
   number or DNP state), run `python3 tools/bom.py` and commit the regenerated

@@ -1,0 +1,15 @@
+Andiron is open hardware. Copyright (c) 2026 Cedric Van Goethem.
+
+Hardware design files are licensed under the CERN Open Hardware Licence
+Version 2 - Permissive (CERN-OHL-P-2.0): the KiCad project (*.kicad_*), the
+project library in lib/, fp-lib-table, sym-lib-table, and the documentation
+and images in docs/. Full text: LICENSES/CERN-OHL-P-2.0.txt.
+
+Software is licensed under the MIT License: the scripts in tools/.
+Full text: LICENSES/MIT.txt.
+
+SPDX-License-Identifier: CERN-OHL-P-2.0 AND MIT
+
+The design switches and senses mains voltage. It is provided as is, without
+warranty of any kind; see section 6 of CERN-OHL-P-2.0. Building, installing
+or using it is at your own risk and must comply with local wiring regulations.

@@ -12,6 +12,8 @@ JAVA=${JAVA:-/opt/homebrew/opt/openjdk/bin/java}
 FRJAR=${FREEROUTING_JAR:-$HOME/.local/share/freerouting/freerouting-2.5.0.jar}
 FILT='memory leak|assert|Debug:'
 mkdir -p "$P/fab/route"
+# start from the committed placed, unrouted board (placement changes are made in tools/route/placed.kicad_pcb)
+if [ "${FROM_PLACED:-1}" = "1" ]; then cp "$S/placed.kicad_pcb" "$P/heating-controller.kicad_pcb"; echo "== start: tools/route/placed.kicad_pcb"; fi
 # the ESP32 module footprint has unnumbered thermal vias; give them a number and tie them to GND so the pours connect them
 python3 -I - "$P/heating-controller.kicad_pcb" <<'PYEOF'
 import re,sys
@@ -28,6 +30,7 @@ echo "== import + pours"; (cd "$P" && "$PY" -I "$S/route_board.py" "$P" 2>&1 | g
 cp "$P/fab/route/project.kicad_pro.bak" "$P/heating-controller.kicad_pro"; find "${P:?}" -maxdepth 1 -name "*.lck" -delete
 echo "== drc"; "$CLI" pcb drc --severity-error --format json -o "$P/fab/route/drc.json" "$P/heating-controller.kicad_pcb" 2>&1 | tail -1
 python3 -I "$S/fix_gaps.py" "$P/heating-controller.kicad_pcb" "$P/fab/route/drc.json"
+echo "== dangling cleanup"; for i in 1 2 3; do (cd "$P" && "$PY" -I "$S/clean_dangling.py" "$P" 2>&1 | grep -v -E "$FILT"); find "${P:?}" -maxdepth 1 -name "*.lck" -delete; done
 echo "== silkscreen"; (cd "$P" && "$PY" -I "$S/silk.py" "$P" 2>&1 | grep -v -E "$FILT"); find "${P:?}" -maxdepth 1 -name "*.lck" -delete
 "$CLI" pcb drc --severity-error --format json -o "$P/fab/route/drc.json" "$P/heating-controller.kicad_pcb" 2>&1 | tail -1
 python3 -I -c "
@@ -35,3 +38,4 @@ import json; d=json.load(open('$P/fab/route/drc.json'))
 from collections import Counter
 v=d.get('violations',[]); u=d.get('unconnected_items',[])
 print('DRC violations:',len(v),'unconnected:',len(u)); print(Counter(x['type'] for x in v).most_common(12))"
+echo "== sanity"; "$PY" -I "$S/../check/sanity.py" "$P/heating-controller.kicad_pcb" 2>&1 | grep -v -E "$FILT" | tail -1

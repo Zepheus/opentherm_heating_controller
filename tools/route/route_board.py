@@ -1,5 +1,5 @@
 """Stage 2 (KiCad closed): import SES, drop corridor keepouts, re-add mains buses deterministically, slots, GND pours, fill, save."""
-import sys, re, pcbnew
+import sys, re, collections, pcbnew
 from pcbnew import FromMM, VECTOR2I
 P=sys.argv[1]; B=P+"/heating-controller.kicad_pcb"; SES=P+"/fab/route/heating-controller.ses"
 PRO=P+"/heating-controller.kicad_pro"

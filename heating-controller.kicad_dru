@@ -6,6 +6,12 @@
     (condition "(A.NetClass == 'MAINS' || A.NetClass == 'MAINS_SENSE' || A.NetClass == 'MAINS_IN') && B.NetClass != 'MAINS' && B.NetClass != 'MAINS_SENSE' && B.NetClass != 'MAINS_IN'")
     (constraint clearance (min 6.4mm)))
 
+# Creepage (surface path, following slots) for the same barrier: 62368-1 reinforced at 250 V working, PD2, material
+# group IIIb is 5.0 mm; held to the 6.4 mm design floor like clearance.
+(rule "mains-to-selv-creepage"
+    (condition "(A.NetClass == 'MAINS' || A.NetClass == 'MAINS_SENSE' || A.NetClass == 'MAINS_IN') && B.NetClass != 'MAINS' && B.NetClass != 'MAINS_SENSE' && B.NetClass != 'MAINS_IN'")
+    (constraint creepage (min 6.4mm)))
+
 # Functional insulation between mains nets (L, N, COM, NO) themselves: 62368-1 basic clearance at 2.5 kV is 1.5 mm.
 (rule "mains-to-mains"
     (condition "A.NetClass == 'MAINS' && B.NetClass == 'MAINS'")

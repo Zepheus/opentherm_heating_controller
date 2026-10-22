@@ -136,6 +136,25 @@ dead ends so the next revision does not repeat them.
 - **Easyeda2kicad is not always available** for a part (API refused the fuse);
   KiCad's own library had an equivalent package (nano² 451/453 = 2410).
 
+## Final sanity check lessons (2026-10-22)
+
+- **DRC does not check decoupling placement.** A scripted distance check found
+  the module's 100 nF and 22 µF 13–17 mm from its 3V3 pin; they moved to
+  1.5 and 3.0 mm. Check capacitor-to-pin distance on every board.
+- **Commit the placed, unrouted board** (`tools/route/placed.kicad_pcb`) and
+  let the pipeline start from it. Placement edits then never fight existing
+  routing, and every run is reproducible.
+- **Freerouting leaves dangling vias and stubs.** Remove only what KiCad's
+  DRC reports as dangling, re-check connectivity after each pass, and revert
+  a pass that disconnects anything. A home-made "via touches one layer"
+  heuristic disconnected four nets (track ends do not always land exactly on
+  the via centre).
+- **KiCad 10 checks creepage** with `(constraint creepage ...)`, following
+  board slots. Prove a new rule is live by tightening it until it fails.
+- **Spacing limits belong in a machine-checked spec**
+  (`tools/check/spacing_rules.json`), verified against the DRC rule file on
+  every run, so a rule cannot be weakened or deleted silently.
+
 ## Review lessons
 
 - The first independent review found two "confirmed" OpenTherm wiring

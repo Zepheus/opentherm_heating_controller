@@ -14,4 +14,6 @@ r --side bottom -o "$O/andiron-3d-bottom.png"
   -l F.Cu,F.Mask,F.Silkscreen,Edge.Cuts -o "$O/andiron-2d-front.svg" "$B" 2>&1 | tail -1
 "$CLI" pcb export svg --mode-single --exclude-drawing-sheet --page-size-mode 2 --drill-shape-opt 2 --mirror \
   -l B.Cu,B.Mask,B.Silkscreen,Edge.Cuts -o "$O/andiron-2d-back.svg" "$B" 2>&1 | tail -1
+# GitHub does not reliably display large KiCad SVGs in tables: ship PNGs as well
+for s in front back; do rsvg-convert -w 2000 -b white "$O/andiron-2d-$s.svg" -o "$O/andiron-2d-$s.png"; done
 ls -la "$O"
