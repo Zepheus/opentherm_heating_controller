@@ -253,6 +253,11 @@ dead ends so the next revision does not repeat them.
 - Check every footprint type in JLC's placement viewer, zoomed in: the magenta dot is the model's pin 1 and must
   sit on the silkscreen's pin-1 mark. In that viewer, dragging and the arrow buttons move the selected parts, not the
   view; re-uploading the placement file resets any accidental move.
+- Expect an engineer's confirmation email for symmetric THT parts at a non-zero rotation. The 3-pole probe
+  terminals J3/J4 (−90° on the left edge) have three identical pads in a line, so only the CPL rotation says which
+  way the cable entries face; JLC paused the order and sent a picture asking to confirm "polarity" (meaning which
+  way round). The 0° terminals (J201, relay blocks) and the asymmetric JST-SH at −90° were not queried. Check the
+  picture against the board file (pin-1 dot, entries facing out) and reply quickly; the order waits until you do.
 - Economic assembly takes the through-hole relays and terminals (hand-soldering fee). Board cleaning stays "No":
   the RT1 relays are only flux-proof.
 - Freerouting uses GND stitching vias as layer changes. The pipeline's "floating

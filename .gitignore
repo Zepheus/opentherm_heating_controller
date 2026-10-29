@@ -31,3 +31,6 @@ fab/
 # ESPHome
 firmware/secrets.yaml
 firmware/.esphome/
+# Python
+__pycache__/
+*.pyc
