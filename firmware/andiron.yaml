@@ -1,0 +1,270 @@
+# Andiron v1.0 firmware: OpenTherm master + four volt-free relays, controlled from Home Assistant.
+# The board holds no schedule (R1.2): Home Assistant switches CH/DHW enable, sets the flow and DHW setpoints
+# and drives the relays. Safety behaviour: R3.5 (relays off at boot), R8.6 (failsafe without Home Assistant).
+# GPIO map: docs/design.md §GPIO map. Secrets: copy secrets.example.yaml to secrets.yaml.
+#
+# Commissioning on the Vitodens 100-W (E3): OpenTherm pair on HBMU terminal 3; installer setting C.4 = 14
+# (record the old value first) and 2483.0 = 1 for DHW over OpenTherm.
+substitutions:
+  name: andiron
+  failsafe_minutes: "30"           # R8.6: relays and CH enable off after this long without Home Assistant
+  display_on_seconds: "60"         # OLED blanks after this long without a button press (burn-in)
+
+esphome:
+  name: ${name}
+  friendly_name: Andiron
+  on_boot:
+    priority: -100
+    then:
+      - number.set: { id: ot_max_mod, value: 100 }
+      - script.execute: oled_wake
+
+esp32:
+  board: esp32-c6-devkitc-1
+  variant: esp32c6
+  flash_size: 8MB
+  framework:
+    type: esp-idf
+
+logger:
+  hardware_uart: USB_SERIAL_JTAG
+
+api:
+  encryption:
+    key: !secret api_key
+  reboot_timeout: 0s               # R8.6: never reboot just because Home Assistant is away
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    password: !secret ap_password
+
+captive_portal:
+
+status_led:
+  pin:
+    number: GPIO8
+    inverted: true
+    ignore_strapping_warning: true
+
+# ---------------------------------------------------------------- OpenTherm
+# The OT LED lights when a request goes out and goes dark when the boiler answers,
+# so a steadily lit LED means the boiler is not replying.
+opentherm:
+  in_pin: GPIO1                    # OT_IN: RX opto, high = high line current
+  out_pin: GPIO2                   # OT_OUT: TX opto, high = line pulled low
+  ch_enable: true                  # hub flags must be true on the Vitodens; the switches below gate them
+  dhw_enable: true
+  before_send:
+    then:
+      - output.turn_on: ot_led_out
+  before_process_response:
+    then:
+      - output.turn_off: ot_led_out
+
+switch:
+  - platform: opentherm
+    ch_enable:
+      id: ot_ch_enable
+      name: "Boiler heating enable"
+      restore_mode: ALWAYS_OFF     # Home Assistant turns it back on after a reboot
+    dhw_enable:
+      id: ot_dhw_enable
+      name: "Boiler hot water enable"
+      restore_mode: RESTORE_DEFAULT_ON   # hot water carries on if the board reboots; the cylinder has its own limit
+
+  # relays: OFF at boot by hardware (gate pull-downs) and by firmware
+  - { platform: gpio, id: ch1, name: "CH1 relay", pin: GPIO21, restore_mode: ALWAYS_OFF }
+  - { platform: gpio, id: ch2, name: "CH2 relay", pin: GPIO22, restore_mode: ALWAYS_OFF }
+  - { platform: gpio, id: ch3, name: "CH3 relay", pin: GPIO23, restore_mode: ALWAYS_OFF }
+  - { platform: gpio, id: ch4, name: "CH4 relay", pin: GPIO3,  restore_mode: ALWAYS_OFF }
+
+number:
+  - platform: opentherm
+    t_set:
+      id: ot_t_set
+      name: "Boiler flow setpoint"
+      min_value: 10
+      max_value: 80
+      step: 1
+    t_dhw_set:
+      id: ot_t_dhw_set
+      name: "Hot water setpoint"
+      min_value: 30                # Vitodens bounds (ID 48): 30-60 C
+      max_value: 60
+      step: 1
+    # Vitodens quirk: without max modulation, room temperature and room setpoint the boiler
+    # acknowledges CH demand but holds the burner at 0 %. Synthetic values, set below.
+    max_rel_mod_level:
+      id: ot_max_mod
+      internal: true
+      min_value: 0
+      max_value: 100
+    t_room:
+      id: ot_t_room
+      internal: true
+    t_room_set:
+      id: ot_t_room_set
+      internal: true
+
+sensor:
+  - platform: opentherm
+    t_boiler: { id: ot_t_boiler, name: "Boiler flow temperature" }
+    t_dhw: { id: ot_t_dhw, name: "Hot water temperature" }
+    t_outside: { name: "Boiler outdoor temperature" }
+    rel_mod_level: { id: ot_mod, name: "Boiler modulation" }
+    ch_pressure: { name: "Heating pressure" }
+    t_dhw_set_lb: { name: "Hot water setpoint min" }
+    t_dhw_set_ub: { name: "Hot water setpoint max" }
+  - { platform: wifi_signal, name: "WiFi signal", update_interval: 60s }
+  - { platform: uptime, name: "Uptime" }
+  # 1-Wire probes: the boot log lists each probe's address. Uncomment and fill in once connected.
+  # - { platform: dallas_temp, address: 0x0000000000000000, name: "Flow temperature", update_interval: 30s }
+  # - { platform: dallas_temp, address: 0x0000000000000000, name: "Outdoor temperature", update_interval: 60s }
+
+text_sensor:
+  - platform: wifi_info
+    ip_address: { id: wifi_ip, name: "IP address" }
+
+binary_sensor:
+  - platform: opentherm
+    flame_on: { id: ot_flame, name: "Boiler flame" }
+    ch_active: { name: "Boiler heating active" }
+    dhw_active: { id: ot_dhw_active, name: "Boiler hot water active" }
+    fault_indication:
+      id: ot_fault
+      name: "Boiler fault"
+      on_press:
+        - script.execute: oled_wake
+    low_water_pressure: { name: "Boiler low water pressure" }
+    flame_fault: { name: "Boiler flame fault" }
+    dhw_present: { name: "Boiler hot water present" }
+    dhw_setpoint_rw: { name: "Boiler hot water setpoint writable" }
+
+  # buttons: external 10k pull-ups, pressed = low. BTN1 next page, BTN2 previous page; a press first wakes the OLED.
+  - platform: gpio
+    name: "BTN1"
+    pin: { number: GPIO4, inverted: true }
+    filters: [delayed_on_off: 20ms]
+    on_press:
+      - if:
+          condition:
+            lambda: 'return id(oled).is_on();'
+          then:
+            - display.page.show_next: oled
+      - script.execute: oled_wake
+  - platform: gpio
+    name: "BTN2"
+    pin: { number: GPIO5, inverted: true }
+    filters: [delayed_on_off: 20ms]
+    on_press:
+      - if:
+          condition:
+            lambda: 'return id(oled).is_on();'
+          then:
+            - display.page.show_previous: oled
+      - script.execute: oled_wake
+  - platform: gpio
+    name: "BOOT button"
+    pin: { number: GPIO9, inverted: true, ignore_strapping_warning: true }
+    filters: [delayed_on_off: 20ms]
+
+output:
+  - platform: gpio
+    id: ot_led_out
+    pin:
+      number: GPIO15               # OT activity LED, active-low, strapping pin (10k pull-up)
+      inverted: true
+      ignore_strapping_warning: true
+
+# ---------------------------------------------------------------- failsafe and Vitodens keep-alive
+globals:
+  - id: ha_last_seen
+    type: uint32_t
+    initial_value: '0'
+
+interval:
+  - interval: 10s
+    then:
+      # R8.6: with no Home Assistant connection for ${failsafe_minutes} min, every relay and CH enable go off
+      - if:
+          condition: api.connected
+          then:
+            - lambda: 'id(ha_last_seen) = millis();'
+          else:
+            - if:
+                condition:
+                  lambda: 'return millis() - id(ha_last_seen) > ${failsafe_minutes} * 60UL * 1000UL;'
+                then:
+                  - switch.turn_off: ch1
+                  - switch.turn_off: ch2
+                  - switch.turn_off: ch3
+                  - switch.turn_off: ch4
+                  - switch.turn_off: ot_ch_enable
+      # Vitodens quirk: room below setpoint while heating is enabled, above it otherwise
+      - number.set:
+          id: ot_t_room
+          value: !lambda 'return id(ot_ch_enable).state ? 19.0f : 22.0f;'
+      - number.set:
+          id: ot_t_room_set
+          value: !lambda 'return id(ot_ch_enable).state ? 21.0f : 20.0f;'
+
+# ---------------------------------------------------------------- OLED (1.3" SH1106 on J5)
+i2c:
+  sda: GPIO6
+  scl: GPIO7
+  scan: true
+
+one_wire:
+  - platform: gpio
+    pin: GPIO0
+
+script:
+  - id: oled_wake                  # on for ${display_on_seconds} s after the last press, then blank (burn-in)
+    mode: restart
+    then:
+      - lambda: 'id(oled).turn_on();'
+      - delay: ${display_on_seconds}s
+      - lambda: 'if (!id(ot_fault).state) id(oled).turn_off();'
+
+font:
+  - { file: "gfonts://Roboto", id: f_big, size: 22 }
+  - { file: "gfonts://Roboto", id: f_small, size: 11 }
+
+display:
+  - platform: ssd1306_i2c
+    id: oled
+    model: "SH1106 128x64"
+    address: 0x3C
+    contrast: 40%
+    update_interval: 1s
+    pages:
+      # no fixed header or frame on every page; the content drifts by a few pixels every few minutes
+      - id: page_heating
+        lambda: |-
+          int dx = (millis() / 180000) % 4, dy = (millis() / 720000) % 3;
+          it.print(dx, dy, id(f_small), "HEATING");
+          it.printf(dx, 14 + dy, id(f_big), "%.0f C", id(ot_t_boiler).state);
+          it.printf(dx, 40 + dy, id(f_small), "set %.0f  mod %.0f%%", id(ot_t_set).state, id(ot_mod).state);
+          it.printf(dx, 52 + dy, id(f_small), "%s%s", id(ot_ch_enable).state ? "enabled" : "off",
+                    id(ot_flame).state ? "  FLAME" : "");
+      - id: page_dhw
+        lambda: |-
+          int dx = (millis() / 180000) % 4, dy = (millis() / 720000) % 3;
+          it.print(124 - dx, dy, id(f_small), TextAlign::TOP_RIGHT, "HOT WATER");
+          it.printf(124 - dx, 14 + dy, id(f_big), TextAlign::TOP_RIGHT, "%.0f C", id(ot_t_dhw).state);
+          it.printf(124 - dx, 40 + dy, id(f_small), TextAlign::TOP_RIGHT, "set %.0f", id(ot_t_dhw_set).state);
+          it.printf(124 - dx, 52 + dy, id(f_small), TextAlign::TOP_RIGHT, "%s%s",
+                    id(ot_dhw_enable).state ? "enabled" : "off", id(ot_dhw_active).state ? "  HEATING" : "");
+      - id: page_relays
+        lambda: |-
+          int dx = (millis() / 180000) % 4, dy = (millis() / 720000) % 3;
+          it.printf(dx, 4 + dy, id(f_small), "CH1 %s   CH2 %s", id(ch1).state ? "ON " : "off", id(ch2).state ? "ON " : "off");
+          it.printf(dx, 20 + dy, id(f_small), "CH3 %s   CH4 %s", id(ch3).state ? "ON " : "off", id(ch4).state ? "ON " : "off");
+          it.printf(dx, 40 + dy, id(f_small), "%s", id(ot_fault).state ? "BOILER FAULT" : "");
+          it.printf(dx, 52 + dy, id(f_small), "%s", id(wifi_ip).state.c_str());

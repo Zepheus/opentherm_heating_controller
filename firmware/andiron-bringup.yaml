@@ -1,0 +1,91 @@
+# Andiron v1.0 bring-up firmware: every I/O as a plain entity, no OpenTherm or heating logic yet.
+# Flash over USB-C the first time (esphome run firmware/andiron-bringup.yaml), then OTA or adopt in Home Assistant.
+# GPIO map: docs/design.md §GPIO map.
+substitutions:
+  name: andiron
+
+esphome:
+  name: ${name}
+  friendly_name: Andiron
+
+esp32:
+  board: esp32-c6-devkitc-1
+  variant: esp32c6
+  flash_size: 8MB
+  framework:
+    type: esp-idf
+
+logger:
+  hardware_uart: USB_SERIAL_JTAG   # logs over the same USB-C cable
+
+api:
+  encryption:
+    key: !secret api_key
+  reboot_timeout: 0s               # R8.6: never reboot just because Home Assistant is away
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:                              # fallback hotspot if the WiFi details are wrong
+    password: !secret ap_password
+
+captive_portal:
+
+status_led:
+  pin:
+    number: GPIO8                  # STATUS LED, active-low, strapping pin (10k pull-up)
+    inverted: true
+    ignore_strapping_warning: true
+
+# ---- relays: R3.5 OFF at boot by hardware; firmware keeps them OFF until switched
+switch:
+  - { platform: gpio, name: "CH1 relay", id: ch1, pin: GPIO21, restore_mode: ALWAYS_OFF }
+  - { platform: gpio, name: "CH2 relay", id: ch2, pin: GPIO22, restore_mode: ALWAYS_OFF }
+  - { platform: gpio, name: "CH3 relay", id: ch3, pin: GPIO23, restore_mode: ALWAYS_OFF }
+  - { platform: gpio, name: "CH4 relay", id: ch4, pin: GPIO3,  restore_mode: ALWAYS_OFF }
+
+# ---- OT activity LED (active-low); driven by hand here, by OpenTherm traffic later
+output:
+  - platform: gpio
+    id: ot_led_out
+    pin:
+      number: GPIO15
+      inverted: true
+      ignore_strapping_warning: true
+light:
+  - { platform: binary, name: "OT LED", output: ot_led_out, restore_mode: ALWAYS_OFF }
+
+# ---- buttons: external 10k pull-ups, pressed = low
+binary_sensor:
+  - platform: gpio
+    name: "BTN1"
+    pin: { number: GPIO4, inverted: true }
+    filters: [delayed_on_off: 20ms]
+  - platform: gpio
+    name: "BTN2"
+    pin: { number: GPIO5, inverted: true }
+    filters: [delayed_on_off: 20ms]
+  - platform: gpio
+    name: "BOOT button"
+    pin: { number: GPIO9, inverted: true, ignore_strapping_warning: true }
+    filters: [delayed_on_off: 20ms]
+
+# ---- I2C (OLED on J5, Qwiic on J6); the boot log lists any device found
+i2c:
+  sda: GPIO6
+  scl: GPIO7
+  scan: true
+
+# ---- 1-Wire (FLOW J3, OUTDOOR J4); the boot log lists the address of every probe found.
+# Add a dallas_temp sensor per address once the probes are connected.
+one_wire:
+  - platform: gpio
+    pin: GPIO0
+
+sensor:
+  - { platform: wifi_signal, name: "WiFi signal", update_interval: 60s }
+  - { platform: uptime, name: "Uptime" }

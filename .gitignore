@@ -28,3 +28,6 @@ fab/
 .history/
 # README renders are deliverables
 !docs/images/*.png
+# ESPHome
+firmware/secrets.yaml
+firmware/.esphome/
